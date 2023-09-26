@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome: https://fontawesome.com/icons -->
+  <script src="https://kit.fontawesome.com/1c80f004e3.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <!-- Font -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+  </link>
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif !important;
+    }
+
+    main>.container {
+      padding: 20px 15px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="flex-shrink-0">
+    <div class="container">
+      <div class="row">
+        <h1 class="mt-5"><i class="fa-solid fa-seedling"></i> Environmental impact calculator</h1>
+        <p class="lead">Estimate the environmental impact of using Scaleway resources</p>
+      </div>
+
+      <hr class="mt-3"/>
+      <h2 class="mb-3"><i class="fa-solid fa-server"></i> Resources and usage</h2>
+
+      <!-- Tabs -->
+      <div class="row ms-1">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-instance-tab" data-bs-toggle="pill" data-bs-target="#pills-instance" type="button" role="tab">Instances</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-em-tab" data-bs-toggle="pill" data-bs-target="#pills-em" type="button" role="tab">Elastic metal</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <!-- Form -->
+        <form id="usage-form">
+          <div class="row">
+            <!-- Product -->
+            <div class="tab-content" id="pills-tabContent">
+
+              <!-- Instances tab -->
+              <div class="tab-pane show active" id="pills-instance" role="tabpanel" tabindex="0">
+
+                <div class="row">
+                  <div class="form-group row mb-3">
+                    <label for="instance-select" class="col-sm-2 col-form-label">Instance type</label>
+                    <div class="col-sm-6">
+                      <select id="instance-select" class="form-select"></select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Elastic metal tab -->
+              <div class="tab-pane" id="pills-em" role="tabpanel" tabindex="1">
+
+                <div class="row">
+                  <div class="form-group row mb-3">
+                    <label for="em-select" class="col-sm-2 col-form-label">Elastic metal type</label>
+                    <div class="col-sm-6">
+                      <select id="em-select" class="form-select"></select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Usage -->
+          <div class="row">
+            <div class="form-group row mb-3">
+              <label class="col-sm-2 col-form-label" for="region-select">Region</label>
+              <div class="col-sm-6">
+                <select id="region-select" class="form-select">
+                  <option value="fra">Paris</option>
+                  <option value="ned">Amsterdam</option>
+                  <option value="pol">Warsaw</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row mb-3">
+              <label class="col-sm-2 col-form-label" for="count-input">Count</label>
+              <div class="col-sm-1">
+                <input id="count-input" class="form-control" type="number" value="1"></input>
+              </div>
+            </div>
+
+            <div class="form-group row mb-3">
+              <label class="col-sm-2 col-form-label" for="load-input">Load (%)</label>
+              <div class="col-sm-1">
+                <input id="load-input" class="form-control" type="number" value="50"></input>
+              </div>
+            </div>
+
+            <div class="form-group row mb-3">
+              <label class="col-sm-2 col-form-label">Time</label>
+
+              <label class="col-sm-1 col-form-label" for="time-years">Years</label>
+              <div class="col-sm-1">
+                <input id="time-years" class="form-control" type="number" value="0"></input>
+              </div>
+
+              <label class="col-sm-1 col-form-label" for="time-days">Days</label>
+              <div class="col-sm-1">
+                <input id="time-days" class="form-control" type="number" value="30"></input>
+              </div>
+
+              <label class="col-sm-1 col-form-label" for="time-hours">Hours</label>
+              <div class="col-sm-1">
+                <input id="time-hours" class="form-control" type="number" value="0"></input>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+        </form>
+      </div>
+
+      <hr class="mt-3"/>
+
+      <h2 class="mb-3"><i class="fa-solid fa-chart-bar"></i> Impact</h2>
+
+      <!-- Impacts -->
+      <div class="row">
+        <div class="row">
+          <div class="col-md-12">
+            <p>Impact is measured using three criteria:
+
+            <a href="https://doc.api.boavizta.org/Explanations/impacts/#gwp-global-warming-potential">Global Warming Potential (GWP)</a>,
+
+            <a href="https://doc.api.boavizta.org/Explanations/impacts/#pe-primary-energy">Primary Energy (PE)</a>,
+
+            and <a href="https://doc.api.boavizta.org/Explanations/impacts/#adp-abiotic-depletion-potential"> Aboitic Depletion Potential (ADP)</a>.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Use</h4>
+
+            <p>Impact of using the resources.</p>
+
+            <p><span id="gwp-use"></span></p>
+            <ul id="equivalents-use"></ul>
+
+            <p><span id="pe-use"></span></p>
+            <p><span id="adp-use"></span></p>
+          </div>
+
+          <div class="col-md-6">
+            <h4>Manufacture</h4>
+
+            <p>Impact of manufacturing the resources, amortized over their lifetime.</p>
+
+            <p><span id="gwp-manufacture"></span></p>
+            <ul id="equivalents-manufacture"></ul>
+
+            <p><span id="pe-manufacture"></span></p>
+            <p><span id="adp-manufacture"></span></p>
+          </div>
+        </div>
+
+        <div class="container">
+          <p id="error-msg"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">
+          Estimates calculated using the <a href="https://doc.api.boavizta.org/">Boavizta API</a>
+        </span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <!-- Site JS -->
+  <script src="main.js"></script>
+
+  <!-- Bootstrap bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
