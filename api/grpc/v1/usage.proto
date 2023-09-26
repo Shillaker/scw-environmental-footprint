@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+option go_package = "gitlab.infra.online.net/paas/carbon/api/grpc/v1";
+
+import "google/api/annotations.proto";
+
+package api.v1;
+
+message Instance {
+    string type = 1;
+    string description = 2;
+}
+
+message ElasticMetal {
+    string type = 1;
+    string description = 2;
+}
+
+message Storage {
+    string type = 1;
+}
+
+message CloudUsage {
+    int32 timeSeconds = 1;
+    int32 count = 2;
+    int32 loadPercentage = 3;
+
+    int32 memoryMiB = 4;
+    int32 milliVCPU = 5;
+
+    string region = 6;
+}
+
+message EmptyRequest {
+}
+
+message ListInstancesResponse {
+    repeated Instance instances = 1;
+}
+
+message ListElasticMetalResponse {
+    repeated ElasticMetal elasticMetals = 1;
+}
+
+message InstanceUsageRequest {
+    Instance instance = 1;
+    CloudUsage usage = 2;
+}
+
+message ElasticMetalUsageRequest {
+    ElasticMetal elasticMetal = 1;
+    CloudUsage usage = 2;
+}
+
+message StorageUsageRequest {
+    Storage storage = 1;
+    CloudUsage usage = 2;
+}
+
+message Impact {
+    float manufacture = 1;
+    float use = 2;
+    string unit = 3;
+}
+
+message EquivalentCO2E {
+    float amount = 1;
+    string thing = 2;
+}
+
+message CloudUsageImpactResponse {
+    map<string, Impact> impacts = 1;
+    repeated EquivalentCO2E equivalentsManufacture = 2;
+    repeated EquivalentCO2E equivalentsUse = 3;
+}
+
+service UsageImpact {
+  rpc ListInstances (EmptyRequest) returns (ListInstancesResponse) {
+    option (google.api.http) = {
+      get: "/v1/instance"
+    };
+  }
+
+  rpc ListElasticMetal (EmptyRequest) returns (ListElasticMetalResponse) {
+    option (google.api.http) = {
+      get: "/v1/elastic-metal"
+    };
+  }
+
+  rpc GetElasticMetalUsageImpact (ElasticMetalUsageRequest) returns (CloudUsageImpactResponse) {
+    option (google.api.http) = {
+      post: "/v1/impact/elastic-metal"
+      body: "*"
+    };
+  }
+
+  rpc GetInstanceUsageImpact (InstanceUsageRequest) returns (CloudUsageImpactResponse) {
+    option (google.api.http) = {
+      post: "/v1/impact/instance"
+      body: "*"
+    };
+  }
+
+  rpc GetStorageUsageImpact (StorageUsageRequest) returns (CloudUsageImpactResponse) {
+    option (google.api.http) = {
+      post: "/v1/impact/storage"
+      body: "*"
+    };
+  }
+}

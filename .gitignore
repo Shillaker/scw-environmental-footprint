@@ -1,0 +1,16 @@
+# Project
+bin/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Typing
+.mypy_cache
+
+# Golang
+vendor/

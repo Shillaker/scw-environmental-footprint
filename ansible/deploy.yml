@@ -1,0 +1,25 @@
+---
+
+- name: Deploy
+  hosts: vms
+  tasks:
+    - name: Copy to VM
+      ansible.posix.synchronize:
+        src: "{{ playbook_dir}}/../"
+        dest: /root/app
+
+    - name: Tear down existing services
+      community.docker.docker_compose:
+        project_src: /root/app
+        state: absent
+
+    - name: Build images
+      community.docker.docker_compose:
+        project_src: /root/app
+        build: true
+        state: present
+
+    - name: Start up services
+      community.docker.docker_compose:
+        project_src: /root/app
+        state: present
