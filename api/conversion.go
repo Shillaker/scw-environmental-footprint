@@ -44,6 +44,13 @@ func ElasticMetalToPb(em model.ElasticMetal) *pb.ElasticMetal {
 	}
 }
 
+func K8sControlPlaneToPb(cp model.K8sControlPlane) *pb.K8sControlPlane {
+	return &pb.K8sControlPlane{
+		Type:        cp.Type,
+		Description: cp.Description,
+	}
+}
+
 func StoragePbToModel(storage *pb.Storage) model.Storage {
 	return model.Storage{
 		Type: storage.Type,

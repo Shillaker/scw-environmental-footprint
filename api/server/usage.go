@@ -44,6 +44,18 @@ func (s *UsageServer) ListElasticMetal(context.Context, *pb.EmptyRequest) (*pb.L
 	return response, nil
 }
 
+func (s *UsageServer) ListK8sControlPlanes(context.Context, *pb.EmptyRequest) (*pb.ListK8sControlPlanesResponse, error) {
+	mapper := mapping.ScwMapper{}
+	cps := mapper.ListK8sControlPlanes()
+
+	response := &pb.ListK8sControlPlanesResponse{}
+	for _, cp := range cps {
+		response.ControlPlanes = append(response.ControlPlanes, api.K8sControlPlaneToPb(cp))
+	}
+
+	return response, nil
+}
+
 func (s *UsageServer) GetElasticMetalUsageImpact(ctx context.Context, request *pb.ElasticMetalUsageRequest) (*pb.CloudUsageImpactResponse, error) {
 	log.Infof("Received request to instance impact")
 

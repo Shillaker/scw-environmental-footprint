@@ -36,6 +36,18 @@ func (s *ScwMapper) ListElasticMetal() []model.ElasticMetal {
 	return ems
 }
 
+func (s *ScwMapper) ListK8sControlPlanes() []model.K8sControlPlane {
+	var cps []model.K8sControlPlane
+	for cpName, cpServer := range model.K8sControlPlaneMapping {
+		cps = append(cps, model.K8sControlPlane{
+			Type:        cpName,
+			Description: fmt.Sprintf("%v (%v)", cpName, model.ServerToString(cpServer)),
+		})
+	}
+
+	return cps
+}
+
 func (s *ScwMapper) doServerUsage(server model.Server, cloudUsage model.CloudUsageAmount, hostShare float32) ([]model.ServerUsage, error) {
 	serverUsageAmount := model.DefaultUsage(cloudUsage.TimeSeconds)
 	serverUsageAmount.LoadPercentage = float32(cloudUsage.LoadPercentage)

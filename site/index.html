@@ -42,11 +42,19 @@
       <!-- Tabs -->
       <div class="row ms-1">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <!-- Instances -->
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-instance-tab" data-bs-toggle="pill" data-bs-target="#pills-instance" type="button" role="tab">Instances</button>
           </li>
+
+          <!-- Elastic metal -->
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-em-tab" data-bs-toggle="pill" data-bs-target="#pills-em" type="button" role="tab">Elastic metal</button>
+          </li>
+
+          <!-- K8s -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-k8s-tab" data-bs-toggle="pill" data-bs-target="#pills-k8s" type="button" role="tab">Kubernetes</button>
           </li>
         </ul>
       </div>
@@ -62,10 +70,21 @@
               <div class="tab-pane show active" id="pills-instance" role="tabpanel" tabindex="0">
 
                 <div class="row">
+                  <div class="row">
+                    <h5>Hosts</h5>
+                  </div>
+
                   <div class="form-group row mb-3">
                     <label for="instance-select" class="col-sm-2 col-form-label">Instance type</label>
                     <div class="col-sm-6">
                       <select id="instance-select" class="form-select"></select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="count-input">Count</label>
+                    <div class="col-sm-1">
+                      <input id="instance-count" class="form-control" type="number" value="1"></input>
                     </div>
                   </div>
                 </div>
@@ -76,20 +95,84 @@
               <div class="tab-pane" id="pills-em" role="tabpanel" tabindex="1">
 
                 <div class="row">
+                  <div class="row">
+                    <h5>Hosts</h5>
+                  </div>
+
                   <div class="form-group row mb-3">
                     <label for="em-select" class="col-sm-2 col-form-label">Elastic metal type</label>
                     <div class="col-sm-6">
                       <select id="em-select" class="form-select"></select>
                     </div>
                   </div>
+
+                  <div class="form-group row mb-3">
+                    <label class="col-sm-2 col-form-label" for="count-input">Count</label>
+                    <div class="col-sm-1">
+                      <input id="em-count" class="form-control" type="number" value="1"></input>
+                    </div>
+                  </div>
+
                 </div>
 
+              </div>
+
+              <!-- K8s tab -->
+              <div class="tab-pane" id="pills-k8s" role="tabpanel" tabindex="1">
+
+                <div class="row">
+                  <div class="row">
+                    <h5>Cluster details</h5>
+                  </div>
+
+                  <div class="form-group row mb-3">
+                    <label for="k8s-cp-select" class="col-sm-2 col-form-label">Control plane</label>
+                    <div class="col-sm-6">
+                      <select id="k8s-cp-select" class="form-select"></select>
+                    </div>
+                  </div>
+
+                  <!-- Pools list -->
+                  <div class="row" id="k8s-pools">
+                    <div id="k8s-pool-list" class="row">
+
+                      <div id="k8s-pool-default" class="row k8s-pool">
+                        <h6 class="pool-title">Default pool</h6>
+
+                        <div class="form-group row mb-3">
+                          <label class="col-sm-2 col-form-label">Instance type</label>
+                          <div class="col-sm-6">
+                            <select class="form-select k8s-pool-instance-type"></select>
+                          </div>
+
+                          <label class="col-sm-1 col-form-label">Count</label>
+                          <div class="col-sm-1">
+                            <input class="form-control k8s-pool-instance-count" type="number" value="1"></input>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <button id="k8s-add-pool-btn" class="btn btn-secondary">Add pool</button>
+                      </div>
+                    </div>
+
+                    <div class="mt-3"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Usage -->
           <div class="row">
+            <div class="row">
+              <h5>Usage</h5>
+            </div>
+
             <div class="form-group row mb-3">
               <label class="col-sm-2 col-form-label" for="region-select">Region</label>
               <div class="col-sm-6">
@@ -98,13 +181,6 @@
                   <option value="ned">Amsterdam</option>
                   <option value="pol">Warsaw</option>
                 </select>
-              </div>
-            </div>
-
-            <div class="form-group row mb-3">
-              <label class="col-sm-2 col-form-label" for="count-input">Count</label>
-              <div class="col-sm-1">
-                <input id="count-input" class="form-control" type="number" value="1"></input>
               </div>
             </div>
 

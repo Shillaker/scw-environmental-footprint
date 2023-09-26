@@ -5,10 +5,13 @@ if (!hostname) {
 
 let baseUrl = "http://" + hostname + ":8083/v1";
 let instanceUrl = baseUrl + "/instance";
+let k8sControlPlanesUrl = baseUrl + "/k8s/control-plane";
 let emUrl = baseUrl + "/elastic-metal";
 
 let instanceImpactUrl = baseUrl + "/impact/instance";
 let emImpactUrl = baseUrl + "/impact/elastic-metal";
+
+let poolCount = 0;
 
 console.log("API URL: " + baseUrl);
 
@@ -60,6 +63,10 @@ function loadInstances() {
         $('#instance-select').append(
           $('<option>').text(instance.description).attr('value', instance.type)
         );
+
+        $('.k8s-pool-instance-type').append(
+          $('<option>').text(instance.description).attr('value', instance.type)
+        );
       });
     },
     error: function(data) {
@@ -70,7 +77,51 @@ function loadInstances() {
   });
 }
 
+function loadK8sControlPlanes() {
+  // Load control planes list
+  $.ajax({
+    url: k8sControlPlanesUrl,
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      controlPlanes = data.controlPlanes;
+      controlPlanes = sortList(controlPlanes);
+
+      $.each(controlPlanes, function(i, controlPlane) {
+        $('#k8s-cp-select').append(
+          $('<option>').text(controlPlane.description).attr('value', controlPlane.type)
+        );
+      });
+    },
+    error: function(data) {
+      var errorMsg = data.responseJSON.message;
+      console.log("Error loading control plane list: " + errorMsg);
+      alert("Error loading control plane list:\n" + errorMsg);
+    }
+  });
+}
+
+function addK8sPool() {
+  poolCount += 1;
+  console.log("Adding pool " + poolCount);
+
+  // Clone default pool
+  var clonedPool = $("#k8s-pool-default").clone();
+
+  clonedPool.prop("id", "k8s-pool-" + poolCount);
+  clonedPool.find("h6").text("Pool " + poolCount);
+  clonedPool.appendTo("#k8s-pool-list");
+}
+
 function setUpFormSubmit() {
+
+  // Override k8s pool button
+  $("#k8s-add-pool-btn").on("click", function(e) {
+    e.preventDefault();
+
+    addK8sPool();
+  });
+
   // Form submit
   $("#usage-form").on("submit", function(e) {
     // Cancel event
@@ -90,6 +141,9 @@ function setUpFormSubmit() {
     var id = $('.tab-content .active').attr('id');
     if (id == "pills-instance") {
       var instanceType = $('#instance-select').val();
+      var instanceCount = $('#instance-count').val();
+
+      data["usage"]["count"] = instanceCount;
       data["instance"] = {
         "type": instanceType
       };
@@ -97,10 +151,27 @@ function setUpFormSubmit() {
     }
     else if (id == "pills-em") {
       var emType = $('#em-select').val();
+      var emCount = $('#em-count').val();
+
+      data["usage"]["count"] = emCount;
       data["elasticMetal"] = {
         "type": emType
       };
       url = emImpactUrl;
+    }
+    else if (id == "pills-k8s") {
+      var cpType = $('#k8s-cp-type').val();
+
+      $('.k8s-pool').each(function(i, pool) {
+        console.log("FOobar " + i);
+
+        var instanceType = $(this).find('.k8s-pool-instance-type').val();
+        var instanceCount = $(this).find('.k8s-pool-instance-count').val();
+
+        console.log("POOL " + instanceType + " " + instanceCount);
+      });
+
+      return;
     }
     else {
       alert("No product selected");
@@ -211,6 +282,7 @@ $(document).ready(function() {
   // Load data
   loadInstances();
   loadEM();
+  loadK8sControlPlanes();
 
   // Set up form
   setUpFormSubmit();

@@ -20,6 +20,11 @@ message Storage {
     string type = 1;
 }
 
+message K8sControlPlane {
+    string type = 1;
+    string description = 2;
+}
+
 message CloudUsage {
     int32 timeSeconds = 1;
     int32 count = 2;
@@ -40,6 +45,10 @@ message ListInstancesResponse {
 
 message ListElasticMetalResponse {
     repeated ElasticMetal elasticMetals = 1;
+}
+
+message ListK8sControlPlanesResponse {
+    repeated K8sControlPlane controlPlanes = 1;
 }
 
 message InstanceUsageRequest {
@@ -84,6 +93,12 @@ service UsageImpact {
   rpc ListElasticMetal (EmptyRequest) returns (ListElasticMetalResponse) {
     option (google.api.http) = {
       get: "/v1/elastic-metal"
+    };
+  }
+
+  rpc ListK8sControlPlanes (EmptyRequest) returns (ListK8sControlPlanesResponse) {
+    option (google.api.http) = {
+      get: "/v1/k8s/control-plane"
     };
   }
 

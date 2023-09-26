@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	UsageImpact_ListInstances_FullMethodName              = "/api.v1.UsageImpact/ListInstances"
 	UsageImpact_ListElasticMetal_FullMethodName           = "/api.v1.UsageImpact/ListElasticMetal"
+	UsageImpact_ListK8SControlPlanes_FullMethodName       = "/api.v1.UsageImpact/ListK8sControlPlanes"
 	UsageImpact_GetElasticMetalUsageImpact_FullMethodName = "/api.v1.UsageImpact/GetElasticMetalUsageImpact"
 	UsageImpact_GetInstanceUsageImpact_FullMethodName     = "/api.v1.UsageImpact/GetInstanceUsageImpact"
 	UsageImpact_GetStorageUsageImpact_FullMethodName      = "/api.v1.UsageImpact/GetStorageUsageImpact"
@@ -32,6 +33,7 @@ const (
 type UsageImpactClient interface {
 	ListInstances(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*ListInstancesResponse, error)
 	ListElasticMetal(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*ListElasticMetalResponse, error)
+	ListK8SControlPlanes(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*ListK8SControlPlanesResponse, error)
 	GetElasticMetalUsageImpact(ctx context.Context, in *ElasticMetalUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 	GetInstanceUsageImpact(ctx context.Context, in *InstanceUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 	GetStorageUsageImpact(ctx context.Context, in *StorageUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
@@ -57,6 +59,15 @@ func (c *usageImpactClient) ListInstances(ctx context.Context, in *EmptyRequest,
 func (c *usageImpactClient) ListElasticMetal(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*ListElasticMetalResponse, error) {
 	out := new(ListElasticMetalResponse)
 	err := c.cc.Invoke(ctx, UsageImpact_ListElasticMetal_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usageImpactClient) ListK8SControlPlanes(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*ListK8SControlPlanesResponse, error) {
+	out := new(ListK8SControlPlanesResponse)
+	err := c.cc.Invoke(ctx, UsageImpact_ListK8SControlPlanes_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,6 +107,7 @@ func (c *usageImpactClient) GetStorageUsageImpact(ctx context.Context, in *Stora
 type UsageImpactServer interface {
 	ListInstances(context.Context, *EmptyRequest) (*ListInstancesResponse, error)
 	ListElasticMetal(context.Context, *EmptyRequest) (*ListElasticMetalResponse, error)
+	ListK8SControlPlanes(context.Context, *EmptyRequest) (*ListK8SControlPlanesResponse, error)
 	GetElasticMetalUsageImpact(context.Context, *ElasticMetalUsageRequest) (*CloudUsageImpactResponse, error)
 	GetInstanceUsageImpact(context.Context, *InstanceUsageRequest) (*CloudUsageImpactResponse, error)
 	GetStorageUsageImpact(context.Context, *StorageUsageRequest) (*CloudUsageImpactResponse, error)
@@ -111,6 +123,9 @@ func (UnimplementedUsageImpactServer) ListInstances(context.Context, *EmptyReque
 }
 func (UnimplementedUsageImpactServer) ListElasticMetal(context.Context, *EmptyRequest) (*ListElasticMetalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListElasticMetal not implemented")
+}
+func (UnimplementedUsageImpactServer) ListK8SControlPlanes(context.Context, *EmptyRequest) (*ListK8SControlPlanesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListK8SControlPlanes not implemented")
 }
 func (UnimplementedUsageImpactServer) GetElasticMetalUsageImpact(context.Context, *ElasticMetalUsageRequest) (*CloudUsageImpactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetElasticMetalUsageImpact not implemented")
@@ -166,6 +181,24 @@ func _UsageImpact_ListElasticMetal_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UsageImpactServer).ListElasticMetal(ctx, req.(*EmptyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UsageImpact_ListK8SControlPlanes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EmptyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageImpactServer).ListK8SControlPlanes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageImpact_ListK8SControlPlanes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageImpactServer).ListK8SControlPlanes(ctx, req.(*EmptyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -238,6 +271,10 @@ var UsageImpact_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListElasticMetal",
 			Handler:    _UsageImpact_ListElasticMetal_Handler,
+		},
+		{
+			MethodName: "ListK8sControlPlanes",
+			Handler:    _UsageImpact_ListK8SControlPlanes_Handler,
 		},
 		{
 			MethodName: "GetElasticMetalUsageImpact",
