@@ -2,8 +2,6 @@
 
 This is an experiment to measure the environmental impact measurements for Scaleway products.
 
-There is a more detailed [architecture doc](docs/architecture.md) which describes how the pieces fit together.
-
 The project uses the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) to measure the impact of each service. Boavizta provide their own front-end for the API via [Datavizta](https://dataviz.boavizta.org/serversimpact).
 
 ## Running instance
