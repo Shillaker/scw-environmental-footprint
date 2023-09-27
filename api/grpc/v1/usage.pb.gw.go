@@ -67,20 +67,20 @@ func local_request_UsageImpact_ListElasticMetal_0(ctx context.Context, marshaler
 
 }
 
-func request_UsageImpact_ListK8SControlPlanes_0(ctx context.Context, marshaler runtime.Marshaler, client UsageImpactClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_UsageImpact_ListKubernetesControlPlanes_0(ctx context.Context, marshaler runtime.Marshaler, client UsageImpactClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq EmptyRequest
 	var metadata runtime.ServerMetadata
 
-	msg, err := client.ListK8SControlPlanes(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.ListKubernetesControlPlanes(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_UsageImpact_ListK8SControlPlanes_0(ctx context.Context, marshaler runtime.Marshaler, server UsageImpactServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_UsageImpact_ListKubernetesControlPlanes_0(ctx context.Context, marshaler runtime.Marshaler, server UsageImpactServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq EmptyRequest
 	var metadata runtime.ServerMetadata
 
-	msg, err := server.ListK8SControlPlanes(ctx, &protoReq)
+	msg, err := server.ListKubernetesControlPlanes(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -243,7 +243,7 @@ func RegisterUsageImpactHandlerServer(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("GET", pattern_UsageImpact_ListK8SControlPlanes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_UsageImpact_ListKubernetesControlPlanes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -251,12 +251,12 @@ func RegisterUsageImpactHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/api.v1.UsageImpact/ListK8SControlPlanes", runtime.WithHTTPPathPattern("/v1/k8s/control-plane"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/api.v1.UsageImpact/ListKubernetesControlPlanes", runtime.WithHTTPPathPattern("/v1/k8s/control-plane"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_UsageImpact_ListK8SControlPlanes_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_UsageImpact_ListKubernetesControlPlanes_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -264,7 +264,7 @@ func RegisterUsageImpactHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_UsageImpact_ListK8SControlPlanes_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_UsageImpact_ListKubernetesControlPlanes_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -428,25 +428,25 @@ func RegisterUsageImpactHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("GET", pattern_UsageImpact_ListK8SControlPlanes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_UsageImpact_ListKubernetesControlPlanes_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/api.v1.UsageImpact/ListK8SControlPlanes", runtime.WithHTTPPathPattern("/v1/k8s/control-plane"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/api.v1.UsageImpact/ListKubernetesControlPlanes", runtime.WithHTTPPathPattern("/v1/k8s/control-plane"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_UsageImpact_ListK8SControlPlanes_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_UsageImpact_ListKubernetesControlPlanes_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_UsageImpact_ListK8SControlPlanes_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_UsageImpact_ListKubernetesControlPlanes_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -524,7 +524,7 @@ var (
 
 	pattern_UsageImpact_ListElasticMetal_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "elastic-metal"}, ""))
 
-	pattern_UsageImpact_ListK8SControlPlanes_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "k8s", "control-plane"}, ""))
+	pattern_UsageImpact_ListKubernetesControlPlanes_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "k8s", "control-plane"}, ""))
 
 	pattern_UsageImpact_GetElasticMetalUsageImpact_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "impact", "elastic-metal"}, ""))
 
@@ -538,7 +538,7 @@ var (
 
 	forward_UsageImpact_ListElasticMetal_0 = runtime.ForwardResponseMessage
 
-	forward_UsageImpact_ListK8SControlPlanes_0 = runtime.ForwardResponseMessage
+	forward_UsageImpact_ListKubernetesControlPlanes_0 = runtime.ForwardResponseMessage
 
 	forward_UsageImpact_GetElasticMetalUsageImpact_0 = runtime.ForwardResponseMessage
 

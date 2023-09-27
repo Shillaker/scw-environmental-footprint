@@ -44,13 +44,13 @@ func (s *UsageServer) ListElasticMetal(context.Context, *pb.EmptyRequest) (*pb.L
 	return response, nil
 }
 
-func (s *UsageServer) ListK8sControlPlanes(context.Context, *pb.EmptyRequest) (*pb.ListK8sControlPlanesResponse, error) {
+func (s *UsageServer) ListKubernetesControlPlanes(context.Context, *pb.EmptyRequest) (*pb.ListKubernetesControlPlanesResponse, error) {
 	mapper := mapping.ScwMapper{}
-	cps := mapper.ListK8sControlPlanes()
+	cps := mapper.ListKubernetesControlPlanes()
 
-	response := &pb.ListK8sControlPlanesResponse{}
+	response := &pb.ListKubernetesControlPlanesResponse{}
 	for _, cp := range cps {
-		response.ControlPlanes = append(response.ControlPlanes, api.K8sControlPlaneToPb(cp))
+		response.ControlPlanes = append(response.ControlPlanes, api.KubernetesControlPlaneTypeToPb(cp))
 	}
 
 	return response, nil

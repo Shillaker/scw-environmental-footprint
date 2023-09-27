@@ -20,7 +20,7 @@ message Storage {
     string type = 1;
 }
 
-message K8sControlPlane {
+message KubernetesControlPlane {
     string type = 1;
     string description = 2;
 }
@@ -47,8 +47,8 @@ message ListElasticMetalResponse {
     repeated ElasticMetal elasticMetals = 1;
 }
 
-message ListK8sControlPlanesResponse {
-    repeated K8sControlPlane controlPlanes = 1;
+message ListKubernetesControlPlanesResponse {
+    repeated KubernetesControlPlane controlPlanes = 1;
 }
 
 message InstanceUsageRequest {
@@ -96,7 +96,7 @@ service UsageImpact {
     };
   }
 
-  rpc ListK8sControlPlanes (EmptyRequest) returns (ListK8sControlPlanesResponse) {
+  rpc ListKubernetesControlPlanes (EmptyRequest) returns (ListKubernetesControlPlanesResponse) {
     option (google.api.http) = {
       get: "/v1/k8s/control-plane"
     };
