@@ -21,3 +21,7 @@ _RAM_
 _Disk_
 
 - Manufacturer - as with RAM, the manufacturer of the underlying disks is not made available
+
+_Kubernetes_
+
+- Control plane - we assume that the control plane runs on a standard Scaleway instance, but this may not be true

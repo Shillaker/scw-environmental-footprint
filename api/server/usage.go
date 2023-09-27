@@ -44,8 +44,20 @@ func (s *UsageServer) ListElasticMetal(context.Context, *pb.EmptyRequest) (*pb.L
 	return response, nil
 }
 
+func (s *UsageServer) ListKubernetesControlPlanes(context.Context, *pb.EmptyRequest) (*pb.ListKubernetesControlPlanesResponse, error) {
+	mapper := mapping.ScwMapper{}
+	cps := mapper.ListKubernetesControlPlanes()
+
+	response := &pb.ListKubernetesControlPlanesResponse{}
+	for _, cp := range cps {
+		response.ControlPlanes = append(response.ControlPlanes, api.KubernetesControlPlaneTypeToPb(cp))
+	}
+
+	return response, nil
+}
+
 func (s *UsageServer) GetElasticMetalUsageImpact(ctx context.Context, request *pb.ElasticMetalUsageRequest) (*pb.CloudUsageImpactResponse, error) {
-	log.Infof("Received request to instance impact")
+	log.Infof("Received request to elastic metal impact")
 
 	em := api.ElasticMetalPbToModel(request.ElasticMetal)
 	usage := api.UsagePbToModel(request.Usage)
@@ -68,6 +80,29 @@ func (s *UsageServer) GetInstanceUsageImpact(ctx context.Context, request *pb.In
 
 	mapper := mapping.ScwMapper{}
 	serverUsage, err := mapper.MapInstanceUsage(instance, usage)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return doCalculateImpact(serverUsage)
+}
+
+func (s *UsageServer) GetKubernetesUsageImpact(ctx context.Context, request *pb.KubernetesUsageRequest) (*pb.CloudUsageImpactResponse, error) {
+	log.Infof("Received request to k8s impact")
+
+	cpType := api.KubernetesControlPlanePbToModel(request.ControlPlane)
+
+	usage := api.UsagePbToModel(request.Usage)
+
+	poolsPb := request.GetPools()
+	pools := make([]model.KubernetesPool, len(poolsPb))
+	for i, poolPb := range poolsPb {
+		pools[i] = api.KubernetesPoolPbToModel(poolPb)
+	}
+
+	mapper := mapping.ScwMapper{}
+	serverUsage, err := mapper.MapKubernetesUsage(cpType, pools, usage)
 
 	if err != nil {
 		return nil, err
