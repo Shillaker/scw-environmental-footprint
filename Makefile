@@ -44,3 +44,11 @@ vm-install:
 .PHONY: vm-deploy
 vm-deploy:
 	cd ansible && ansible-playbook -i inventory/all.yml deploy.yml
+
+.PHONY: dev-nginx
+dev-nginx:
+	NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up nginx -d
+
+.PHONY: dev-up
+dev-up:
+	NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up -d

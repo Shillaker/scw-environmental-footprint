@@ -3,7 +3,13 @@ if (!hostname) {
   hostname = "localhost";
 }
 
-let baseUrl = "http://" + hostname + ":8083/v1";
+let protocol = location.protocol;
+if(protocol != "https:") {
+  protocol = "http:";
+}
+
+let baseUrl = protocol + "//" + hostname + "/api/v1";
+
 let instanceUrl = baseUrl + "/instance";
 let k8sControlPlanesUrl = baseUrl + "/k8s/control-plane";
 let emUrl = baseUrl + "/elastic-metal";

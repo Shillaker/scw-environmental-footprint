@@ -6,7 +6,7 @@ The project uses the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) to mea
 
 ## Running instance
 
-A running instange can be found [here](http://e367ffdd-6c2f-4f53-a7ec-7fb7893c4896.pub.instances.scw.cloud:8081/).
+A running instance can be found [here](http://scw-impact.simonshillaker.com/).
 
 ## Details
 

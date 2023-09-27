@@ -6,7 +6,8 @@ services:
       - 5000:5000
 
   backend:
-    build: .
+    build:
+      context: .
     command: /app/bin/server
     depends_on:
       - boavizta
@@ -14,7 +15,8 @@ services:
       - 8082:8082
 
   gateway:
-    build: .
+    build:
+      context: .
     command: /app/bin/gateway
     depends_on:
       - boavizta
@@ -24,10 +26,17 @@ services:
 
   nginx:
     image: nginx:latest
-    depends_on:
-      - gateway
-    ports:
-      - 8081:80
+    network_mode: host
+    volumes:
+      - .:/app/
+      - ${NGINX_CONF_DIR}:/etc/nginx/conf.d/
+      - ./certbot/www:/var/www/certbot/
+      - ./certbot/conf/:/etc/nginx/ssl/
+    restart: always
+
+  certbot:
+    image: certbot/certbot:latest
     volumes:
       - .:/app
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./certbot/www:/var/www/certbot/
+      - ./certbot/conf/:/etc/letsencrypt/
