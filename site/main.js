@@ -110,7 +110,7 @@ function addK8sPool() {
   var clonedPool = $("#k8s-pool-default").clone();
 
   clonedPool.prop("id", "k8s-pool-" + poolCount);
-  clonedPool.find("h6").text("Pool " + poolCount);
+  clonedPool.find(".pool-title").text("Pool " + poolCount);
   clonedPool.appendTo("#k8s-pool-list");
 }
 
