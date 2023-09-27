@@ -30,6 +30,20 @@ func ElasticMetalPbToModel(em *pb.ElasticMetal) model.ElasticMetal {
 	}
 }
 
+func KubernetesControlPlanePbToModel(cp *pb.KubernetesControlPlane) model.KubernetesControlPlaneType {
+	return model.KubernetesControlPlaneType{
+		Type:        cp.Type,
+		Description: cp.Description,
+	}
+}
+
+func KubernetesPoolPbToModel(cp *pb.KubernetesPool) model.KubernetesPool {
+	return model.KubernetesPool{
+		Instance: InstancePbToModel(cp.Instance),
+		Count:    cp.Count,
+	}
+}
+
 func InstanceToPb(instance model.Instance) *pb.Instance {
 	return &pb.Instance{
 		Type:        instance.Type,

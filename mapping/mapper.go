@@ -89,6 +89,59 @@ func (s *ScwMapper) MapInstanceUsage(instance model.Instance, cloudUsage model.C
 	return s.doServerUsage(instanceBase.Server, cloudUsage, instanceBase.GetHostShare())
 }
 
+func (s *ScwMapper) MapKubernetesUsage(cpType model.KubernetesControlPlaneType, pools []model.KubernetesPool, cloudUsage model.CloudUsageAmount) ([]model.ServerUsage, error) {
+	log.Debugf("Calculating usage for K8s cluster %v with %v pools", cpType.Type, len(pools))
+
+	// Get control plane
+	cp, exists := model.KubernetesControlPlaneMapping[cpType.Type]
+	if !exists {
+		return nil, util.ErrNoMappingFound
+	}
+
+	// Work out size of result
+	resultSize := cp.Replicas
+	for _, pool := range pools {
+		resultSize += pool.Count
+	}
+
+	result := make([]model.ServerUsage, resultSize)
+
+	// Create a usage with the required replicas
+	cpUsage := cloudUsage
+	cpUsage.Count = cp.Replicas
+
+	// Calculate control plane impact
+	cpResult, err := s.doServerUsage(cp.Instance.Server, cpUsage, cp.Instance.GetHostShare())
+	if err != nil {
+		return nil, err
+	}
+
+	resultSlice := result[:0]
+	resultSlice = append(resultSlice, cpResult[:]...)
+
+	// Iterate through pools
+	for _, pool := range pools {
+		poolInstance, exists := model.InstanceServerMapping[pool.Instance.Type]
+		if !exists {
+			return nil, util.ErrNoMappingFound
+		}
+
+		// Create a usage with the pool size
+		poolUsage := cloudUsage
+		poolUsage.Count = pool.Count
+
+		// Calculate usage for the pool
+		poolResult, err := s.doServerUsage(poolInstance.Server, poolUsage, poolInstance.GetHostShare())
+		if err != nil {
+			return nil, err
+		}
+
+		resultSlice = append(resultSlice, poolResult[:]...)
+	}
+
+	return result, err
+}
+
 func (s *ScwMapper) MapStorageUsage(storage model.Storage, cloudUsage model.CloudUsageAmount) ([]model.ServerUsage, error) {
 	log.Debugf("Calculating usage for storage type %v", storage.Type)
 

@@ -24,6 +24,7 @@ const (
 	UsageImpact_ListKubernetesControlPlanes_FullMethodName = "/api.v1.UsageImpact/ListKubernetesControlPlanes"
 	UsageImpact_GetElasticMetalUsageImpact_FullMethodName  = "/api.v1.UsageImpact/GetElasticMetalUsageImpact"
 	UsageImpact_GetInstanceUsageImpact_FullMethodName      = "/api.v1.UsageImpact/GetInstanceUsageImpact"
+	UsageImpact_GetKubernetesUsageImpact_FullMethodName    = "/api.v1.UsageImpact/GetKubernetesUsageImpact"
 	UsageImpact_GetStorageUsageImpact_FullMethodName       = "/api.v1.UsageImpact/GetStorageUsageImpact"
 )
 
@@ -36,6 +37,7 @@ type UsageImpactClient interface {
 	ListKubernetesControlPlanes(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*ListKubernetesControlPlanesResponse, error)
 	GetElasticMetalUsageImpact(ctx context.Context, in *ElasticMetalUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 	GetInstanceUsageImpact(ctx context.Context, in *InstanceUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
+	GetKubernetesUsageImpact(ctx context.Context, in *KubernetesUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 	GetStorageUsageImpact(ctx context.Context, in *StorageUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 }
 
@@ -92,6 +94,15 @@ func (c *usageImpactClient) GetInstanceUsageImpact(ctx context.Context, in *Inst
 	return out, nil
 }
 
+func (c *usageImpactClient) GetKubernetesUsageImpact(ctx context.Context, in *KubernetesUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error) {
+	out := new(CloudUsageImpactResponse)
+	err := c.cc.Invoke(ctx, UsageImpact_GetKubernetesUsageImpact_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *usageImpactClient) GetStorageUsageImpact(ctx context.Context, in *StorageUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error) {
 	out := new(CloudUsageImpactResponse)
 	err := c.cc.Invoke(ctx, UsageImpact_GetStorageUsageImpact_FullMethodName, in, out, opts...)
@@ -110,6 +121,7 @@ type UsageImpactServer interface {
 	ListKubernetesControlPlanes(context.Context, *EmptyRequest) (*ListKubernetesControlPlanesResponse, error)
 	GetElasticMetalUsageImpact(context.Context, *ElasticMetalUsageRequest) (*CloudUsageImpactResponse, error)
 	GetInstanceUsageImpact(context.Context, *InstanceUsageRequest) (*CloudUsageImpactResponse, error)
+	GetKubernetesUsageImpact(context.Context, *KubernetesUsageRequest) (*CloudUsageImpactResponse, error)
 	GetStorageUsageImpact(context.Context, *StorageUsageRequest) (*CloudUsageImpactResponse, error)
 	mustEmbedUnimplementedUsageImpactServer()
 }
@@ -132,6 +144,9 @@ func (UnimplementedUsageImpactServer) GetElasticMetalUsageImpact(context.Context
 }
 func (UnimplementedUsageImpactServer) GetInstanceUsageImpact(context.Context, *InstanceUsageRequest) (*CloudUsageImpactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInstanceUsageImpact not implemented")
+}
+func (UnimplementedUsageImpactServer) GetKubernetesUsageImpact(context.Context, *KubernetesUsageRequest) (*CloudUsageImpactResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKubernetesUsageImpact not implemented")
 }
 func (UnimplementedUsageImpactServer) GetStorageUsageImpact(context.Context, *StorageUsageRequest) (*CloudUsageImpactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStorageUsageImpact not implemented")
@@ -239,6 +254,24 @@ func _UsageImpact_GetInstanceUsageImpact_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UsageImpact_GetKubernetesUsageImpact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(KubernetesUsageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsageImpactServer).GetKubernetesUsageImpact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UsageImpact_GetKubernetesUsageImpact_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsageImpactServer).GetKubernetesUsageImpact(ctx, req.(*KubernetesUsageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UsageImpact_GetStorageUsageImpact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StorageUsageRequest)
 	if err := dec(in); err != nil {
@@ -283,6 +316,10 @@ var UsageImpact_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetInstanceUsageImpact",
 			Handler:    _UsageImpact_GetInstanceUsageImpact_Handler,
+		},
+		{
+			MethodName: "GetKubernetesUsageImpact",
+			Handler:    _UsageImpact_GetKubernetesUsageImpact_Handler,
 		},
 		{
 			MethodName: "GetStorageUsageImpact",

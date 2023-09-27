@@ -9,7 +9,12 @@ type KubernetesControlPlaneType struct {
 
 type KubernetesControlPlane struct {
 	Instance InstanceBaseServer
-	Replicas int
+	Replicas int32
+}
+
+type KubernetesPool struct {
+	Instance Instance
+	Count    int32
 }
 
 // Dedicated control plane offers:

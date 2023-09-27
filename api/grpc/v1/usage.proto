@@ -25,6 +25,11 @@ message KubernetesControlPlane {
     string description = 2;
 }
 
+message KubernetesPool {
+    Instance instance = 1;
+    int32 count = 2;
+}
+
 message CloudUsage {
     int32 timeSeconds = 1;
     int32 count = 2;
@@ -59,6 +64,12 @@ message InstanceUsageRequest {
 message ElasticMetalUsageRequest {
     ElasticMetal elasticMetal = 1;
     CloudUsage usage = 2;
+}
+
+message KubernetesUsageRequest {
+    KubernetesControlPlane controlPlane = 1;
+    repeated KubernetesPool pools = 2;
+    CloudUsage usage = 3;
 }
 
 message StorageUsageRequest {
@@ -112,6 +123,13 @@ service UsageImpact {
   rpc GetInstanceUsageImpact (InstanceUsageRequest) returns (CloudUsageImpactResponse) {
     option (google.api.http) = {
       post: "/v1/impact/instance"
+      body: "*"
+    };
+  }
+
+  rpc GetKubernetesUsageImpact (KubernetesUsageRequest) returns (CloudUsageImpactResponse) {
+    option (google.api.http) = {
+      post: "/v1/impact/k8s"
       body: "*"
     };
   }
