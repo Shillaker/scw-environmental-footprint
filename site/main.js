@@ -10,6 +10,7 @@ let emUrl = baseUrl + "/elastic-metal";
 
 let instanceImpactUrl = baseUrl + "/impact/instance";
 let emImpactUrl = baseUrl + "/impact/elastic-metal";
+let k8sImpactUrl = baseUrl + "/impact/k8s";
 
 let poolCount = 0;
 
@@ -114,8 +115,7 @@ function addK8sPool() {
 }
 
 function setUpFormSubmit() {
-
-  // Override k8s pool button
+  // Set up K8s pool button
   $("#k8s-add-pool-btn").on("click", function(e) {
     e.preventDefault();
 
@@ -140,6 +140,8 @@ function setUpFormSubmit() {
 
     var id = $('.tab-content .active').attr('id');
     if (id == "pills-instance") {
+      url = instanceImpactUrl;
+
       var instanceType = $('#instance-select').val();
       var instanceCount = $('#instance-count').val();
 
@@ -147,9 +149,10 @@ function setUpFormSubmit() {
       data["instance"] = {
         "type": instanceType
       };
-      url = instanceImpactUrl;
     }
     else if (id == "pills-em") {
+      url = emImpactUrl;
+
       var emType = $('#em-select').val();
       var emCount = $('#em-count').val();
 
@@ -157,21 +160,31 @@ function setUpFormSubmit() {
       data["elasticMetal"] = {
         "type": emType
       };
-      url = emImpactUrl;
     }
     else if (id == "pills-k8s") {
-      var cpType = $('#k8s-cp-type').val();
+      url = k8sImpactUrl;
+
+      // Control plane
+      var cpType = $('#k8s-cp-select').val();
+      data["controlPlane"] = {
+        "type": cpType
+      };
+
+      // Build list of pools
+      data["pools"] = [];
 
       $('.k8s-pool').each(function(i, pool) {
-        console.log("FOobar " + i);
-
         var instanceType = $(this).find('.k8s-pool-instance-type').val();
         var instanceCount = $(this).find('.k8s-pool-instance-count').val();
 
-        console.log("POOL " + instanceType + " " + instanceCount);
+        console.log("Found pool " + instanceType + " " + instanceCount);
+        data["pools"].push({
+          "instance": {
+            "type": instanceType,
+          },
+          "count": instanceCount
+        });
       });
-
-      return;
     }
     else {
       alert("No product selected");
