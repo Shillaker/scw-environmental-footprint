@@ -8,7 +8,7 @@
 ## Running locally in Docker
 
 ```
-docker compose up -d
+make dev-up
 ```
 
 Then go to http://localhost:8081 in your browser.
@@ -50,6 +50,12 @@ Run the gateway:
 
 ```bash
 make gateway
+```
+
+Run the NGINX proxy:
+
+```bash
+make dev-nginx
 ```
 
 Then access the UI by opening the HTML file, e.g.

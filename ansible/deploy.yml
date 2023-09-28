@@ -8,6 +8,11 @@
         src: "{{ playbook_dir}}/../"
         dest: /root/app
 
+    - name: Prune Docker cache
+      community.docker.docker_prune:
+        containers: true
+        images: true
+
     - name: Tear down existing services
       community.docker.docker_compose:
         project_src: /root/app
