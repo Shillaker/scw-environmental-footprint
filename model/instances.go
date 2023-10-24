@@ -54,17 +54,23 @@ const (
 	InstancePop2HC64C = "pop2-hc-64c-128g"
 )
 
+// Instance - an identifier for an instance type
 type Instance struct {
 	Type        string
 	Description string
 }
 
+// InstanceBaseServer - definition of an instance's virtualized resources, and the server it runs on
 type InstanceBaseServer struct {
 	VCpus  int32
 	RamGiB int32
+	HddGiB int32
+	SsdGiB int32
+	Gpus   int32
 	Server Server
 }
 
+// GetHostShare - the percentage share of the impact of the underlying host attributable to the instance
 func (i *InstanceBaseServer) GetHostShare() float32 {
 	totalCores := int32(0)
 	for _, cpu := range i.Server.Cpus {
@@ -74,24 +80,27 @@ func (i *InstanceBaseServer) GetHostShare() float32 {
 	return float32(totalCores) / float32(i.VCpus)
 }
 
-// PLAY2 - 32 cores, AMD EPYC 7543, 64GiB
+// BasePlay2Host - base for the Play2 range: 32 cores, AMD EPYC 7543, 64GiB
 var BasePlay2Host = Server{
+	Name: "play2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
 	Rams: DefaultRams(4, 16*1024),
 }
 
-// PRO2 - 32 cores, AMD EPYC 7543, 128GiB
+// BasePro2Hose - base for the PRO2 range: 32 cores, AMD EPYC 7543, 128GiB
 var BasePro2Host = Server{
+	Name: "pro2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
 	Rams: DefaultRams(4, 32*1024),
 }
 
-// DEV1 - 16 cores, AMD EPYC 7281, 32GiB, 20GiB SSD
+// BaseDev1Host - base for the DEV1 range: 16 cores, AMD EPYC 7281, 32GiB, 20GiB SSD
 var BaseDev1Host = Server{
+	Name: "dev1.base",
 	Cpus: []Cpu{
 		AmdEpyc7281,
 	},
@@ -105,8 +114,9 @@ var BaseDev1Host = Server{
 	},
 }
 
-// GP1 - 48 cores, AMD EPYC 7281, 256GiB, 600GiB SSD
+// BaseGp1Host - base for the GP1 range: 48 cores, AMD EPYC 7281, 256GiB, 600GiB SSD
 var BaseGp1Host = Server{
+	Name: "gp1.base",
 	Cpus: []Cpu{
 		AmdEpyc7281Cores48,
 	},
@@ -120,22 +130,25 @@ var BaseGp1Host = Server{
 	},
 }
 
-// POP2 - 64 cores, AMD EPYC 7543, 256GiB
+// BasePop2Host - base for the POP2 range: 64 cores, AMD EPYC 7543, 256GiB
 var BasePop2Host = Server{
+	Name: "pop2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543Cores64,
 	},
 	Rams: DefaultRams(8, 32*1024),
 }
 
-// POP2HM - 64 cores, AMD EPYC 7543, 512GiB
+// BasePop2HMHost - base for the POP2HM range: 64 cores, AMD EPYC 7543, 512GiB
 var BasePop2HmHost = Server{
+	Name: "pop2hm.base",
 	Cpus: []Cpu{
 		AmdEpyc7543Cores64,
 	},
 	Rams: DefaultRams(16, 32*1024),
 }
 
+// InstanceToString - convert an instance into a readable string representation
 func InstanceToString(instanceBase InstanceBaseServer) string {
 	cpuModel := instanceBase.Server.Cpus[0].Model
 	return fmt.Sprintf("%v vCPU, %v GiB, %v CPU", instanceBase.VCpus, instanceBase.RamGiB, cpuModel)
@@ -181,4 +194,13 @@ var InstanceServerMapping = map[string]InstanceBaseServer{
 	InstancePop2HM16C:  buildInstanceBase(BasePop2HmHost, 16, 128),
 	InstancePop2HM32C:  buildInstanceBase(BasePop2HmHost, 32, 256),
 	InstancePop2HM64C:  buildInstanceBase(BasePop2HmHost, 64, 512),
+}
+
+var InstanceBaseServers = []Server{
+	BasePlay2Host,
+	BasePro2Host,
+	BaseDev1Host,
+	BaseGp1Host,
+	BasePop2Host,
+	BasePop2HmHost,
 }

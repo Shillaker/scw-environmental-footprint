@@ -3,6 +3,8 @@ package model
 import "fmt"
 
 type Server struct {
+	Name string
+
 	Cpus []Cpu
 	Rams []Ram
 	Ssds []Ssd
@@ -10,6 +12,78 @@ type Server struct {
 
 	Motherboard Motherboard
 	PowerSupply PowerSupply
+}
+
+func (s *Server) TotalCpuUnits() int32 {
+	units := int32(0)
+	for _, cpu := range s.Cpus {
+		units += cpu.Units
+	}
+
+	return units
+}
+
+func (s *Server) TotalCores() int32 {
+	cores := int32(0)
+	for _, cpu := range s.Cpus {
+		cores += cpu.CoreUnits
+	}
+
+	return cores
+}
+
+func (s *Server) TotalRamUnits() int32 {
+	units := int32(0)
+	for _, ram := range s.Rams {
+		units += ram.Units
+	}
+
+	return units
+}
+
+func (s *Server) TotalRamCapacity() int32 {
+	capacity := int32(0)
+	for _, ram := range s.Rams {
+		capacity += ram.CapacityMib
+	}
+
+	return capacity
+}
+
+func (s *Server) TotalSsdUnits() int32 {
+	units := int32(0)
+	for _, ssd := range s.Ssds {
+		units += ssd.Units
+	}
+
+	return units
+}
+
+func (s *Server) TotalSsdCapacity() int32 {
+	capacity := int32(0)
+	for _, ssd := range s.Ssds {
+		capacity += ssd.CapacityMib
+	}
+
+	return capacity
+}
+
+func (s *Server) TotalHddUnits() int32 {
+	units := int32(0)
+	for _, hdd := range s.Hdds {
+		units += hdd.Units
+	}
+
+	return units
+}
+
+func (s *Server) TotalHddCapacity() int32 {
+	capacity := int32(0)
+	for _, hdd := range s.Hdds {
+		capacity += hdd.CapacityMib
+	}
+
+	return capacity
 }
 
 func DefaultServer(vCpus int32, ramGiB int32) Server {
