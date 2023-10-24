@@ -24,6 +24,44 @@ var (
 	outPath = filepath.Join(outDir, outFile)
 )
 
+var bvHeaders = []string{
+	"id",
+	"manufacturer",
+	"CASE.case_type",
+	"year",
+	"vcpu",
+	"platforme_vcpu",
+	"CPU.units",
+	"CPU.core_units",
+	"CPU.name",
+	"CPU.manufacturer",
+	"CPU.model_range",
+	"CPU.family",
+	"CPU.tdp",
+	"CPU.manufacture_date",
+	"instance.ram_capacity",
+	"RAM.capacity",
+	"RAM.units",
+	"SSD.units",
+	"SSD.capacity",
+	"HDD.units",
+	"HDD.capacity",
+	"GPU.name",
+	"GPU.units",
+	"GPU.TDP",
+	"GPU.memory_capacity",
+	"POWER_SUPPLY.units",
+	"POWER_SUPPLY.unit_weight",
+	"USAGE.instance_per_server",
+	"USAGE.time_workload",
+	"USAGE.use_time_ratio",
+	"USAGE.hours_life_time",
+	"USAGE.other_consumption_ratio",
+	"USAGE.overcommited",
+	"Warnings",
+}
+
+
 type BoaviztaCsvLine struct {
 	id                  string
 	manufacturer        string
@@ -82,43 +120,6 @@ func (b *BoaviztaCsvLine) toRow() []string {
 		fmt.Sprintf("%v", b.gpuMemoryCapacity),
 		fmt.Sprintf("%v", b.psuCount),
 	}
-}
-
-const bvHeaders = []string{
-	"id",
-	"manufacturer",
-	"CASE.case_type",
-	"year",
-	"vcpu",
-	"platforme_vcpu",
-	"CPU.units",
-	"CPU.core_units",
-	"CPU.name",
-	"CPU.manufacturer",
-	"CPU.model_range",
-	"CPU.family",
-	"CPU.tdp",
-	"CPU.manufacture_date",
-	"instance.ram_capacity",
-	"RAM.capacity",
-	"RAM.units",
-	"SSD.units",
-	"SSD.capacity",
-	"HDD.units",
-	"HDD.capacity",
-	"GPU.name",
-	"GPU.units",
-	"GPU.TDP",
-	"GPU.memory_capacity",
-	"POWER_SUPPLY.units",
-	"POWER_SUPPLY.unit_weight",
-	"USAGE.instance_per_server",
-	"USAGE.time_workload",
-	"USAGE.use_time_ratio",
-	"USAGE.hours_life_time",
-	"USAGE.other_consumption_ratio",
-	"USAGE.overcommited",
-	"Warnings",
 }
 
 func main() {
