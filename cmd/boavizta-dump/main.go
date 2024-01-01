@@ -25,80 +25,58 @@ var (
 )
 
 var bvHeaders = []string{
-	"id",
-	"manufacturer",
-	"CASE.case_type",
-	"year",
-	"vcpu",
-	"platforme_vcpu",
-	"CPU.units",
-	"CPU.core_units",
-	"CPU.name",
-	"CPU.manufacturer",
-	"CPU.model_range",
-	"CPU.family",
-	"CPU.tdp",
-	"CPU.manufacture_date",
-	"instance.ram_capacity",
-	"RAM.capacity",
-	"RAM.units",
-	"SSD.units",
-	"SSD.capacity",
-	"HDD.units",
-	"HDD.capacity",
-	"GPU.name",
-	"GPU.units",
-	"GPU.TDP",
-	"GPU.memory_capacity",
-	"POWER_SUPPLY.units",
-	"POWER_SUPPLY.unit_weight",
-	"USAGE.instance_per_server",
-	"USAGE.time_workload",
-	"USAGE.use_time_ratio",
-	"USAGE.hours_life_time",
-	"USAGE.other_consumption_ratio",
-	"USAGE.overcommited",
-	"Warnings",
+	"id", // Type of instance e.g. c1.medium
+	"manufacturer", // Just Scaleway
+	"CASE.case_type", // Always rack
+	"year", // Year of release?
+	"vcpu", // Number of vCPUs the instance has, e.g. 2
+	"platforme_vcpu", // Number of threads the underlying host has e.g. 48
+	"CPU.units", // Number of CPUs installed on the machine e.g. 2
+	"CPU.core_units", // Number of cores the CPU has e.g. 12
+	"CPU.name", // CPU model e.g. Xeon E5-2651 v2
+	"CPU.manufacturer", // CPU manufacturer e.g. intel
+	"CPU.model_range", // CPU range e.g. xeon-e5
+	"CPU.family", // CPU family e.g. ivybridge
+	"CPU.tdp", // CPU TDP e.g. 95
+	"CPU.manufacture_date", // CPU date built e.g. 2008
+	"instance.ram_capacity", // Ram available to VM (GB) e.g. 2
+	"RAM.capacity", // Ram available to host e.g. 2
+	"RAM.units", // Ram units installed in host e.g. 21
+	"SSD.units", // SSDs installed on host e.g. 1
+	"SSD.capacity", // SSD capacity e.g. 350
+	"HDD.units", // HDDs installed on host e.g. 1
+	"HDD.capacity", // HDD capacity (GB) e.g. 350
+	"GPU.name", // Name of GPU available e.g. T4
+	"GPU.units", // Number of GPUs units available e.g. 8
+	"GPU.TDP", // GPU TDP e.g. 70
+	"GPU.memory_capacity", // GPU memory (GB) e.g. 16
+	"POWER_SUPPLY.units", // Number of PSUs on host with semicolons e.g. 2;2;2
+	"POWER_SUPPLY.unit_weight", // Weighting of each PSU e.g. 2.99;1;5
+	"USAGE.instance_per_server", // Number of VMs per host e.g. 24
+	"USAGE.time_workload", // Workload? e.g. 50;0;100
+	"USAGE.use_time_ratio", // Usage time ratio? e.g. 1
+	"USAGE.hours_life_time", // Hours lifetime e.g. 35040
+	"USAGE.other_consumption_ratio", // Consumption ratio? e.g. 0.33;0.2;0.6
+	"USAGE.overcommited", // Whether host is overcommitted e.g. 0
+	"Warnings", // Notes e.g. RAM.capacity not verified
 }
 
 
 type BoaviztaCsvLine struct {
 	id                  string
 	manufacturer        string
-	caseType            string
-	year                int32
-	vmVCpu              int32
-	hostVCpu            int32
-	cpuCount            int32
-	cpuCores            int32
-	cpuName             string
-	cpuManufacturer     string
-	cpuModelRange       string
-	cpuFamily           string
-	cpuTdp              int32
-	cpuManufactureDate  string
-	instanceRamCapacity string
-	ramCapacity         int32
-	ramCount            int32
-	ssdCount            int32
-	ssdCapacity         int32
-	hddCount            int32
-	hddCapacity         int32
-	gpuName             string
-	gpuCount            int32
-	gpuTdp              int32
-	gpuMemoryCapacity   int32
-	psuCount            int32
+
+	instance			model.InstanceBaseServer
 }
 
 func (b *BoaviztaCsvLine) toRow() []string {
 	return []string{
 		b.id,
-		b.manufacturer,
-		b.caseType,
-		fmt.Sprintf("%v", b.year),
-		fmt.Sprintf("%v", b.vmVCpu),
-		fmt.Sprintf("%v", b.hostVCpu),
+		scalewayManufacturer,
+		caseType,
+		fmt.Sprintf("%v", defaultYear),
+		fmt.Sprintf("%v", b.instance.VCpus),
+		fmt.Sprintf("%v", b.instance.Server.Cpus
 		fmt.Sprintf("%v", b.cpuCount),
 		fmt.Sprintf("%v", b.cpuCores),
 		b.cpuName,
@@ -155,6 +133,10 @@ func main() {
 			ssdCount:     1,
 		}
 
-		writer.Write(bvLine.toRow())
+		err = writer.Write(bvLine.toRow())
+		if (err != nil) {
+			fmt.Errorf("could not write CSV line %v", err)
+		}
 	}
+
 }
