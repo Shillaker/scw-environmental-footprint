@@ -13,18 +13,6 @@ make dev-up
 
 Then go to http://localhost:8081 in your browser.
 
-## Boavizta backend
-
-You can run the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) as follows:
-
-```bash
-make boavizta
-```
-
-Once started you should be able to go to http://localhost:5000 in your browser to see the API.
-
-You can look at the API docs to see the specification including JSON model: http://localhost:5000/docs.
-
 ## Running outside Docker
 
 ### Config file
@@ -37,6 +25,18 @@ cp carbon.yml ~/.config/scw/
 ```
 
 Then change all hosts to `localhost` in this file.
+
+### Run Boavizta in the background
+
+You can run the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) as follows:
+
+```
+make boavizta
+```
+
+Once started you should be able to go to http://localhost:5000 in your browser to see the API.
+
+You can look at the API docs to see the specification including JSON model: http://localhost:5000/docs.
 
 ### Server and gateway
 

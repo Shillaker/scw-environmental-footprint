@@ -28,6 +28,10 @@ gateway:
 boavizta:
 	docker compose up -d boavizta
 
+.PHONY: boavizta-export
+boavizta-export:
+	go run cmd/boavizta-export/main.go
+
 .PHONY: test
 test:
 	go test -v $(shell go list ./... | grep -v /e2e)
