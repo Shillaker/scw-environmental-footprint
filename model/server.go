@@ -6,12 +6,53 @@ type Server struct {
 	Name string
 
 	Cpus []Cpu
+	Gpus []Gpu
 	Rams []Ram
 	Ssds []Ssd
 	Hdds []Hdd
 
 	Motherboard Motherboard
 	PowerSupply PowerSupply
+}
+
+func (s *Server) CpuManufacturer() string {
+	if len(s.Cpus) == 0 {
+		return ""
+	}
+
+	return s.Cpus[0].Manufacturer
+}
+
+func (s *Server) CpuFamily() string {
+	if len(s.Cpus) == 0 {
+		return ""
+	}
+
+	return s.Cpus[0].Family
+}
+
+func (s *Server) CpuName() string {
+	if len(s.Cpus) == 0 {
+		return ""
+	}
+
+	return s.Cpus[0].Name()
+}
+
+func (s *Server) CpuModel() string {
+	if len(s.Cpus) == 0 {
+		return ""
+	}
+
+	return s.Cpus[0].Model
+}
+
+func (s *Server) CpuCores() int32 {
+	if len(s.Cpus) == 0 {
+		return 0
+	}
+
+	return s.Cpus[0].CoreUnits
 }
 
 func (s *Server) TotalCpuUnits() int32 {
@@ -30,6 +71,32 @@ func (s *Server) TotalCores() int32 {
 	}
 
 	return cores
+}
+
+func (s *Server) GpuName() string {
+	if len(s.Gpus) == 0 {
+		return ""
+	}
+
+	return s.Gpus[0].Name()
+}
+
+func (s *Server) TotalGpuUnits() int32 {
+	units := int32(0)
+	for _, gpu := range s.Gpus {
+		units += gpu.Units
+	}
+
+	return units
+}
+
+func (s *Server) TotalGpuMemory() int32 {
+	memory := int32(0)
+	for _, gpu := range s.Gpus {
+		memory += gpu.MemoryMib
+	}
+
+	return memory
 }
 
 func (s *Server) TotalRamUnits() int32 {

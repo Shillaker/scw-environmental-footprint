@@ -1,14 +1,16 @@
 package model
 
+import "fmt"
+
 const (
-	ManufacturerIntel = "intel"
-	ManufacturerAmd   = "amd"
+	ManufacturerIntel = "Intel"
+	ManufacturerAmd   = "AMD"
 
 	CpuMicroArchIntelIvybridge = "ivybridge"
 	CpuMicroArchIntelSkylake   = "skylake"
 
-	CpuFamilyAmdEpyc  = "epyc"
-	CpuFamilyAmdRyzen = "ryzen"
+	CpuFamilyAmdEpyc  = "Epyc"
+	CpuFamilyAmdRyzen = "Ryzen"
 
 	DefaultCpuManufacturer = ManufacturerIntel
 	DefaultCpuMicroArch    = CpuMicroArchIntelSkylake
@@ -33,7 +35,10 @@ type Cpu struct {
 	CoreUnits int32
 	Tdp       int32
 	Family    string
-	Name      string
+}
+
+func (c Cpu) Name() string {
+	return fmt.Sprintf("%s %s", c.Manufacturer, c.Model)
 }
 
 // https://www.amd.com/en/product/10941
@@ -116,7 +121,6 @@ var IntelXeonE52620V2 = Cpu{
 	Units:        2,
 }
 
-//
 var IntelXeonE52670 = Cpu{
 	Manufacturer: ManufacturerIntel,
 	Family:       CpuMicroArchIntelIvybridge,
