@@ -128,7 +128,7 @@ func writeServers() error {
 			fmt.Sprintf("%v", server.CpuCores()),              // Cores per CPU
 			"",                                                // CPU die size per core
 			server.CpuName(),                                  // CPU name
-			fmt.Sprintf("%v", server.CpuCores()*2),            // Number of vCPUs per CPU (assume cores * 2)
+			fmt.Sprintf("%v", server.VCpuPerCpu),              // Number of vCPUs per CPU
 			fmt.Sprintf("%v", server.TotalRamUnits()),         // RAM units
 			fmt.Sprintf("%v", server.TotalRamCapacity()/1024), // RAM capacity (GiB)
 			fmt.Sprintf("%v", server.TotalSsdUnits()),         // SSD units

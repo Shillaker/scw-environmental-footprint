@@ -11,6 +11,8 @@ type Server struct {
 	Ssds []Ssd
 	Hdds []Hdd
 
+	VCpuPerCpu int32
+
 	Motherboard Motherboard
 	PowerSupply PowerSupply
 }
@@ -157,6 +159,7 @@ func DefaultServer(vCpus int32, ramGiB int32) Server {
 	return Server{
 		Cpus: []Cpu{DefaultCpu(1, vCpus)},
 		Rams: []Ram{DefaultRam(1, ramGiB*1024)},
+		vCpuPerCpu: 2,
 	}
 }
 

@@ -2,6 +2,10 @@ package model
 
 import "fmt"
 
+// ----- Docs -----
+// Base server types: https://www.scaleway.com/en/docs/compute/instances/reference-content/instances-datasheet/#developement-and-general-purpose-instances
+// Instances table: https://www.scaleway.com/en/pricing/?tags=compute
+
 const (
 	InstancePlay2Pico  = "play2-pico"
 	InstancePlay2Nano  = "play2-nano"
@@ -52,6 +56,14 @@ const (
 	InstancePop2HC16C = "pop2-hc-16c-32g"
 	InstancePop2HC32C = "pop2-hc-32c-64g"
 	InstancePop2HC64C = "pop2-hc-64c-128g"
+
+	InstanceStardust1 = "stardust1"
+
+	InstanceCopArm2C8G    = "coparm1-2c-8g"
+	InstanceCopArm4C16G   = "coparm1-4c-16g"
+	InstanceCopArm8C32G   = "coparm1-8c-32g"
+	InstanceCopArm16C64G  = "coparm1-16c-64g"
+	InstanceCopArm32C128G = "coparm1-32c-128g"
 )
 
 // Instance - an identifier for an instance type
@@ -72,33 +84,36 @@ type InstanceBaseServer struct {
 
 // GetHostShare - the percentage share of the impact of the underlying host attributable to the instance
 func (i *InstanceBaseServer) GetHostShare() float32 {
-	totalCores := int32(0)
+	totalVCpus := int32(0)
+
 	for _, cpu := range i.Server.Cpus {
-		totalCores += cpu.CoreUnits * cpu.Units
+		totalVCpus += cpu.Units * i.Server.VCpuPerCpu
 	}
 
-	return float32(totalCores) / float32(i.VCpus)
+	return float32(i.VCpus) / float32(totalVCpus)
 }
 
-// BasePlay2Host - base for the Play2 range: 32 cores, AMD EPYC 7543, 64GiB
+// BasePlay2Host - base for the Play2 range (shared vCPUs)
 var BasePlay2Host = Server{
 	Name: "play2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams: DefaultRams(4, 16*1024),
+	Rams:       DefaultRams(4, 16*1024),
+	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
 }
 
-// BasePro2Hose - base for the PRO2 range: 32 cores, AMD EPYC 7543, 128GiB
+// BasePro2Hose - base for the PRO2 range (shared vCPUs)
 var BasePro2Host = Server{
 	Name: "pro2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams: DefaultRams(4, 32*1024),
+	Rams:       DefaultRams(4, 32*1024),
+	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
 }
 
-// BaseDev1Host - base for the DEV1 range: 16 cores, AMD EPYC 7281, 32GiB, 20GiB SSD
+// BaseDev1Host - base for the DEV1 range (shared vCPUs)
 var BaseDev1Host = Server{
 	Name: "dev1.base",
 	Cpus: []Cpu{
@@ -112,13 +127,14 @@ var BaseDev1Host = Server{
 			Units:        1,
 		},
 	},
+	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
 }
 
-// BaseGp1Host - base for the GP1 range: 48 cores, AMD EPYC 7281, 256GiB, 600GiB SSD
+// BaseGp1Host - base for the GP1 range (shared vCPUs)
 var BaseGp1Host = Server{
 	Name: "gp1.base",
 	Cpus: []Cpu{
-		AmdEpyc7281Cores48,
+		AmdEpyc7401P,
 	},
 	Rams: DefaultRams(8, 32*1024),
 	Ssds: []Ssd{
@@ -128,24 +144,74 @@ var BaseGp1Host = Server{
 			Units:        1,
 		},
 	},
+	VCpuPerCpu: 2 * AmdEpyc7401P.Threads,
 }
 
-// BasePop2Host - base for the POP2 range: 64 cores, AMD EPYC 7543, 256GiB
+// BasePop2Host - base for the POP2 range (dedicated vCPUs)
 var BasePop2Host = Server{
 	Name: "pop2.base",
 	Cpus: []Cpu{
-		AmdEpyc7543Cores64,
+		AmdEpyc7543,
 	},
-	Rams: DefaultRams(8, 32*1024),
+	Rams:       DefaultRams(8, 32*1024),
+	VCpuPerCpu: AmdEpyc7543.Threads,
 }
 
-// BasePop2HMHost - base for the POP2HM range: 64 cores, AMD EPYC 7543, 512GiB
+// BasePop2HmHost - base for the POP2HM range (dedicated vCPUs)
 var BasePop2HmHost = Server{
 	Name: "pop2hm.base",
 	Cpus: []Cpu{
-		AmdEpyc7543Cores64,
+		AmdEpyc7543,
 	},
-	Rams: DefaultRams(16, 32*1024),
+	Rams:       DefaultRams(16, 32*1024),
+	VCpuPerCpu: AmdEpyc7543.Threads,
+}
+
+// BasePop2HcHost - base for the POP2HC range (dedicated vCPUs)
+var BasePop2HcHost = Server{
+	Name: "pop2hc.base",
+	Cpus: []Cpu{
+		AmdEpyc7543,
+	},
+	Rams:       DefaultRams(16, 32*1024),
+	VCpuPerCpu: AmdEpyc7543.Threads,
+}
+
+// BaseStardust1Host - base for the STARDUST1 range (shared vCPUs)
+var BaseStardust1Host = Server{
+	Name: "stardust1.base",
+	Cpus: []Cpu{
+		AmdEpyc7281,
+	},
+	Rams: DefaultRams(2, 8*1024),
+	Ssds: []Ssd{
+		{
+			Manufacturer: ManufacturerMicron,
+			CapacityMib:  10 * 1024,
+			Units:        1,
+		},
+	},
+	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
+}
+
+// BaseCopArm1Host - base for the COP ARM1 range (shared vCPUs)
+var BaseCopArm1Host = Server{
+	Name: "coparm1.base",
+	Cpus: []Cpu{
+		AmpereAltraMaxM12832,
+	},
+	Rams:       DefaultRams(8, 16*1024),
+	VCpuPerCpu: 2 * AmpereAltraMaxM12832.Threads,
+}
+
+// BaseEnt1Host - base for the ENT1 range (dedicated vCPUs)
+var BaseEnt1Host = Server{
+	Name: "ent1.base",
+	Cpus: []Cpu{
+		AmdEpyc7543Triple,
+	},
+	Rams:       DefaultRams(12, 32*1024),
+	VCpuPerCpu: AmdEpyc7543Triple.Threads,
 }
 
 // InstanceToString - convert an instance into a readable string representation
@@ -165,35 +231,54 @@ func buildInstanceBase(baseServer Server, nVcpu int32, ramGiB int32) InstanceBas
 }
 
 var InstanceServerMapping = map[string]InstanceBaseServer{
-	InstancePlay2Pico:  buildInstanceBase(BasePlay2Host, 1, 2),
-	InstancePlay2Nano:  buildInstanceBase(BasePlay2Host, 2, 4),
-	InstancePlay2Micro: buildInstanceBase(BasePlay2Host, 4, 8),
-	InstancePro2Xxs:    buildInstanceBase(BasePro2Host, 2, 8),
-	InstancePro2Xs:     buildInstanceBase(BasePro2Host, 4, 16),
-	InstancePro2S:      buildInstanceBase(BasePro2Host, 8, 32),
-	InstancePro2M:      buildInstanceBase(BasePro2Host, 16, 64),
-	InstancePro2L:      buildInstanceBase(BasePro2Host, 32, 128),
-	InstanceDev1S:      buildInstanceBase(BaseDev1Host, 2, 2),
-	InstanceDev1M:      buildInstanceBase(BaseDev1Host, 3, 4),
-	InstanceDev1L:      buildInstanceBase(BaseDev1Host, 4, 8),
-	InstanceDev1Xl:     buildInstanceBase(BaseDev1Host, 4, 12),
-	InstanceGp1Xs:      buildInstanceBase(BaseGp1Host, 4, 16),
-	InstanceGp1S:       buildInstanceBase(BaseGp1Host, 8, 32),
-	InstanceGp1M:       buildInstanceBase(BaseGp1Host, 16, 64),
-	InstanceGp1L:       buildInstanceBase(BaseGp1Host, 32, 128),
-	InstanceGp1Xl:      buildInstanceBase(BaseGp1Host, 48, 256),
-	InstancePop22c:     buildInstanceBase(BasePop2Host, 2, 8),
-	InstancePop24c:     buildInstanceBase(BasePop2Host, 4, 16),
-	InstancePop28c:     buildInstanceBase(BasePop2Host, 8, 32),
-	InstancePop16c:     buildInstanceBase(BasePop2Host, 16, 64),
-	InstancePop32c:     buildInstanceBase(BasePop2Host, 32, 128),
-	InstancePop64c:     buildInstanceBase(BasePop2Host, 64, 256),
-	InstancePop2HM2C:   buildInstanceBase(BasePop2HmHost, 2, 16),
-	InstancePop2HM4C:   buildInstanceBase(BasePop2HmHost, 4, 32),
-	InstancePop2HM8C:   buildInstanceBase(BasePop2HmHost, 8, 64),
-	InstancePop2HM16C:  buildInstanceBase(BasePop2HmHost, 16, 128),
-	InstancePop2HM32C:  buildInstanceBase(BasePop2HmHost, 32, 256),
-	InstancePop2HM64C:  buildInstanceBase(BasePop2HmHost, 64, 512),
+	InstancePlay2Pico:     buildInstanceBase(BasePlay2Host, 1, 2),
+	InstancePlay2Nano:     buildInstanceBase(BasePlay2Host, 2, 4),
+	InstancePlay2Micro:    buildInstanceBase(BasePlay2Host, 4, 8),
+	InstancePro2Xxs:       buildInstanceBase(BasePro2Host, 2, 8),
+	InstancePro2Xs:        buildInstanceBase(BasePro2Host, 4, 16),
+	InstancePro2S:         buildInstanceBase(BasePro2Host, 8, 32),
+	InstancePro2M:         buildInstanceBase(BasePro2Host, 16, 64),
+	InstancePro2L:         buildInstanceBase(BasePro2Host, 32, 128),
+	InstanceDev1S:         buildInstanceBase(BaseDev1Host, 2, 2),
+	InstanceDev1M:         buildInstanceBase(BaseDev1Host, 3, 4),
+	InstanceDev1L:         buildInstanceBase(BaseDev1Host, 4, 8),
+	InstanceDev1Xl:        buildInstanceBase(BaseDev1Host, 4, 12),
+	InstanceGp1Xs:         buildInstanceBase(BaseGp1Host, 4, 16),
+	InstanceGp1S:          buildInstanceBase(BaseGp1Host, 8, 32),
+	InstanceGp1M:          buildInstanceBase(BaseGp1Host, 16, 64),
+	InstanceGp1L:          buildInstanceBase(BaseGp1Host, 32, 128),
+	InstanceGp1Xl:         buildInstanceBase(BaseGp1Host, 48, 256),
+	InstancePop22c:        buildInstanceBase(BasePop2Host, 2, 8),
+	InstancePop24c:        buildInstanceBase(BasePop2Host, 4, 16),
+	InstancePop28c:        buildInstanceBase(BasePop2Host, 8, 32),
+	InstancePop16c:        buildInstanceBase(BasePop2Host, 16, 64),
+	InstancePop32c:        buildInstanceBase(BasePop2Host, 32, 128),
+	InstancePop64c:        buildInstanceBase(BasePop2Host, 64, 256),
+	InstancePop2HM2C:      buildInstanceBase(BasePop2HmHost, 2, 16),
+	InstancePop2HM4C:      buildInstanceBase(BasePop2HmHost, 4, 32),
+	InstancePop2HM8C:      buildInstanceBase(BasePop2HmHost, 8, 64),
+	InstancePop2HM16C:     buildInstanceBase(BasePop2HmHost, 16, 128),
+	InstancePop2HM32C:     buildInstanceBase(BasePop2HmHost, 32, 256),
+	InstancePop2HM64C:     buildInstanceBase(BasePop2HmHost, 64, 512),
+	InstancePop2HC2C:      buildInstanceBase(BasePop2HcHost, 2, 4),
+	InstancePop2HC4C:      buildInstanceBase(BasePop2HcHost, 4, 8),
+	InstancePop2HC8C:      buildInstanceBase(BasePop2HcHost, 8, 16),
+	InstancePop2HC16C:     buildInstanceBase(BasePop2HcHost, 16, 32),
+	InstancePop2HC32C:     buildInstanceBase(BasePop2HcHost, 32, 62),
+	InstancePop2HC64C:     buildInstanceBase(BasePop2HcHost, 64, 128),
+	InstanceStardust1:     buildInstanceBase(BaseStardust1Host, 1, 1),
+	InstanceCopArm2C8G:    buildInstanceBase(BaseCopArm1Host, 2, 8),
+	InstanceCopArm4C16G:   buildInstanceBase(BaseCopArm1Host, 4, 16),
+	InstanceCopArm8C32G:   buildInstanceBase(BaseCopArm1Host, 8, 32),
+	InstanceCopArm16C64G:  buildInstanceBase(BaseCopArm1Host, 16, 64),
+	InstanceCopArm32C128G: buildInstanceBase(BaseCopArm1Host, 32, 128),
+	InstanceEnt1Xxs:       buildInstanceBase(BaseEnt1Host, 2, 8),
+	InstanceEnt1Xs:        buildInstanceBase(BaseEnt1Host, 4, 16),
+	InstanceEnt1S:         buildInstanceBase(BaseEnt1Host, 8, 32),
+	InstanceEnt1M:         buildInstanceBase(BaseEnt1Host, 16, 64),
+	InstanceEnt1L:         buildInstanceBase(BaseEnt1Host, 32, 128),
+	InstanceEnt1Xl:        buildInstanceBase(BaseEnt1Host, 64, 256),
+	InstanceEnt1Xxl:       buildInstanceBase(BaseEnt1Host, 96, 384),
 }
 
 var InstanceBaseServers = []Server{
@@ -203,4 +288,5 @@ var InstanceBaseServers = []Server{
 	BaseGp1Host,
 	BasePop2Host,
 	BasePop2HmHost,
+	BaseStardust1Host,
 }
