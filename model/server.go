@@ -157,9 +157,9 @@ func (s *Server) TotalHddCapacity() int32 {
 
 func DefaultServer(vCpus int32, ramGiB int32) Server {
 	return Server{
-		Cpus: []Cpu{DefaultCpu(1, vCpus)},
-		Rams: []Ram{DefaultRam(1, ramGiB*1024)},
-		vCpuPerCpu: 2,
+		Cpus:       []Cpu{DefaultCpu(1, vCpus)},
+		Rams:       []Ram{DefaultRam(1, ramGiB*1024)},
+		VCpuPerCpu: vCpus * 2,
 	}
 }
 

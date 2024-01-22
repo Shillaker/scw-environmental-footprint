@@ -24,9 +24,11 @@ func DefaultCpu(units int32, cores int32) Cpu {
 	return Cpu{
 		Manufacturer: DefaultCpuManufacturer,
 		CoreUnits:    cores,
+		Threads:      cores * 2,
 		Tdp:          DefaultCpuTdp,
 		Family:       DefaultCpuMicroArch,
 		Units:        units,
+		FrequencyHz:  2500,
 	}
 }
 

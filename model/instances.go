@@ -285,8 +285,11 @@ var InstanceBaseServers = []Server{
 	BasePlay2Host,
 	BasePro2Host,
 	BaseDev1Host,
+	BaseEnt1Host,
+	BaseCopArm1Host,
 	BaseGp1Host,
 	BasePop2Host,
 	BasePop2HmHost,
+	BasePop2HcHost,
 	BaseStardust1Host,
 }
