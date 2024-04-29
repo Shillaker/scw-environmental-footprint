@@ -25,7 +25,6 @@ const (
 	UsageImpact_GetElasticMetalUsageImpact_FullMethodName  = "/api.v1.UsageImpact/GetElasticMetalUsageImpact"
 	UsageImpact_GetInstanceUsageImpact_FullMethodName      = "/api.v1.UsageImpact/GetInstanceUsageImpact"
 	UsageImpact_GetKubernetesUsageImpact_FullMethodName    = "/api.v1.UsageImpact/GetKubernetesUsageImpact"
-	UsageImpact_GetStorageUsageImpact_FullMethodName       = "/api.v1.UsageImpact/GetStorageUsageImpact"
 )
 
 // UsageImpactClient is the client API for UsageImpact service.
@@ -38,7 +37,6 @@ type UsageImpactClient interface {
 	GetElasticMetalUsageImpact(ctx context.Context, in *ElasticMetalUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 	GetInstanceUsageImpact(ctx context.Context, in *InstanceUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 	GetKubernetesUsageImpact(ctx context.Context, in *KubernetesUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
-	GetStorageUsageImpact(ctx context.Context, in *StorageUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error)
 }
 
 type usageImpactClient struct {
@@ -103,15 +101,6 @@ func (c *usageImpactClient) GetKubernetesUsageImpact(ctx context.Context, in *Ku
 	return out, nil
 }
 
-func (c *usageImpactClient) GetStorageUsageImpact(ctx context.Context, in *StorageUsageRequest, opts ...grpc.CallOption) (*CloudUsageImpactResponse, error) {
-	out := new(CloudUsageImpactResponse)
-	err := c.cc.Invoke(ctx, UsageImpact_GetStorageUsageImpact_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // UsageImpactServer is the server API for UsageImpact service.
 // All implementations must embed UnimplementedUsageImpactServer
 // for forward compatibility
@@ -122,7 +111,6 @@ type UsageImpactServer interface {
 	GetElasticMetalUsageImpact(context.Context, *ElasticMetalUsageRequest) (*CloudUsageImpactResponse, error)
 	GetInstanceUsageImpact(context.Context, *InstanceUsageRequest) (*CloudUsageImpactResponse, error)
 	GetKubernetesUsageImpact(context.Context, *KubernetesUsageRequest) (*CloudUsageImpactResponse, error)
-	GetStorageUsageImpact(context.Context, *StorageUsageRequest) (*CloudUsageImpactResponse, error)
 	mustEmbedUnimplementedUsageImpactServer()
 }
 
@@ -147,9 +135,6 @@ func (UnimplementedUsageImpactServer) GetInstanceUsageImpact(context.Context, *I
 }
 func (UnimplementedUsageImpactServer) GetKubernetesUsageImpact(context.Context, *KubernetesUsageRequest) (*CloudUsageImpactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetKubernetesUsageImpact not implemented")
-}
-func (UnimplementedUsageImpactServer) GetStorageUsageImpact(context.Context, *StorageUsageRequest) (*CloudUsageImpactResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStorageUsageImpact not implemented")
 }
 func (UnimplementedUsageImpactServer) mustEmbedUnimplementedUsageImpactServer() {}
 
@@ -272,24 +257,6 @@ func _UsageImpact_GetKubernetesUsageImpact_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UsageImpact_GetStorageUsageImpact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StorageUsageRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UsageImpactServer).GetStorageUsageImpact(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UsageImpact_GetStorageUsageImpact_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsageImpactServer).GetStorageUsageImpact(ctx, req.(*StorageUsageRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // UsageImpact_ServiceDesc is the grpc.ServiceDesc for UsageImpact service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -320,10 +287,6 @@ var UsageImpact_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetKubernetesUsageImpact",
 			Handler:    _UsageImpact_GetKubernetesUsageImpact_Handler,
-		},
-		{
-			MethodName: "GetStorageUsageImpact",
-			Handler:    _UsageImpact_GetStorageUsageImpact_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -116,7 +116,6 @@ var IntelXeonE52620V2 = Cpu{
 	Units:        2,
 }
 
-//
 var IntelXeonE52670 = Cpu{
 	Manufacturer: ManufacturerIntel,
 	Family:       CpuMicroArchIntelIvybridge,

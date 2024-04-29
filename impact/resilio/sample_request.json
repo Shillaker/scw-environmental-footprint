@@ -1,0 +1,49 @@
+{
+	"assembly": false,
+	"data": [
+		{
+			"usage_percent": 1,
+			"wanted_name": "rack_server",
+			"rack_unit": 1,
+			"cpus": [
+				{
+					"name": "intel Intel Core i5",
+					"die_surface_mm2": 126,
+					"litho_nm": 14
+				}
+			],
+			"rams": [
+				{
+					"size_gb": 8
+				},
+				{
+					"size_gb": 8
+				}
+			],
+			"ssd_disks": [
+				{
+					"size_gb": 564,
+					"technology": "TLC",
+					"casing": "casing_M2"
+				}
+			],
+			"hdd_disks": {"quantity": 1},
+			"dedicated_graphics_cards": [
+				{
+					"die_surface_mm2": 200,
+					"litho_nm": 22
+				}
+			],
+			"power_supplies": [
+				{
+				"power_watt": 100
+				}
+			],
+			"usage": {
+				"power_watt": 900,
+				"delta_t_hour": 1,
+				"geography": "Switzerland"
+			}
+		}
+	]
+}

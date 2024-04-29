@@ -11,7 +11,11 @@
 task dev-up
 ```
 
-Then go to http://localhost:8081 in your browser.
+Then go to http://localhost:80 in your browser.
+
+## Logging
+
+Logging is managed with Logrus, and the level can be set with the `CARBON_LOGGER_LEVEL` environment variable (e.g. to `debug`/`trace`).
 
 ## Boavizta backend
 

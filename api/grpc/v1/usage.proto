@@ -6,6 +6,12 @@ import "google/api/annotations.proto";
 
 package api.v1;
 
+// Objects 
+
+message ImpactConfig {
+    string backend = 1;
+}
+
 message Instance {
     string type = 1;
     string description = 2;
@@ -41,8 +47,42 @@ message CloudUsage {
     string region = 6;
 }
 
+message Impact {
+    float manufacture = 1;
+    float use = 2;
+    string unit = 3;
+}
+
+message EquivalentCO2E {
+    float amount = 1;
+    string thing = 2;
+}
+
+// Requests 
+
 message EmptyRequest {
 }
+
+message InstanceUsageRequest {
+    Instance instance = 1;
+    CloudUsage usage = 2;
+    ImpactConfig config = 3;
+}
+
+message ElasticMetalUsageRequest {
+    ElasticMetal elasticMetal = 1;
+    CloudUsage usage = 2;
+    ImpactConfig config = 3;
+}
+
+message KubernetesUsageRequest {
+    KubernetesControlPlane controlPlane = 1;
+    repeated KubernetesPool pools = 2;
+    CloudUsage usage = 3;
+    ImpactConfig config = 4;
+}
+
+// Responses
 
 message ListInstancesResponse {
     repeated Instance instances = 1;
@@ -56,43 +96,13 @@ message ListKubernetesControlPlanesResponse {
     repeated KubernetesControlPlane controlPlanes = 1;
 }
 
-message InstanceUsageRequest {
-    Instance instance = 1;
-    CloudUsage usage = 2;
-}
-
-message ElasticMetalUsageRequest {
-    ElasticMetal elasticMetal = 1;
-    CloudUsage usage = 2;
-}
-
-message KubernetesUsageRequest {
-    KubernetesControlPlane controlPlane = 1;
-    repeated KubernetesPool pools = 2;
-    CloudUsage usage = 3;
-}
-
-message StorageUsageRequest {
-    Storage storage = 1;
-    CloudUsage usage = 2;
-}
-
-message Impact {
-    float manufacture = 1;
-    float use = 2;
-    string unit = 3;
-}
-
-message EquivalentCO2E {
-    float amount = 1;
-    string thing = 2;
-}
-
 message CloudUsageImpactResponse {
     map<string, Impact> impacts = 1;
     repeated EquivalentCO2E equivalentsManufacture = 2;
     repeated EquivalentCO2E equivalentsUse = 3;
 }
+
+// Services
 
 service UsageImpact {
   rpc ListInstances (EmptyRequest) returns (ListInstancesResponse) {
@@ -130,13 +140,6 @@ service UsageImpact {
   rpc GetKubernetesUsageImpact (KubernetesUsageRequest) returns (CloudUsageImpactResponse) {
     option (google.api.http) = {
       post: "/v1/impact/k8s"
-      body: "*"
-    };
-  }
-
-  rpc GetStorageUsageImpact (StorageUsageRequest) returns (CloudUsageImpactResponse) {
-    option (google.api.http) = {
-      post: "/v1/impact/storage"
       body: "*"
     };
   }

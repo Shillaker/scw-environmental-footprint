@@ -4,6 +4,7 @@ import "fmt"
 
 type Server struct {
 	Cpus []Cpu
+	Gpus []Gpu
 	Rams []Ram
 	Ssds []Ssd
 	Hdds []Hdd
@@ -14,8 +15,9 @@ type Server struct {
 
 func DefaultServer(vCpus int32, ramGiB int32) Server {
 	return Server{
-		Cpus: []Cpu{DefaultCpu(1, vCpus)},
-		Rams: []Ram{DefaultRam(1, ramGiB*1024)},
+		Cpus:        []Cpu{DefaultCpu(1, vCpus)},
+		Rams:        []Ram{DefaultRam(1, ramGiB*1024)},
+		PowerSupply: DefaultPowerSupply(500),
 	}
 }
 

@@ -54,4 +54,8 @@ tasks:
 
   dev-up:
     cmds:
-      - NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up -d
+      - NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up -d --build
+
+  dev-site:
+    cmds:
+      - xdg-open site/index.html
