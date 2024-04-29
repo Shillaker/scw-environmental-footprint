@@ -37,6 +37,18 @@ func InitConfig() error {
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(`.`, `_`))
 
+	// Set up defaults for docker compose environment
+	viper.SetDefault("gateway.port", 8083)
+	viper.SetDefault("gateway.backend_host", "backend")
+	viper.SetDefault("gateway.backend_port", 8082)
+	viper.SetDefault("impact.mode", "boavizta")
+
+	viper.SetDefault("boavizta.host", "boavizta")
+	viper.SetDefault("boavizta.port", 5000)
+
+	viper.SetDefault("resilio.base_url", "https://db.resilio.tech/api")
+	viper.SetDefault("resilio.token", "foobar")
+
 	initialised = true
 
 	return nil

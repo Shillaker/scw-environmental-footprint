@@ -17,3 +17,6 @@ vendor/
 
 # Certificate provisioning
 certbot/
+
+# Direnv
+.envrc

@@ -27,16 +27,16 @@ You can look at the API docs to see the specification including JSON model: http
 
 ## Running outside Docker
 
-### Config file
+### Use local builds
 
-Set up a config file as a copy of the one at the root:
+Create a `.envrc` file in the root of the project, and add:
 
 ```bash
-mkdir -p ~/.config/scw
-cp carbon.yml ~/.config/scw/
+CARBON_GATEWAY_BACKEND_HOST=localhost
+CARBON_BOAVIZTA_HOST=localhost
 ```
 
-Then change all hosts to `localhost` in this file.
+Then run `direnv allow`.
 
 ### Server and gateway
 
