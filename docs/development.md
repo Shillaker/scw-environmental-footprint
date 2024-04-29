@@ -7,8 +7,8 @@
 
 ## Running locally in Docker
 
-```
-make dev-up
+```bash
+task dev-up
 ```
 
 Then go to http://localhost:8081 in your browser.
@@ -18,7 +18,7 @@ Then go to http://localhost:8081 in your browser.
 You can run the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) as follows:
 
 ```bash
-make boavizta
+task boavizta
 ```
 
 Once started you should be able to go to http://localhost:5000 in your browser to see the API.
@@ -43,19 +43,19 @@ Then run `direnv allow`.
 Build and run the server and gateway (separate terminals):
 
 ```bash
-make server
+task server
 ```
 
 Run the gateway:
 
 ```bash
-make gateway
+task gateway
 ```
 
 Run the NGINX proxy:
 
 ```bash
-make dev-nginx
+task dev-nginx
 ```
 
 Then access the UI by opening the HTML file, e.g.
@@ -69,8 +69,8 @@ xdg-open site/index.html
 Run the tests and integration tests:
 
 ```bash
-make test
-make test-int
+task test
+task test-e2e
 ```
 
 ## Deploying
@@ -80,5 +80,5 @@ The deployment will copy your local checkout to a VM, build containers, then sta
 Run this with:
 
 ```bash
-make vm-deploy
+task vm-deploy
 ```
