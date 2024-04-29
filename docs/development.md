@@ -32,8 +32,8 @@ You can look at the API docs to see the specification including JSON model: http
 Create a `.envrc` file in the root of the project, and add:
 
 ```bash
-CARBON_GATEWAY_BACKEND_HOST=localhost
-CARBON_BOAVIZTA_HOST=localhost
+export CARBON_GATEWAY_BACKEND_HOST=localhost
+export CARBON_BOAVIZTA_HOST=localhost
 ```
 
 Then run `direnv allow`.
