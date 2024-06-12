@@ -65,6 +65,18 @@ type InstanceBaseServer struct {
 	Server Server
 }
 
+func DefaultInstanceSsd(capacityGiB int32) []Ssd {
+	return []Ssd{
+		{
+			Manufacturer: ManufacturerMicron,
+			CapacityMib:  capacityGiB * 1024,
+			Units:        1,
+			Technology:   SsdTechnologyMlc,
+			Casing:       SsdCasingM2,
+		},
+	}
+}
+
 func (i *InstanceBaseServer) GetHostShare() float32 {
 	totalCores := int32(0)
 	for _, cpu := range i.Server.Cpus {
@@ -79,7 +91,8 @@ var BasePlay2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams: DefaultRams(4, 16*1024),
+	Rams:        DefaultRams(4, 16*1024),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // PRO2 - 32 cores, AMD EPYC 7543, 128GiB
@@ -87,7 +100,8 @@ var BasePro2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams: DefaultRams(4, 32*1024),
+	Rams:        DefaultRams(4, 32*1024),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // DEV1 - 16 cores, AMD EPYC 7281, 32GiB, 20GiB SSD
@@ -95,14 +109,9 @@ var BaseDev1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7281,
 	},
-	Rams: DefaultRams(2, 16*1024),
-	Ssds: []Ssd{
-		{
-			Manufacturer: ManufacturerMicron,
-			CapacityMib:  20 * 1024,
-			Units:        1,
-		},
-	},
+	Rams:        DefaultRams(2, 16*1024),
+	Ssds:        DefaultInstanceSsd(20),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // GP1 - 48 cores, AMD EPYC 7281, 256GiB, 600GiB SSD
@@ -110,14 +119,9 @@ var BaseGp1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7281Cores48,
 	},
-	Rams: DefaultRams(8, 32*1024),
-	Ssds: []Ssd{
-		{
-			Manufacturer: ManufacturerMicron,
-			CapacityMib:  600 * 1024,
-			Units:        1,
-		},
-	},
+	Rams:        DefaultRams(8, 32*1024),
+	Ssds:        DefaultInstanceSsd(600),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // POP2 - 64 cores, AMD EPYC 7543, 256GiB
@@ -125,7 +129,8 @@ var BasePop2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543Cores64,
 	},
-	Rams: DefaultRams(8, 32*1024),
+	Rams:        DefaultRams(8, 32*1024),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // POP2HM - 64 cores, AMD EPYC 7543, 512GiB
@@ -133,7 +138,8 @@ var BasePop2HmHost = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543Cores64,
 	},
-	Rams: DefaultRams(16, 32*1024),
+	Rams:        DefaultRams(16, 32*1024),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 func InstanceToString(instanceBase InstanceBaseServer) string {

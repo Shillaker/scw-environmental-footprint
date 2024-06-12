@@ -23,7 +23,6 @@ func InitConfig() error {
 	viper.SetDefault("gateway.port", 8083)
 	viper.SetDefault("gateway.backend_host", "backend")
 	viper.SetDefault("gateway.backend_port", 8082)
-	viper.SetDefault("impact.mode", "boavizta")
 
 	viper.SetDefault("boavizta.host", "boavizta")
 	viper.SetDefault("boavizta.port", 5000)
