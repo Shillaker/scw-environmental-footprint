@@ -27,6 +27,14 @@ tasks:
     cmds:
       - go run cmd/gateway/main.go
 
+  export-boavizta:
+    cmds:
+      - go run cmd/export-boavizta/main.go
+  
+  export-specs:
+    cmds:
+      - go run cmd/export-specs/main.go
+
   boavizta:
     cmds:
       - docker compose up -d boavizta

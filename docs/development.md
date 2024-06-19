@@ -17,18 +17,6 @@ Then go to http://localhost:80 in your browser.
 
 Logging is managed with Logrus, and the level can be set with the `CARBON_LOGGER_LEVEL` environment variable (e.g. to `debug`/`trace`).
 
-## Boavizta backend
-
-You can run the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) as follows:
-
-```bash
-task boavizta
-```
-
-Once started you should be able to go to http://localhost:5000 in your browser to see the API.
-
-You can look at the API docs to see the specification including JSON model: http://localhost:5000/docs.
-
 ## Running outside Docker
 
 ### Use local builds
@@ -41,6 +29,18 @@ export CARBON_BOAVIZTA_HOST=localhost
 ```
 
 Then run `direnv allow`.
+
+### Boavizta backend
+
+You can run the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) as follows:
+
+```bash
+task boavizta
+```
+
+Once started you should be able to go to http://localhost:5000 in your browser to see the API.
+
+You can look at the API docs to see the specification including JSON model: http://localhost:5000/docs.
 
 ### Server and gateway
 
