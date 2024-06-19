@@ -22,7 +22,7 @@ func TestBoaviztaImpact(t *testing.T) {
 			model.DefaultSsd(2, 256*1024),
 		},
 		Motherboard: model.DefaultMotherboard(1),
-		PowerSupply: model.DefaultPowerSupply(1),
+		PowerSupply: model.DefaultPowerSupply(500),
 	}
 
 	usageYears := 1

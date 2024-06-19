@@ -4,7 +4,7 @@ if (!hostname) {
 }
 
 let protocol = location.protocol;
-if(protocol != "https:") {
+if (protocol != "https:") {
   protocol = "http:";
 }
 
@@ -139,6 +139,9 @@ function setUpFormSubmit() {
         "region": getUsageRegion(),
         "count": getCount(),
         "loadPercentage": getLoadPercentage()
+      },
+      "config": {
+        "backend": getConfigBackend()
       }
     };
 
@@ -211,6 +214,10 @@ function getLoadPercentage() {
 
 function getUsageRegion() {
   return $('#region-select').val();
+}
+
+function getConfigBackend() {
+  return $('#backend-select').val();
 }
 
 function getTimeUsage() {

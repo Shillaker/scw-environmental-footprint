@@ -19,8 +19,7 @@ type Gpu struct {
 	Model        string
 	Manufacturer string
 	Units        int32
-
-	MemoryMib int32
+	MemoryMib    int32
 }
 
 func (g Gpu) Name() string {

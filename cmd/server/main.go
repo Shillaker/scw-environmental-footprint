@@ -15,8 +15,9 @@ import (
 )
 
 func main() {
-	util.InitLogging()
 	err := util.InitConfig()
+	util.InitLogging()
+
 	if err != nil {
 		log.Fatalf("failed to init config: %v", err)
 	}

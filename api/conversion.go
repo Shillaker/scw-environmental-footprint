@@ -5,6 +5,12 @@ import (
 	"gitlab.infra.online.net/paas/carbon/model"
 )
 
+func ImpactConfigPbToModel(pbConfig *pb.ImpactConfig) model.ImpactConfig {
+	return model.ImpactConfig{
+		Backend: pbConfig.Backend,
+	}
+}
+
 func UsagePbToModel(usage *pb.CloudUsage) model.CloudUsageAmount {
 	return model.CloudUsageAmount{
 		TimeSeconds:    usage.TimeSeconds,

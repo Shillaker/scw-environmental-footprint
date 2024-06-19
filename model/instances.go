@@ -82,6 +82,18 @@ type InstanceBaseServer struct {
 	Server Server
 }
 
+func DefaultInstanceSsd(capacityGiB int32) []Ssd {
+	return []Ssd{
+		{
+			Manufacturer: ManufacturerMicron,
+			CapacityMib:  capacityGiB * 1024,
+			Units:        1,
+			Technology:   SsdTechnologyMlc,
+			Casing:       SsdCasingM2,
+		},
+	}
+}
+
 // GetHostShare - the percentage share of the impact of the underlying host attributable to the instance
 func (i *InstanceBaseServer) GetHostShare() float32 {
 	totalVCpus := int32(0)
@@ -101,6 +113,7 @@ var BasePlay2Host = Server{
 	},
 	Rams:       DefaultRams(4, 16*1024),
 	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // BasePro2Hose - base for the PRO2 range (shared vCPUs)
@@ -111,6 +124,7 @@ var BasePro2Host = Server{
 	},
 	Rams:       DefaultRams(4, 32*1024),
 	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // BaseDev1Host - base for the DEV1 range (shared vCPUs)
@@ -120,14 +134,9 @@ var BaseDev1Host = Server{
 		AmdEpyc7281,
 	},
 	Rams: DefaultRams(2, 16*1024),
-	Ssds: []Ssd{
-		{
-			Manufacturer: ManufacturerMicron,
-			CapacityMib:  20 * 1024,
-			Units:        1,
-		},
-	},
 	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
+	Ssds:        DefaultInstanceSsd(20),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // BaseGp1Host - base for the GP1 range (shared vCPUs)
@@ -137,14 +146,9 @@ var BaseGp1Host = Server{
 		AmdEpyc7401P,
 	},
 	Rams: DefaultRams(8, 32*1024),
-	Ssds: []Ssd{
-		{
-			Manufacturer: ManufacturerMicron,
-			CapacityMib:  600 * 1024,
-			Units:        1,
-		},
-	},
 	VCpuPerCpu: 2 * AmdEpyc7401P.Threads,
+	Ssds:        DefaultInstanceSsd(600),
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // BasePop2Host - base for the POP2 range (dedicated vCPUs)
@@ -155,6 +159,7 @@ var BasePop2Host = Server{
 	},
 	Rams:       DefaultRams(8, 32*1024),
 	VCpuPerCpu: AmdEpyc7543.Threads,
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // BasePop2HmHost - base for the POP2HM range (dedicated vCPUs)
@@ -165,6 +170,7 @@ var BasePop2HmHost = Server{
 	},
 	Rams:       DefaultRams(16, 32*1024),
 	VCpuPerCpu: AmdEpyc7543.Threads,
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // BasePop2HcHost - base for the POP2HC range (dedicated vCPUs)

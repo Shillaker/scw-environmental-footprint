@@ -3,8 +3,6 @@ package server
 import (
 	"context"
 
-	log "github.com/sirupsen/logrus"
-
 	"gitlab.infra.online.net/paas/carbon/api"
 	pb "gitlab.infra.online.net/paas/carbon/api/grpc/v1"
 	"gitlab.infra.online.net/paas/carbon/impact"
@@ -57,10 +55,9 @@ func (s *UsageServer) ListKubernetesControlPlanes(context.Context, *pb.EmptyRequ
 }
 
 func (s *UsageServer) GetElasticMetalUsageImpact(ctx context.Context, request *pb.ElasticMetalUsageRequest) (*pb.CloudUsageImpactResponse, error) {
-	log.Infof("Received request to elastic metal impact")
-
 	em := api.ElasticMetalPbToModel(request.ElasticMetal)
 	usage := api.UsagePbToModel(request.Usage)
+	config := api.ImpactConfigPbToModel(request.Config)
 
 	mapper := mapping.ScwMapper{}
 	serverUsage, err := mapper.MapElasticMetalUsage(em, usage)
@@ -69,14 +66,13 @@ func (s *UsageServer) GetElasticMetalUsageImpact(ctx context.Context, request *p
 		return nil, err
 	}
 
-	return doCalculateImpact(serverUsage)
+	return doCalculateImpact(config, serverUsage)
 }
 
 func (s *UsageServer) GetInstanceUsageImpact(ctx context.Context, request *pb.InstanceUsageRequest) (*pb.CloudUsageImpactResponse, error) {
-	log.Infof("Received request to instance impact")
-
 	instance := api.InstancePbToModel(request.Instance)
 	usage := api.UsagePbToModel(request.Usage)
+	config := api.ImpactConfigPbToModel(request.Config)
 
 	mapper := mapping.ScwMapper{}
 	serverUsage, err := mapper.MapInstanceUsage(instance, usage)
@@ -85,15 +81,14 @@ func (s *UsageServer) GetInstanceUsageImpact(ctx context.Context, request *pb.In
 		return nil, err
 	}
 
-	return doCalculateImpact(serverUsage)
+	return doCalculateImpact(config, serverUsage)
 }
 
 func (s *UsageServer) GetKubernetesUsageImpact(ctx context.Context, request *pb.KubernetesUsageRequest) (*pb.CloudUsageImpactResponse, error) {
-	log.Infof("Received request to k8s impact")
-
 	cpType := api.KubernetesControlPlanePbToModel(request.ControlPlane)
 
 	usage := api.UsagePbToModel(request.Usage)
+	config := api.ImpactConfigPbToModel(request.Config)
 
 	poolsPb := request.GetPools()
 	pools := make([]model.KubernetesPool, len(poolsPb))
@@ -108,21 +103,11 @@ func (s *UsageServer) GetKubernetesUsageImpact(ctx context.Context, request *pb.
 		return nil, err
 	}
 
-	return doCalculateImpact(serverUsage)
+	return doCalculateImpact(config, serverUsage)
 }
 
-func (s *UsageServer) GetStorageUsageImpact(ctx context.Context, request *pb.StorageUsageRequest) (*pb.CloudUsageImpactResponse, error) {
-	log.Infof("Received request to storage impact")
-
-	var serverUsage []model.ServerUsage
-
-	// TODO - get storage usage
-
-	return doCalculateImpact(serverUsage)
-}
-
-func doCalculateImpact(serverUsage []model.ServerUsage) (*pb.CloudUsageImpactResponse, error) {
-	calculator, err := impact.GetCalculator()
+func doCalculateImpact(config model.ImpactConfig, serverUsage []model.ServerUsage) (*pb.CloudUsageImpactResponse, error) {
+	calculator, err := impact.GetCalculator(config)
 	if err != nil {
 		return nil, err
 	}

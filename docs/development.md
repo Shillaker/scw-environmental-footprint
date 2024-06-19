@@ -7,31 +7,35 @@
 
 ## Running locally in Docker
 
-```
-make dev-up
+```bash
+task dev-up
 ```
 
-Then go to http://localhost:8081 in your browser.
+Then go to http://localhost:80 in your browser.
+
+## Logging
+
+Logging is managed with Logrus, and the level can be set with the `CARBON_LOGGER_LEVEL` environment variable (e.g. to `debug`/`trace`).
 
 ## Running outside Docker
 
-### Config file
+### Use local builds
 
-Set up a config file as a copy of the one at the root:
+Create a `.envrc` file in the root of the project, and add:
 
 ```bash
-mkdir -p ~/.config/scw
-cp carbon.yml ~/.config/scw/
+export CARBON_GATEWAY_BACKEND_HOST=localhost
+export CARBON_BOAVIZTA_HOST=localhost
 ```
 
-Then change all hosts to `localhost` in this file.
+Then run `direnv allow`.
 
-### Run Boavizta in the background
+### Boavizta backend
 
 You can run the [BoaviztAPI](https://github.com/Boavizta/boaviztapi) as follows:
 
-```
-make boavizta
+```bash
+task boavizta
 ```
 
 Once started you should be able to go to http://localhost:5000 in your browser to see the API.
@@ -43,19 +47,19 @@ You can look at the API docs to see the specification including JSON model: http
 Build and run the server and gateway (separate terminals):
 
 ```bash
-make server
+task server
 ```
 
 Run the gateway:
 
 ```bash
-make gateway
+task gateway
 ```
 
 Run the NGINX proxy:
 
 ```bash
-make dev-nginx
+task dev-nginx
 ```
 
 Then access the UI by opening the HTML file, e.g.
@@ -69,8 +73,8 @@ xdg-open site/index.html
 Run the tests and integration tests:
 
 ```bash
-make test
-make test-int
+task test
+task test-e2e
 ```
 
 ## Deploying
@@ -80,5 +84,5 @@ The deployment will copy your local checkout to a VM, build containers, then sta
 Run this with:
 
 ```bash
-make vm-deploy
+task vm-deploy
 ```
