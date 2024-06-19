@@ -12,7 +12,7 @@ The Boavizta export needs to output two files:
 To generate these files, you can run:
 
 ```
-make boavizta-export
+task export
 ```
 
-The outputs can then be found in `outputs/`, as `instances.csv` and `servers.csv`.
+The outputs can then be found in `data/output`, as `instances.csv` and `servers.csv`.

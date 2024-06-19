@@ -1,6 +1,5 @@
 # Project
 bin/
-output/
 
 # Python
 __pycache__/
