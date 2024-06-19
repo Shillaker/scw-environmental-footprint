@@ -16,7 +16,6 @@ import (
 // https://github.com/Boavizta/boaviztapi/blob/main/docs/docs/contributing/server.md
 const (
 	dataDir                      = "data"
-	outDir                       = "output"
 	instancesOutFile             = "instances.csv"
 	serversOutFile               = "servers.csv"
 	caseType                     = "rack"
@@ -27,8 +26,9 @@ const (
 )
 
 var (
-	instancesOutPath = filepath.Join(dataDir, outDir, instancesOutFile)
-	serversOutPath   = filepath.Join(dataDir, outDir, serversOutFile)
+	outDir           = filepath.Join(dataDir, "output")
+	instancesOutPath = filepath.Join(outDir, instancesOutFile)
+	serversOutPath   = filepath.Join(outDir, serversOutFile)
 )
 
 // Instance headers as listed here:

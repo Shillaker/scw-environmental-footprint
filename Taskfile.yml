@@ -27,9 +27,13 @@ tasks:
     cmds:
       - go run cmd/gateway/main.go
 
-  export:
+  export-boavizta:
     cmds:
-      - go run cmd/export/main.go
+      - go run cmd/export-boavizta/main.go
+  
+  export-specs:
+    cmds:
+      - go run cmd/export-specs/main.go
 
   boavizta:
     cmds:
