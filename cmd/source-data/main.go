@@ -17,7 +17,8 @@ var (
 	dataSourceDir    = filepath.Join("data", "source")
 	dediboxFile      = filepath.Join(dataSourceDir, "dedibox.yaml")
 	emFile           = filepath.Join(dataSourceDir, "elastic_metal.yaml")
-	appleSiliconFile = filepath.Join(dataSourceDir, "apple.yaml")
+	appleSiliconFile = filepath.Join(dataSourceDir, "apple_silicon.yaml")
+	instancesFile    = filepath.Join(dataSourceDir, "instances.yaml")
 )
 
 func main() {
@@ -45,12 +46,12 @@ func main() {
 
 	ddxMode := viper.GetString("dedibox.mode")
 	if ddxMode == "on" {
-		dediboxOffers, err := client.ListDediboxOffers(ctx)
+		dediboxServers, err := client.ListDediboxServers(ctx)
 		if err != nil {
-			log.Fatal("could not list ddx offers", log.WithError(err))
+			log.Fatal("could not list ddx servers", log.WithError(err))
 		}
 
-		dediboxData, err := yaml.Marshal(&dediboxOffers)
+		dediboxData, err := yaml.Marshal(&dediboxServers)
 		if err != nil {
 			log.Fatal("dedibox marshal", log.WithError(err))
 		}
@@ -61,12 +62,12 @@ func main() {
 		}
 	}
 
-	emOffers, err := client.ListElasticMetalOffers(ctx)
+	emServers, err := client.ListElasticMetalServers(ctx)
 	if err != nil {
-		log.Fatal("could not list em offers", log.WithError(err))
+		log.Fatal("could not list em servers", log.WithError(err))
 	}
 
-	emData, err := yaml.Marshal(emOffers)
+	emData, err := yaml.Marshal(emServers)
 	if err != nil {
 		log.Fatal("em marshal", log.WithError(err))
 	}
@@ -76,12 +77,12 @@ func main() {
 		log.Fatal("em write", log.WithError(err))
 	}
 
-	asOffers, err := client.ListAppleSiliconOffers(ctx)
+	asServers, err := client.ListAppleSiliconServers(ctx)
 	if err != nil {
-		log.Fatal("could not list as offers", log.WithError(err))
+		log.Fatal("could not list as servers", log.WithError(err))
 	}
 
-	asData, err := yaml.Marshal(asOffers)
+	asData, err := yaml.Marshal(asServers)
 	if err != nil {
 		log.Fatal("as marshal", log.WithError(err))
 	}

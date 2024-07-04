@@ -2,7 +2,6 @@ package model
 
 const (
 	DefaultCpuName = "AMD EPYC 7543"
-	DefaultCpuTdp  = 150
 )
 
 func DefaultCpu(units uint32, cores uint32) Cpu {
@@ -10,7 +9,6 @@ func DefaultCpu(units uint32, cores uint32) Cpu {
 		Name:        DefaultCpuName,
 		CoreUnits:   cores,
 		Threads:     cores * 2,
-		Tdp:         DefaultCpuTdp,
 		Units:       units,
 		FrequencyHz: 2500,
 	}
@@ -22,7 +20,6 @@ type Cpu struct {
 
 	CoreUnits   uint32
 	Threads     uint32
-	Tdp         uint32
 	FrequencyHz uint32
 }
 
@@ -31,7 +28,6 @@ var AmdEpyc7543 = Cpu{
 	Name:        "AMD EPYC 7543",
 	CoreUnits:   32,
 	Threads:     64,
-	Tdp:         225,
 	Units:       1,
 	FrequencyHz: 2800,
 }
@@ -41,7 +37,6 @@ var AmdEpyc7543Triple = Cpu{
 	Name:        "AMD EPYC 7543",
 	CoreUnits:   32,
 	Threads:     64,
-	Tdp:         225,
 	Units:       3,
 	FrequencyHz: 2800,
 }
@@ -51,7 +46,6 @@ var AmdEpyc7281 = Cpu{
 	Name:        "AMD EPYC 7281",
 	CoreUnits:   16,
 	Threads:     32,
-	Tdp:         155,
 	Units:       1,
 	FrequencyHz: 2100,
 }
@@ -61,7 +55,6 @@ var AmdEpyc7401P = Cpu{
 	Name:        "AMD EPYC 7401P",
 	CoreUnits:   24,
 	Threads:     48,
-	Tdp:         155,
 	Units:       2,
 	FrequencyHz: 2000,
 }
@@ -71,7 +64,6 @@ var AmdRyzenPro3600 = Cpu{
 	Name:        "AMD RYZEN PRO 3600",
 	CoreUnits:   6,
 	Threads:     12,
-	Tdp:         65,
 	Units:       1,
 	FrequencyHz: 3600,
 }
@@ -81,7 +73,6 @@ var IntelXeonE51410V2 = Cpu{
 	Name:        "Intel Xeon E5 1410 V2",
 	CoreUnits:   4,
 	Threads:     8,
-	Tdp:         80,
 	Units:       1,
 	FrequencyHz: 2800,
 }
@@ -91,7 +82,6 @@ var IntelXeonE51650V2 = Cpu{
 	Name:        "Intel Xeon E5 1650 V2",
 	CoreUnits:   6,
 	Threads:     12,
-	Tdp:         130,
 	Units:       1,
 	FrequencyHz: 3500,
 }
@@ -101,7 +91,6 @@ var IntelXeonE52620V2 = Cpu{
 	Name:        "Intel Xeon E5 2620 V2",
 	CoreUnits:   6,
 	Threads:     12,
-	Tdp:         95,
 	Units:       2,
 	FrequencyHz: 2000,
 }
@@ -110,7 +99,6 @@ var IntelXeonE52620V2 = Cpu{
 var IntelXeonE52670 = Cpu{
 	Name:        "Intel Xeon E5 2670",
 	CoreUnits:   8,
-	Tdp:         115,
 	Units:       2,
 	FrequencyHz: 2600,
 }
@@ -119,7 +107,6 @@ var IntelXeonE52670 = Cpu{
 var IntelXeonE52670V2 = Cpu{
 	Name:        "Intel Xeon E5 2670 V2",
 	CoreUnits:   10,
-	Tdp:         115,
 	Units:       2,
 	FrequencyHz: 2500,
 }
@@ -129,7 +116,6 @@ var AmpereAltraMaxM12832 = Cpu{
 	Name:        "Ampere Altra Max 128",
 	CoreUnits:   128,
 	Threads:     128,
-	Tdp:         250,
 	Units:       1,
 	FrequencyHz: 3000,
 }

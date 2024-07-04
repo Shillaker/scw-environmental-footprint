@@ -1,9 +1,6 @@
 package model
 
 type Hdd struct {
-	Model        string
-	Manufacturer string
-
 	CapacityMib uint32
 	Units       uint32
 }

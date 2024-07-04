@@ -82,7 +82,7 @@ func (s *SCWClient) ListElasticMetalServers(ctx context.Context) (map[string][]m
 			server.Cpus = append(server.Cpus, model.Cpu{
 				Name:        CleanCPUName(offerCpu.Name),
 				CoreUnits:   offerCpu.CoreCount,
-				Threads:     offerCpu.ThreadCount,
+				Threads:     offerCpu.CoreCount, // Apple M CPUs have threads = cores
 				FrequencyHz: offerCpu.Frequency,
 				Units:       1,
 			})
@@ -110,6 +110,9 @@ func (s *SCWClient) ListElasticMetalServers(ctx context.Context) (map[string][]m
 					Units:       1,
 				})
 			}
+
+			server.PowerSupply = model.DefaultPowerSupply(800)
+			server.Motherboard.Units = 1
 
 			server.Product = model.ProductElasticMetal
 			server.Name = offer.Name
@@ -161,9 +164,15 @@ func (s *SCWClient) ListAppleSiliconServers(ctx context.Context) (map[string][]m
 				FrequencyHz: uint32(serverType.CPU.Frequency),
 			})
 
+			ramType := ""
+			if serverType.Memory.Type == "LPDDR5" {
+				ramType = "ddr5"
+			} 
+
 			server.Rams = append(server.Rams, model.Ram{
 				CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(serverType.Memory.Capacity),
 				Units:       1,
+				Type:        ramType,
 			})
 
 			if strings.ToLower(serverType.Disk.Type) == "ssd" {
@@ -180,11 +189,14 @@ func (s *SCWClient) ListAppleSiliconServers(ctx context.Context) (map[string][]m
 
 			if serverType.Gpu.Count > 0 {
 				server.Gpus = append(server.Gpus, model.Gpu{
-					Name:  fmt.Sprintf("Apple %s", serverType.CPU.Name), // GPU + CPU all part of same SoC with M Macs
-					Cores: uint32(serverType.Gpu.Count),                 // See MX wikis e.g. https://en.wikipedia.org/wiki/Apple_M2
+					Name:  serverType.CPU.Name,          // GPU + CPU all part of same SoC with M Macs
+					Cores: uint32(serverType.Gpu.Count), // See MX wikis e.g. https://en.wikipedia.org/wiki/Apple_M2
 					Units: 1,
 				})
 			}
+
+			server.PowerSupply = model.DefaultPowerSupply(800)
+			server.Motherboard.Units = 1
 
 			server.Product = model.ProductAppleSilicon
 			server.Name = serverType.Name
@@ -260,6 +272,9 @@ func (s *SCWClient) ListDediboxServers(ctx context.Context) (map[string][]model.
 					})
 				}
 			}
+
+			server.PowerSupply = model.DefaultPowerSupply(800)
+			server.Motherboard.Units = 1
 
 			server.Product = model.ProductDedibox
 			server.Name = offer.Name

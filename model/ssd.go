@@ -1,9 +1,6 @@
 package model
 
 const (
-	ManufacturerMicron     = "micron"
-	DefaultSsdManufacturer = ManufacturerMicron
-
 	SsdTechnologyTlc = "tlc"
 	SsdTechnologyQlc = "qlc"
 	SsdTechnologySlc = "slc"
@@ -16,7 +13,6 @@ const (
 func DefaultSsd(units uint32, capacityMiB uint32) Ssd {
 	return Ssd{
 		CapacityMib:  capacityMiB,
-		Manufacturer: DefaultSsdManufacturer,
 		Units:        units,
 		Technology:   SsdTechnologyMlc,
 		Casing:       SsdCasingM2,
@@ -27,7 +23,6 @@ func DefaultSsds(units uint32, capacityMiB uint32) []Ssd {
 	return []Ssd{
 		{
 			CapacityMib:  capacityMiB,
-			Manufacturer: DefaultSsdManufacturer,
 			Units:        units,
 			Technology:   SsdTechnologyMlc,
 			Casing:       SsdCasingM2,
@@ -36,8 +31,6 @@ func DefaultSsds(units uint32, capacityMiB uint32) []Ssd {
 }
 
 type Ssd struct {
-	Model        string
-	Manufacturer string
 	Units        uint32
 	Technology   string
 	Casing       string

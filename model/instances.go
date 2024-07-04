@@ -85,11 +85,10 @@ type InstanceBaseServer struct {
 func DefaultInstanceSsd(capacityGiB uint32) []Ssd {
 	return []Ssd{
 		{
-			Manufacturer: ManufacturerMicron,
-			CapacityMib:  capacityGiB * 1024,
-			Units:        1,
-			Technology:   SsdTechnologyMlc,
-			Casing:       SsdCasingM2,
+			CapacityMib: capacityGiB * 1024,
+			Units:       1,
+			Technology:  SsdTechnologyMlc,
+			Casing:      SsdCasingM2,
 		},
 	}
 }
@@ -99,7 +98,11 @@ func (i *InstanceBaseServer) GetHostShare() float32 {
 	totalVCpus := uint32(0)
 
 	for _, cpu := range i.Server.Cpus {
-		totalVCpus += cpu.Units * i.Server.VCpuPerCpu
+		if i.Server.VCpuPerCpu == 0 {
+			totalVCpus += cpu.Threads // Assume dedicated if we don't know otherwise
+		} else {
+			totalVCpus += cpu.Units * i.Server.VCpuPerCpu
+		}
 	}
 
 	return float32(i.VCpus) / float32(totalVCpus)
@@ -192,9 +195,8 @@ var BaseStardust1Host = Server{
 	Rams: DefaultRams(2, 8*1024),
 	Ssds: []Ssd{
 		{
-			Manufacturer: ManufacturerMicron,
-			CapacityMib:  10 * 1024,
-			Units:        1,
+			CapacityMib: 10 * 1024,
+			Units:       1,
 		},
 	},
 	VCpuPerCpu: 2 * AmdEpyc7281.Threads,

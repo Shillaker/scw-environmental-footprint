@@ -1,16 +1,18 @@
 package model
 
+const (
+	DefaultPowerSupplyWeightKg = 2
+)
+
 func DefaultPowerSupply(powerWatts uint32) PowerSupply {
 	return PowerSupply{
 		Units:    1,
 		Watts:    powerWatts,
-		WeightKg: 2,
+		WeightKg: DefaultPowerSupplyWeightKg,
 	}
 }
 
 type PowerSupply struct {
-	Model        string
-	Manufacturer string
 	Units        uint32
 	Watts        uint32
 	WeightKg     uint32
