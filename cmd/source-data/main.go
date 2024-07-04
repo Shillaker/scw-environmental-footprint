@@ -91,4 +91,19 @@ func main() {
 	if err != nil {
 		log.Fatal("as write", log.WithError(err))
 	}
+
+	instanceServers, err := client.ListInstanceServers(ctx)
+	if err != nil {
+		log.Fatal("could not list instance servers", log.WithError(err))
+	}
+
+	instancesData, err := yaml.Marshal(instanceServers)
+	if err != nil {
+		log.Fatal("instance marshal", log.WithError(err))
+	}
+
+	err = ioutil.WriteFile(instancesFile, instancesData, 0766)
+	if err != nil {
+		log.Fatal("instance write", log.WithError(err))
+	}
 }

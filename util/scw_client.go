@@ -8,6 +8,7 @@ import (
 	as "github.com/scaleway/scaleway-sdk-go/api/applesilicon/v1alpha1"
 	bm "github.com/scaleway/scaleway-sdk-go/api/baremetal/v1"
 	ddx "github.com/scaleway/scaleway-sdk-go/api/dedibox/v1"
+	instance "github.com/scaleway/scaleway-sdk-go/api/instance/v1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -43,6 +44,26 @@ func NewClient(ctx context.Context) (*SCWClient, error) {
 	}
 
 	return client, err
+}
+
+func (s *SCWClient) ListInstanceServers(ctx context.Context) (map[string]map[string]*instance.ServerType, error) {
+	api := instance.NewAPI(s.cli)
+
+	offers := map[string]map[string]*instance.ServerType{}
+	for _, zone := range InstanceZones {
+		log.Debugf("requesting instance types in %s", zone)
+		resp, err := api.ListServersTypes(&instance.ListServersTypesRequest{
+			Zone: zone,
+		})
+
+		if err != nil {
+			return nil, err
+		}
+
+		offers[zone.String()] = resp.Servers
+	}
+
+	return offers, nil
 }
 
 func (s *SCWClient) ListElasticMetalOffers(ctx context.Context) (map[string][]*bm.Offer, error) {
@@ -167,7 +188,7 @@ func (s *SCWClient) ListAppleSiliconServers(ctx context.Context) (map[string][]m
 			ramType := ""
 			if serverType.Memory.Type == "LPDDR5" {
 				ramType = "ddr5"
-			} 
+			}
 
 			server.Rams = append(server.Rams, model.Ram{
 				CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(serverType.Memory.Capacity),

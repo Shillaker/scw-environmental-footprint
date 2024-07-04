@@ -32,6 +32,14 @@ var AmdEpyc7543 = Cpu{
 	FrequencyHz: 2800,
 }
 
+var AmdEpyc7543Double = Cpu{
+	Name:        "AMD EPYC 7543",
+	CoreUnits:   32,
+	Threads:     64,
+	Units:       2,
+	FrequencyHz: 2800,
+}
+
 // https://www.amd.com/en/product/10941
 var AmdEpyc7543Triple = Cpu{
 	Name:        "AMD EPYC 7543",
