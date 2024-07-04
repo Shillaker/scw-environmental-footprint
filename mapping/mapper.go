@@ -5,8 +5,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"gitlab.infra.online.net/paas/carbon/model"
-	"gitlab.infra.online.net/paas/carbon/util"
+	"github.com/shillaker/scw-environmental-footprint/model"
+	"github.com/shillaker/scw-environmental-footprint/util"
 )
 
 type ScwMapper struct {

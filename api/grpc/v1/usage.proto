@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "gitlab.infra.online.net/paas/carbon/api/grpc/v1";
+option go_package = "github.com/shillaker/scw-environmental-footprint/api/grpc/v1";
 
 import "google/api/annotations.proto";
 

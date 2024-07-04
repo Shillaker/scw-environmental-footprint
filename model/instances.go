@@ -74,15 +74,15 @@ type Instance struct {
 
 // InstanceBaseServer - definition of an instance's virtualized resources, and the server it runs on
 type InstanceBaseServer struct {
-	VCpus  int32
-	RamGiB int32
-	HddGiB int32
-	SsdGiB int32
-	Gpus   int32
+	VCpus  uint32
+	RamGiB uint32
+	HddGiB uint32
+	SsdGiB uint32
+	Gpus   uint32
 	Server Server
 }
 
-func DefaultInstanceSsd(capacityGiB int32) []Ssd {
+func DefaultInstanceSsd(capacityGiB uint32) []Ssd {
 	return []Ssd{
 		{
 			Manufacturer: ManufacturerMicron,
@@ -96,7 +96,7 @@ func DefaultInstanceSsd(capacityGiB int32) []Ssd {
 
 // GetHostShare - the percentage share of the impact of the underlying host attributable to the instance
 func (i *InstanceBaseServer) GetHostShare() float32 {
-	totalVCpus := int32(0)
+	totalVCpus := uint32(0)
 
 	for _, cpu := range i.Server.Cpus {
 		totalVCpus += cpu.Units * i.Server.VCpuPerCpu
@@ -111,8 +111,8 @@ var BasePlay2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams:       DefaultRams(4, 16*1024),
-	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
+	Rams:        DefaultRams(4, 16*1024),
+	VCpuPerCpu:  2 * AmdEpyc7543.Threads,
 	PowerSupply: DefaultPowerSupply(400),
 }
 
@@ -122,8 +122,8 @@ var BasePro2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams:       DefaultRams(4, 32*1024),
-	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
+	Rams:        DefaultRams(4, 32*1024),
+	VCpuPerCpu:  2 * AmdEpyc7543.Threads,
 	PowerSupply: DefaultPowerSupply(400),
 }
 
@@ -133,8 +133,8 @@ var BaseDev1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7281,
 	},
-	Rams: DefaultRams(2, 16*1024),
-	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
+	Rams:        DefaultRams(2, 16*1024),
+	VCpuPerCpu:  2 * AmdEpyc7281.Threads,
 	Ssds:        DefaultInstanceSsd(20),
 	PowerSupply: DefaultPowerSupply(400),
 }
@@ -145,8 +145,8 @@ var BaseGp1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7401P,
 	},
-	Rams: DefaultRams(8, 32*1024),
-	VCpuPerCpu: 2 * AmdEpyc7401P.Threads,
+	Rams:        DefaultRams(8, 32*1024),
+	VCpuPerCpu:  2 * AmdEpyc7401P.Threads,
 	Ssds:        DefaultInstanceSsd(600),
 	PowerSupply: DefaultPowerSupply(400),
 }
@@ -157,8 +157,8 @@ var BasePop2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams:       DefaultRams(8, 32*1024),
-	VCpuPerCpu: AmdEpyc7543.Threads,
+	Rams:        DefaultRams(8, 32*1024),
+	VCpuPerCpu:  AmdEpyc7543.Threads,
 	PowerSupply: DefaultPowerSupply(400),
 }
 
@@ -168,8 +168,8 @@ var BasePop2HmHost = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
-	Rams:       DefaultRams(16, 32*1024),
-	VCpuPerCpu: AmdEpyc7543.Threads,
+	Rams:        DefaultRams(16, 32*1024),
+	VCpuPerCpu:  AmdEpyc7543.Threads,
 	PowerSupply: DefaultPowerSupply(400),
 }
 
@@ -222,11 +222,11 @@ var BaseEnt1Host = Server{
 
 // InstanceToString - convert an instance into a readable string representation
 func InstanceToString(instanceBase InstanceBaseServer) string {
-	cpuModel := instanceBase.Server.Cpus[0].Model
-	return fmt.Sprintf("%v vCPU, %v GiB, %v CPU", instanceBase.VCpus, instanceBase.RamGiB, cpuModel)
+	cpuName := instanceBase.Server.Cpus[0].Name
+	return fmt.Sprintf("%v vCPU, %v GiB, %v CPU", instanceBase.VCpus, instanceBase.RamGiB, cpuName)
 }
 
-func buildInstanceBase(baseServer Server, nVcpu int32, ramGiB int32) InstanceBaseServer {
+func buildInstanceBase(baseServer Server, nVcpu uint32, ramGiB uint32) InstanceBaseServer {
 	server := baseServer
 
 	return InstanceBaseServer{

@@ -8,8 +8,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 
-	"gitlab.infra.online.net/paas/carbon/model"
-	"gitlab.infra.online.net/paas/carbon/util"
+	"github.com/shillaker/scw-environmental-footprint/model"
+	"github.com/shillaker/scw-environmental-footprint/util"
 )
 
 const (

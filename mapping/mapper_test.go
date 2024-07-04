@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"gitlab.infra.online.net/paas/carbon/model"
+	"github.com/shillaker/scw-environmental-footprint/model"
 )
 
 func TestInstanceMapping(t *testing.T) {

@@ -8,49 +8,49 @@ const (
 
 type ResilioCpu struct {
 	Name string `json:"name"`
-	// DieSurfaceMmSq int32  `json:"die_surface_mm2"`
-	// LithoNm        int32  `json:"litho_nm"`
+	// DieSurfaceMmSq uint32  `json:"die_surface_mm2"`
+	// LithoNm        uint32  `json:"litho_nm"`
 }
 
 type ResilioRam struct {
-	SizeGb int32 `json:"size_gb"`
+	SizeGb uint32 `json:"size_gb"`
 }
 
 type ResilioSsd struct {
-	SizeGb     int32  `json:"size_gb"`
+	SizeGb     uint32  `json:"size_gb"`
 	Technology string `json:"technology"`
 	Casing     string `json:"casing"`
 }
 
 type ResilioHddConfig struct {
-	Quantity int32 `json:"quantity"`
+	Quantity uint32 `json:"quantity"`
 }
 
 type ResilioGpu struct {
 	Name           string `json:"name"`
-	DieSurfaceMmSq int32  `json:"die_surface_mm2"`
-	LithoNm        int32  `json:"litho_nm"`
+	DieSurfaceMmSq uint32  `json:"die_surface_mm2"`
+	LithoNm        uint32  `json:"litho_nm"`
 }
 
 type ResilioPsu struct {
-	PowerWatt int32 `json:"power_watt"`
+	PowerWatt uint32 `json:"power_watt"`
 }
 
 type ResilioPowerUsage struct {
-	YearlyElectricityConsumption int32  `json:"yearly_electricity_consumption"`
-	PowerWatt                    int32  `json:"power_watt"`
-	DeltaTHour                   int32  `json:"delta_t_hour"`
+	YearlyElectricityConsumption uint32  `json:"yearly_electricity_consumption"`
+	PowerWatt                    uint32  `json:"power_watt"`
+	DeltaTHour                   uint32  `json:"delta_t_hour"`
 	Geography                    string `json:"geography"`
 }
 
 type ResilioHoursUsage struct {
-	DeltaTHour int32 `json:"delta_t_hour"`
+	DeltaTHour uint32 `json:"delta_t_hour"`
 }
 
 type ResilioRackServerUsage struct {
-	UsagePercent      int32             `json:"usage_percent"`
+	UsagePercent      uint32             `json:"usage_percent"`
 	WantedName        string            `json:"wanted_name"`
-	RackUnit          int32             `json:"rack_unit"`
+	RackUnit          uint32             `json:"rack_unit"`
 	ContigurationName string            `json:"configuration_name"`
 	Cpus              []ResilioCpu      `json:"cpus"`
 	Rams              []ResilioRam      `json:"rams"`
@@ -62,7 +62,7 @@ type ResilioRackServerUsage struct {
 }
 
 type ResilioVmUsage struct {
-	SizeRamGb  int32                  `json:"size_ram_gb"`
+	SizeRamGb  uint32                  `json:"size_ram_gb"`
 	Pue        float32                `json:"pue"`
 	Mirroring  float32                `json:"mirroring"`
 	RackServer ResilioRackServerUsage `json:"rack_server"`

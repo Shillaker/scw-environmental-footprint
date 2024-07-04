@@ -3,11 +3,11 @@ package server
 import (
 	"context"
 
-	"gitlab.infra.online.net/paas/carbon/api"
-	pb "gitlab.infra.online.net/paas/carbon/api/grpc/v1"
-	"gitlab.infra.online.net/paas/carbon/impact"
-	"gitlab.infra.online.net/paas/carbon/mapping"
-	"gitlab.infra.online.net/paas/carbon/model"
+	"github.com/shillaker/scw-environmental-footprint/api"
+	pb "github.com/shillaker/scw-environmental-footprint/api/grpc/v1"
+	"github.com/shillaker/scw-environmental-footprint/impact"
+	"github.com/shillaker/scw-environmental-footprint/mapping"
+	"github.com/shillaker/scw-environmental-footprint/model"
 )
 
 type UsageServer struct {

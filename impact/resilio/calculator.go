@@ -9,9 +9,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/shillaker/scw-environmental-footprint/model"
+	"github.com/shillaker/scw-environmental-footprint/util"
 	"github.com/spf13/viper"
-	"gitlab.infra.online.net/paas/carbon/model"
-	"gitlab.infra.online.net/paas/carbon/util"
 )
 
 type ResilioImpactCalculator struct {
@@ -35,7 +35,7 @@ func mapRegionToResilioRegion(regionIn string) (string, error) {
 func mapServerUsageToResilioModel(serverUsage model.ServerUsage) (ResilioRackServerUsage, error) {
 	request := ResilioRackServerUsage{}
 
-	request.UsagePercent = int32(serverUsage.Usage.LoadPercentage)
+	request.UsagePercent = uint32(serverUsage.Usage.LoadPercentage)
 	request.RackUnit = 1
 
 	resilioRegion, err := mapRegionToResilioRegion(serverUsage.Usage.Region)
@@ -44,7 +44,7 @@ func mapServerUsageToResilioModel(serverUsage model.ServerUsage) (ResilioRackSer
 	}
 
 	request.Usage = ResilioPowerUsage{
-		DeltaTHour: serverUsage.Usage.TimeHoursRoundedUp(),
+		DeltaTHour: uint32(serverUsage.Usage.TimeHoursRoundedUp()),
 		PowerWatt:  serverUsage.Server.PowerSupply.Watts,
 		Geography:  resilioRegion,
 		// YearlyElectricityConsumption: serverUsage.Server.PowerSupply.YearlyConsumptionKwh(),
@@ -59,7 +59,7 @@ func mapServerUsageToResilioModel(serverUsage model.ServerUsage) (ResilioRackSer
 
 	for _, cpu := range serverUsage.Server.Cpus {
 		request.Cpus = append(request.Cpus, ResilioCpu{
-			Name: cpu.Model,
+			Name: cpu.Name,
 		})
 	}
 
@@ -75,7 +75,7 @@ func mapServerUsageToResilioModel(serverUsage model.ServerUsage) (ResilioRackSer
 		})
 	}
 
-	request.Hdds.Quantity = int32(len(serverUsage.Server.Hdds))
+	request.Hdds.Quantity = uint32(len(serverUsage.Server.Hdds))
 
 	for _, ssd := range serverUsage.Server.Ssds {
 		request.Ssds = append(request.Ssds, ResilioSsd{

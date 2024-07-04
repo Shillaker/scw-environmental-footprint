@@ -9,8 +9,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
-	"gitlab.infra.online.net/paas/carbon/e2e"
-	"gitlab.infra.online.net/paas/carbon/util"
+	"github.com/shillaker/scw-environmental-footprint/e2e"
+	"github.com/shillaker/scw-environmental-footprint/util"
 )
 
 func makeJsonApiRequest(t *testing.T, relativeUrl string, jsonStr []byte) string {

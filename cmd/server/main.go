@@ -7,9 +7,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
-	pb "gitlab.infra.online.net/paas/carbon/api/grpc/v1"
-	"gitlab.infra.online.net/paas/carbon/api/server"
-	"gitlab.infra.online.net/paas/carbon/util"
+	pb "github.com/shillaker/scw-environmental-footprint/api/grpc/v1"
+	"github.com/shillaker/scw-environmental-footprint/api/server"
+	"github.com/shillaker/scw-environmental-footprint/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )

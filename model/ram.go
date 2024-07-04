@@ -5,7 +5,7 @@ const (
 	DefaultRamManufacturer = ManufacturerSamsung
 )
 
-func DefaultRam(units int32, capacityMiB int32) Ram {
+func DefaultRam(units uint32, capacityMiB uint32) Ram {
 	return Ram{
 		CapacityMib:  capacityMiB,
 		Manufacturer: DefaultRamManufacturer,
@@ -13,7 +13,7 @@ func DefaultRam(units int32, capacityMiB int32) Ram {
 	}
 }
 
-func DefaultRams(units int32, capacityMiB int32) []Ram {
+func DefaultRams(units uint32, capacityMiB uint32) []Ram {
 	return []Ram{
 		{
 			CapacityMib:  capacityMiB,
@@ -24,9 +24,10 @@ func DefaultRams(units int32, capacityMiB int32) []Ram {
 }
 
 type Ram struct {
-	Model        string
 	Manufacturer string
-	Units        int32
+	Units        uint32
+	FrequencyHz  uint32
+	Type         string
 
-	CapacityMib int32
+	CapacityMib uint32
 }

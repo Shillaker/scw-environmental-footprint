@@ -9,9 +9,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/shillaker/scw-environmental-footprint/model"
+	"github.com/shillaker/scw-environmental-footprint/util"
 	"github.com/spf13/viper"
-	"gitlab.infra.online.net/paas/carbon/model"
-	"gitlab.infra.online.net/paas/carbon/util"
 )
 
 type BoaviztaImpactCalculator struct {
@@ -42,9 +42,9 @@ func mapServerUsageToBoaviztaModel(serverUsage model.ServerUsage) (BoaviztaServe
 
 	cpu := serverUsage.Server.Cpus[0]
 	request.Configuration.Cpu = BoaviztaCpu{
+		Family:    cpu.Name,
 		Units:     int32(cpu.Units),
 		CoreUnits: int32(cpu.CoreUnits),
-		Family:    cpu.Family,
 		Tdp:       int32(cpu.Tdp),
 	}
 
