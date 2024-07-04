@@ -1,5 +1,21 @@
 # Data
 
+## Generating source data
+
+The source data is pulled from the [Scaleway API](https://www.scaleway.com/en/developers/api), using the [Scaleway Go SDK](https://www.scaleway.com/en/docs/developer-tools/scaleway-sdk/go-sdk/).
+
+To update the data, you can do the following:
+
+- Create a [Scaleway Console](https://console.scaleway.com) account, and an associated API key
+- Install [direnv]()
+- Add a `.envrc` in the root of this directory containing
+  - `CARBON_SCW_ACCESS_KEY` - the access key for your API key
+  - `CARBON_SCW_SECRET_KEY` - the secret key for your API key
+- Run `direnv allow`
+- Run `task update-scw`
+
+## TODOs
+
 To improve accuracy of server measurements, we need to provde more data and fill in some unknowns.
 
 The defaults are configured in the respective files in the `model` directory, e.g. `model/instances.go`.

@@ -30,6 +30,8 @@ func InitConfig() error {
 	viper.SetDefault("resilio.base_url", "https://db.resilio.tech/api")
 	viper.SetDefault("resilio.token", "foobar")
 
+	viper.SetDefault("dedibox.mode", "off")
+
 	initialised = true
 
 	return nil
