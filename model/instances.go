@@ -76,8 +76,7 @@ type Instance struct {
 
 // Definition of a VM, including the server it runs on
 type VirtualMachine struct {
-	Type string
-
+	Type   string
 	VCpus  uint32
 	RamGiB uint32
 	HddGiB uint32
@@ -238,6 +237,14 @@ var BasePop2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
+	Ssds: []Ssd{
+		{
+			CapacityMib: 1024 * 1024,
+			Units:       5,
+			Technology:  SsdTechnologyMlc,
+			Casing:      SsdCasingM2,
+		},
+	},
 	Rams:        DefaultRams(8, 32*1024),
 	VCpuPerCpu:  AmdEpyc7543.Threads,
 	PowerSupply: DefaultPowerSupply(400),
@@ -248,6 +255,14 @@ var BasePop2HmHost = Server{
 	Name: "pop2hm.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
+	},
+	Ssds: []Ssd{
+		{
+			CapacityMib: 1024 * 1024,
+			Units:       5,
+			Technology:  SsdTechnologyMlc,
+			Casing:      SsdCasingM2,
+		},
 	},
 	Rams:        DefaultRams(16, 32*1024),
 	VCpuPerCpu:  AmdEpyc7543.Threads,
@@ -260,8 +275,17 @@ var BasePop2HcHost = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
+	Ssds: []Ssd{
+		{
+			CapacityMib: 1024 * 1024,
+			Units:       5,
+			Technology:  SsdTechnologyMlc,
+			Casing:      SsdCasingM2,
+		},
+	},
 	Rams:       DefaultRams(16, 32*1024),
 	VCpuPerCpu: AmdEpyc7543.Threads,
+	PowerSupply: DefaultPowerSupply(400),
 }
 
 // Base for the STARDUST1 range (shared vCPUs)

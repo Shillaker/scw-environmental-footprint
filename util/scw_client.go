@@ -95,7 +95,11 @@ func (s *SCWClient) ListInstanceVMs(ctx context.Context) (map[string][]model.Vir
 				instanceVm.Server = model.BaseEnt1Host
 			} else if strings.HasPrefix(instanceName, "gp1") {
 				instanceVm.Server = model.BaseGp1Host
-			} else if strings.HasPrefix(instanceName, "pop2") {
+			} else if strings.HasPrefix(instanceName, "pop2-hm") {
+				instanceVm.Server = model.BasePop2HmHost
+			} else if strings.HasPrefix(instanceName, "pop2-hc") {
+				instanceVm.Server = model.BasePop2HcHost
+			} else if strings.HasPrefix(instanceName, "pop2") { // Must come after pop2-hm/hc
 				instanceVm.Server = model.BasePop2Host
 			} else if strings.HasPrefix(instanceName, "pro2") {
 				instanceVm.Server = model.BasePro2Host
