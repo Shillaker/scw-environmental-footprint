@@ -83,7 +83,7 @@ func writeInstances() error {
 }
 
 func writeServers() error {
-	yamlData, err := yaml.Marshal(model.InstanceBaseServers)
+	yamlData, err := yaml.Marshal(model.VirtualMachines)
 	if err != nil {
 		log.Errorf("failed to serialise servers to YAML %v", err)
 		return err

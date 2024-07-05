@@ -13,7 +13,7 @@ func TestInstanceHostShare(t *testing.T) {
 		},
 	}
 
-	instanceBase := InstanceBaseServer{
+	instanceBase := VirtualMachine{
 		VCpus:  4,
 		Server: server,
 	}

@@ -7,6 +7,8 @@ import "fmt"
 // Instances table: https://www.scaleway.com/en/pricing/?tags=compute
 
 const (
+	DefaultInstanceHddGib = 20
+
 	InstancePlay2Pico  = "play2-pico"
 	InstancePlay2Nano  = "play2-nano"
 	InstancePlay2Micro = "play2-micro"
@@ -66,14 +68,16 @@ const (
 	InstanceCopArm32C128G = "coparm1-32c-128g"
 )
 
-// Instance - an identifier for an instance type
+// An identifier for an instance type
 type Instance struct {
 	Type        string
 	Description string
 }
 
-// InstanceBaseServer - definition of an instance's virtualized resources, and the server it runs on
-type InstanceBaseServer struct {
+// Definition of a VM, including the server it runs on
+type VirtualMachine struct {
+	Type string
+
 	VCpus  uint32
 	RamGiB uint32
 	HddGiB uint32
@@ -93,8 +97,8 @@ func DefaultInstanceSsd(capacityGiB uint32) []Ssd {
 	}
 }
 
-// GetHostShare - the percentage share of the impact of the underlying host attributable to the instance
-func (i *InstanceBaseServer) GetHostShare() float32 {
+// The percentage share of the impact of the underlying host attributable to the instance
+func (i *VirtualMachine) GetHostShare() float32 {
 	totalVCpus := uint32(0)
 
 	for _, cpu := range i.Server.Cpus {
@@ -108,7 +112,7 @@ func (i *InstanceBaseServer) GetHostShare() float32 {
 	return float32(i.VCpus) / float32(totalVCpus)
 }
 
-// BasePlay2Host - base for the Play2 range (shared vCPUs)
+// Base for the Play2 range (shared vCPUs)
 var BasePlay2Host = Server{
 	Name: "play2.base",
 	Cpus: []Cpu{
@@ -138,7 +142,7 @@ var BasePlay2Host = Server{
 	},
 }
 
-// BasePro2Hose - base for the PRO2 range (shared vCPUs)
+// Base for the PRO2 range (shared vCPUs)
 var BasePro2Host = Server{
 	Name: "pro2.base",
 	Cpus: []Cpu{
@@ -168,7 +172,7 @@ var BasePro2Host = Server{
 	},
 }
 
-// BaseDev1Host - base for the DEV1 range (shared vCPUs)
+// Base for the DEV1 range (shared vCPUs)
 var BaseDev1Host = Server{
 	Name: "dev1.base",
 	Cpus: []Cpu{
@@ -198,7 +202,7 @@ var BaseDev1Host = Server{
 	},
 }
 
-// BaseGp1Host - base for the GP1 range (shared vCPUs)
+// Base for the GP1 range (shared vCPUs)
 var BaseGp1Host = Server{
 	Name: "gp1.base",
 	Cpus: []Cpu{
@@ -228,7 +232,7 @@ var BaseGp1Host = Server{
 	},
 }
 
-// BasePop2Host - base for the POP2 range (dedicated vCPUs)
+// Base for the POP2 range (dedicated vCPUs)
 var BasePop2Host = Server{
 	Name: "pop2.base",
 	Cpus: []Cpu{
@@ -239,7 +243,7 @@ var BasePop2Host = Server{
 	PowerSupply: DefaultPowerSupply(400),
 }
 
-// BasePop2HmHost - base for the POP2HM range (dedicated vCPUs)
+// Base for the POP2HM range (dedicated vCPUs)
 var BasePop2HmHost = Server{
 	Name: "pop2hm.base",
 	Cpus: []Cpu{
@@ -250,7 +254,7 @@ var BasePop2HmHost = Server{
 	PowerSupply: DefaultPowerSupply(400),
 }
 
-// BasePop2HcHost - base for the POP2HC range (dedicated vCPUs)
+// Base for the POP2HC range (dedicated vCPUs)
 var BasePop2HcHost = Server{
 	Name: "pop2hc.base",
 	Cpus: []Cpu{
@@ -260,7 +264,7 @@ var BasePop2HcHost = Server{
 	VCpuPerCpu: AmdEpyc7543.Threads,
 }
 
-// BaseStardust1Host - base for the STARDUST1 range (shared vCPUs)
+// Base for the STARDUST1 range (shared vCPUs)
 var BaseStardust1Host = Server{
 	Name: "stardust1.base",
 	Cpus: []Cpu{
@@ -290,7 +294,7 @@ var BaseStardust1Host = Server{
 	},
 }
 
-// BaseEnt1Host - base for the ENT1 range (dedicated vCPUs, or not?)
+// Base for the ENT1 range (dedicated vCPUs, or not?)
 var BaseEnt1Host = Server{
 	Name: "ent1.base",
 	Cpus: []Cpu{
@@ -320,7 +324,7 @@ var BaseEnt1Host = Server{
 	},
 }
 
-// BaseCopArm1Host - base for the COP ARM1 range (shared vCPUs)
+// Base for the COP ARM1 range (shared vCPUs)
 var BaseCopArm1Host = Server{
 	Name: "coparm1.base",
 	Cpus: []Cpu{
@@ -330,23 +334,23 @@ var BaseCopArm1Host = Server{
 	VCpuPerCpu: 2 * AmpereAltraMaxM12832.Threads,
 }
 
-// InstanceToString - convert an instance into a readable string representation
-func InstanceToString(instanceBase InstanceBaseServer) string {
+// Convert an instance into a readable string representation
+func InstanceToString(instanceBase VirtualMachine) string {
 	cpuName := instanceBase.Server.Cpus[0].Name
 	return fmt.Sprintf("%v vCPU, %v GiB, %v CPU", instanceBase.VCpus, instanceBase.RamGiB, cpuName)
 }
 
-func buildInstanceBase(baseServer Server, nVcpu uint32, ramGiB uint32) InstanceBaseServer {
+func buildInstanceBase(baseServer Server, nVcpu uint32, ramGiB uint32) VirtualMachine {
 	server := baseServer
 
-	return InstanceBaseServer{
+	return VirtualMachine{
 		VCpus:  nVcpu,
 		RamGiB: ramGiB,
 		Server: server,
 	}
 }
 
-var InstanceServerMapping = map[string]InstanceBaseServer{
+var InstanceServerMapping = map[string]VirtualMachine{
 	InstancePlay2Pico:     buildInstanceBase(BasePlay2Host, 1, 2),
 	InstancePlay2Nano:     buildInstanceBase(BasePlay2Host, 2, 4),
 	InstancePlay2Micro:    buildInstanceBase(BasePlay2Host, 4, 8),
@@ -397,7 +401,7 @@ var InstanceServerMapping = map[string]InstanceBaseServer{
 	InstanceEnt1Xxl:       buildInstanceBase(BaseEnt1Host, 96, 384),
 }
 
-var InstanceBaseServers = []Server{
+var VirtualMachines = []Server{
 	BasePlay2Host,
 	BasePro2Host,
 	BaseDev1Host,

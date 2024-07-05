@@ -18,11 +18,10 @@ To update the data, you can do the following:
 
 To improve accuracy of server measurements, we need to provde more data and fill in some unknowns.
 
-The defaults are configured in the respective files in the `model` directory, e.g. `model/instances.go`.
-
 _VMs_
 
 - Instance per server - this defines how many VMs are sharing a given host. This is just estimated at the moment. VM usages is calculated by dividing the impact of the underlying server by the number of VMs on the host
+- GPU instance types - L5, L40s, H100
 
 _CPUs_
 

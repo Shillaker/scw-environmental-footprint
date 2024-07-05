@@ -46,7 +46,7 @@ func NewClient(ctx context.Context) (*SCWClient, error) {
 	return client, err
 }
 
-func (s *SCWClient) ListInstanceServers(ctx context.Context) (map[string]map[string]*instance.ServerType, error) {
+func (s *SCWClient) ListInstanceServerTypes(ctx context.Context) (map[string]map[string]*instance.ServerType, error) {
 	api := instance.NewAPI(s.cli)
 
 	offers := map[string]map[string]*instance.ServerType{}
@@ -64,6 +64,57 @@ func (s *SCWClient) ListInstanceServers(ctx context.Context) (map[string]map[str
 	}
 
 	return offers, nil
+}
+
+func (s *SCWClient) ListInstanceVMs(ctx context.Context) (map[string][]model.VirtualMachine, error) {
+	serverTypes, err := s.ListInstanceServerTypes(ctx)
+
+	if err != nil {
+		return nil, err
+	}
+
+	servers := map[string][]model.VirtualMachine{}
+
+	for zone, serverTypes := range serverTypes {
+		for instanceName, serverType := range serverTypes {
+			instanceVm := model.VirtualMachine{
+				Type:   instanceName,
+				HddGiB: model.DefaultInstanceHddGib,
+				VCpus:  serverType.Ncpus,
+				Gpus:   uint32(*serverType.Gpu),
+				RamGiB: uint32(serverType.RAM / 1024 / 1024 / 1024),
+			}
+
+			instanceName = strings.ToLower(instanceName)
+
+			if strings.HasPrefix(instanceName, "coparm") {
+				instanceVm.Server = model.BaseCopArm1Host
+			} else if strings.HasPrefix(instanceName, "dev1") {
+				instanceVm.Server = model.BaseDev1Host
+			} else if strings.HasPrefix(instanceName, "ent1") {
+				instanceVm.Server = model.BaseEnt1Host
+			} else if strings.HasPrefix(instanceName, "gp1") {
+				instanceVm.Server = model.BaseGp1Host
+			} else if strings.HasPrefix(instanceName, "pop2") {
+				instanceVm.Server = model.BasePop2Host
+			} else if strings.HasPrefix(instanceName, "pro2") {
+				instanceVm.Server = model.BasePro2Host
+			} else if strings.HasPrefix(instanceName, "play2") {
+				instanceVm.Server = model.BasePlay2Host
+			} else if strings.HasPrefix(instanceName, "ent1") {
+				instanceVm.Server = model.BaseEnt1Host
+			} else if strings.HasPrefix(instanceName, "stardust1") {
+				instanceVm.Server = model.BaseStardust1Host
+			} else {
+				log.Warnf("Skipping instance, no mapping for type %s", instanceName)
+				continue
+			}
+
+			servers[zone] = append(servers[zone], instanceVm)
+		}
+	}
+
+	return servers, nil
 }
 
 func (s *SCWClient) ListElasticMetalOffers(ctx context.Context) (map[string][]*bm.Offer, error) {

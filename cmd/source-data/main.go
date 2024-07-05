@@ -92,9 +92,9 @@ func main() {
 		log.Fatal("as write", log.WithError(err))
 	}
 
-	instanceServers, err := client.ListInstanceServers(ctx)
+	instanceServers, err := client.ListInstanceVMs(ctx)
 	if err != nil {
-		log.Fatal("could not list instance servers", log.WithError(err))
+		log.Fatal("could not list instance VMs", log.WithError(err))
 	}
 
 	instancesData, err := yaml.Marshal(instanceServers)

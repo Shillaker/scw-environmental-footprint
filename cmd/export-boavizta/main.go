@@ -120,7 +120,7 @@ func writeServers() error {
 	serversWriter.Write(serversHeaders)
 	defer serversWriter.Flush()
 
-	for _, server := range model.InstanceBaseServers {
+	for _, server := range model.VirtualMachines {
 		row := []string{
 			server.Name, // ID
 			"",          // Manufacturer
