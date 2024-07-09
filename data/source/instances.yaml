@@ -1,0 +1,1870 @@
+coparm1-2c-8g:
+  type: COPARM1-2C-8G
+  vcpus: 2
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: coparm1.base
+    cpus:
+    - name: Ampere Altra Max 128
+      units: 1
+      coreunits: 128
+      threads: 128
+      frequencyhz: 3000
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 16384
+    ssds: []
+    hdds: []
+    vcpupercpu: 256
+    motherboard:
+      units: 0
+    powersupply:
+      units: 0
+      watts: 0
+      weightkg: 0
+coparm1-4c-16g:
+  type: COPARM1-4C-16G
+  vcpus: 4
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: coparm1.base
+    cpus:
+    - name: Ampere Altra Max 128
+      units: 1
+      coreunits: 128
+      threads: 128
+      frequencyhz: 3000
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 16384
+    ssds: []
+    hdds: []
+    vcpupercpu: 256
+    motherboard:
+      units: 0
+    powersupply:
+      units: 0
+      watts: 0
+      weightkg: 0
+coparm1-8c-32g:
+  type: COPARM1-8C-32G
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: coparm1.base
+    cpus:
+    - name: Ampere Altra Max 128
+      units: 1
+      coreunits: 128
+      threads: 128
+      frequencyhz: 3000
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 16384
+    ssds: []
+    hdds: []
+    vcpupercpu: 256
+    motherboard:
+      units: 0
+    powersupply:
+      units: 0
+      watts: 0
+      weightkg: 0
+coparm1-16c-64g:
+  type: COPARM1-16C-64G
+  vcpus: 16
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: coparm1.base
+    cpus:
+    - name: Ampere Altra Max 128
+      units: 1
+      coreunits: 128
+      threads: 128
+      frequencyhz: 3000
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 16384
+    ssds: []
+    hdds: []
+    vcpupercpu: 256
+    motherboard:
+      units: 0
+    powersupply:
+      units: 0
+      watts: 0
+      weightkg: 0
+coparm1-32c-128g:
+  type: COPARM1-32C-128G
+  vcpus: 32
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: coparm1.base
+    cpus:
+    - name: Ampere Altra Max 128
+      units: 1
+      coreunits: 128
+      threads: 128
+      frequencyhz: 3000
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 16384
+    ssds: []
+    hdds: []
+    vcpupercpu: 256
+    motherboard:
+      units: 0
+    powersupply:
+      units: 0
+      watts: 0
+      weightkg: 0
+dev1-l:
+  type: DEV1-L
+  vcpus: 4
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: dev1.base
+    cpus:
+    - name: AMD EPYC 7281
+      units: 1
+      coreunits: 16
+      threads: 32
+      frequencyhz: 2100
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+dev1-m:
+  type: DEV1-M
+  vcpus: 3
+  ramgib: 4
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: dev1.base
+    cpus:
+    - name: AMD EPYC 7281
+      units: 1
+      coreunits: 16
+      threads: 32
+      frequencyhz: 2100
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+dev1-s:
+  type: DEV1-S
+  vcpus: 2
+  ramgib: 2
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: dev1.base
+    cpus:
+    - name: AMD EPYC 7281
+      units: 1
+      coreunits: 16
+      threads: 32
+      frequencyhz: 2100
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+dev1-xl:
+  type: DEV1-XL
+  vcpus: 4
+  ramgib: 12
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: dev1.base
+    cpus:
+    - name: AMD EPYC 7281
+      units: 1
+      coreunits: 16
+      threads: 32
+      frequencyhz: 2100
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-2xl:
+  type: ENT1-2XL
+  vcpus: 96
+  ramgib: 384
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-l:
+  type: ENT1-L
+  vcpus: 32
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-m:
+  type: ENT1-M
+  vcpus: 16
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-s:
+  type: ENT1-S
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-xl:
+  type: ENT1-XL
+  vcpus: 64
+  ramgib: 256
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-xs:
+  type: ENT1-XS
+  vcpus: 4
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+ent1-xxs:
+  type: ENT1-XXS
+  vcpus: 2
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: ent1.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 245760
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+gp1-l:
+  type: GP1-L
+  vcpus: 32
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: gp1.base
+    cpus:
+    - name: AMD EPYC 7401P
+      units: 2
+      coreunits: 24
+      threads: 48
+      frequencyhz: 2000
+    gpus: []
+    rams:
+    - units: 12
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 96
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+gp1-m:
+  type: GP1-M
+  vcpus: 16
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: gp1.base
+    cpus:
+    - name: AMD EPYC 7401P
+      units: 2
+      coreunits: 24
+      threads: 48
+      frequencyhz: 2000
+    gpus: []
+    rams:
+    - units: 12
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 96
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+gp1-s:
+  type: GP1-S
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: gp1.base
+    cpus:
+    - name: AMD EPYC 7401P
+      units: 2
+      coreunits: 24
+      threads: 48
+      frequencyhz: 2000
+    gpus: []
+    rams:
+    - units: 12
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 96
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+gp1-viz:
+  type: GP1-VIZ
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: gp1.base
+    cpus:
+    - name: AMD EPYC 7401P
+      units: 2
+      coreunits: 24
+      threads: 48
+      frequencyhz: 2000
+    gpus: []
+    rams:
+    - units: 12
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 96
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+gp1-xl:
+  type: GP1-XL
+  vcpus: 48
+  ramgib: 256
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: gp1.base
+    cpus:
+    - name: AMD EPYC 7401P
+      units: 2
+      coreunits: 24
+      threads: 48
+      frequencyhz: 2000
+    gpus: []
+    rams:
+    - units: 12
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 96
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+gp1-xs:
+  type: GP1-XS
+  vcpus: 4
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: gp1.base
+    cpus:
+    - name: AMD EPYC 7401P
+      units: 2
+      coreunits: 24
+      threads: 48
+      frequencyhz: 2000
+    gpus: []
+    rams:
+    - units: 12
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 96
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+play2-micro:
+  type: PLAY2-MICRO
+  vcpus: 4
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: play2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 65536
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+play2-nano:
+  type: PLAY2-NANO
+  vcpus: 2
+  ramgib: 4
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: play2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 65536
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+play2-pico:
+  type: PLAY2-PICO
+  vcpus: 1
+  ramgib: 2
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: play2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 65536
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+pop2-2c-8g:
+  type: POP2-2C-8G
+  vcpus: 2
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-2c-8g-win:
+  type: POP2-2C-8G-WIN
+  vcpus: 2
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-4c-16g:
+  type: POP2-4C-16G
+  vcpus: 4
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-4c-16g-win:
+  type: POP2-4C-16G-WIN
+  vcpus: 4
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-8c-32g:
+  type: POP2-8C-32G
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-8c-32g-win:
+  type: POP2-8C-32G-WIN
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-16c-64g:
+  type: POP2-16C-64G
+  vcpus: 16
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-16c-64g-win:
+  type: POP2-16C-64G-WIN
+  vcpus: 16
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-32c-128g:
+  type: POP2-32C-128G
+  vcpus: 32
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-32c-128g-win:
+  type: POP2-32C-128G-WIN
+  vcpus: 32
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-64c-256g:
+  type: POP2-64C-256G
+  vcpus: 64
+  ramgib: 256
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hc-2c-4g:
+  type: POP2-HC-2C-4G
+  vcpus: 2
+  ramgib: 4
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hc.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hc-4c-8g:
+  type: POP2-HC-4C-8G
+  vcpus: 4
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hc.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hc-8c-16g:
+  type: POP2-HC-8C-16G
+  vcpus: 8
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hc.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hc-16c-32g:
+  type: POP2-HC-16C-32G
+  vcpus: 16
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hc.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hc-32c-64g:
+  type: POP2-HC-32C-64G
+  vcpus: 32
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hc.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hc-64c-128g:
+  type: POP2-HC-64C-128G
+  vcpus: 64
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hc.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hm-2c-16g:
+  type: POP2-HM-2C-16G
+  vcpus: 2
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hm.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hm-4c-32g:
+  type: POP2-HM-4C-32G
+  vcpus: 4
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hm.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hm-8c-64g:
+  type: POP2-HM-8C-64G
+  vcpus: 8
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hm.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hm-16c-128g:
+  type: POP2-HM-16C-128G
+  vcpus: 16
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hm.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hm-32c-256g:
+  type: POP2-HM-32C-256G
+  vcpus: 32
+  ramgib: 256
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hm.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hm-64c-512g:
+  type: POP2-HM-64C-512G
+  vcpus: 64
+  ramgib: 512
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2hm.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 16
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pro2-l:
+  type: PRO2-L
+  vcpus: 32
+  ramgib: 128
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pro2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 24
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+pro2-m:
+  type: PRO2-M
+  vcpus: 16
+  ramgib: 64
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pro2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 24
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+pro2-s:
+  type: PRO2-S
+  vcpus: 8
+  ramgib: 32
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pro2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 24
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+pro2-xs:
+  type: PRO2-XS
+  vcpus: 4
+  ramgib: 16
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pro2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 24
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+pro2-xxs:
+  type: PRO2-XXS
+  vcpus: 2
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pro2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 2
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 24
+      frequencyhz: 3200000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 2
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 491520
+    hdds: []
+    vcpupercpu: 128
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2
+stardust1-s:
+  type: STARDUST1-S
+  vcpus: 1
+  ramgib: 1
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: stardust1.base
+    cpus:
+    - name: AMD EPYC 7281
+      units: 1
+      coreunits: 16
+      threads: 32
+      frequencyhz: 2100
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 2666000000
+      type: ddr4
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 2
+      watts: 800
+      weightkg: 2

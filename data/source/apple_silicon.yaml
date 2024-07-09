@@ -1,0 +1,66 @@
+M2-L:
+  product: AS
+  name: M2-L
+  cpus:
+  - name: apple m2 pro
+    units: 1
+    coreunits: 10
+    threads: 0
+    frequencyhz: 3500000000
+  gpus:
+  - manufacturer: ""
+    name: Apple M2 Pro
+    units: 1
+    memorymib: 0
+    cores: 16
+  rams:
+  - units: 1
+    frequencyhz: 0
+    type: ddr5
+    capacitymib: 16384
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 524288
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+M2-M:
+  product: AS
+  name: M2-M
+  cpus:
+  - name: apple m2
+    units: 1
+    coreunits: 8
+    threads: 0
+    frequencyhz: 3500000000
+  gpus:
+  - manufacturer: ""
+    name: Apple M2
+    units: 1
+    memorymib: 0
+    cores: 10
+  rams:
+  - units: 1
+    frequencyhz: 0
+    type: ddr5
+    capacitymib: 16384
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 262144
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
