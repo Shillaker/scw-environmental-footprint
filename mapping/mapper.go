@@ -5,16 +5,18 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/shillaker/scw-environmental-footprint/data"
 	"github.com/shillaker/scw-environmental-footprint/model"
 	"github.com/shillaker/scw-environmental-footprint/util"
 )
 
 type ScwMapper struct {
+	Reader *data.DataReader
 }
 
 func (s *ScwMapper) ListInstances() []model.Instance {
 	var instances []model.Instance
-	for instanceName, server := range model.InstanceServerMapping {
+	for instanceName, server := range s.Reader.InstancesData {
 		instances = append(instances, model.Instance{
 			Type:        instanceName,
 			Description: fmt.Sprintf("%v (%v)", instanceName, model.InstanceToString(server)),
@@ -26,7 +28,7 @@ func (s *ScwMapper) ListInstances() []model.Instance {
 
 func (s *ScwMapper) ListElasticMetal() []model.ElasticMetal {
 	var ems []model.ElasticMetal
-	for emName, server := range model.ElasticMetalServerMapping {
+	for emName, server := range s.Reader.ElasticMetalData {
 		ems = append(ems, model.ElasticMetal{
 			Type:        emName,
 			Description: fmt.Sprintf("%v (%v)", emName, model.ServerToString(server)),
@@ -70,7 +72,7 @@ func (s *ScwMapper) doServerUsage(server model.Server, cloudUsage model.CloudUsa
 func (s *ScwMapper) MapElasticMetalUsage(em model.ElasticMetal, cloudUsage model.CloudUsageAmount) ([]model.ServerUsage, error) {
 	log.Debugf("Calculating usage for elastic metal type %v", em.Type)
 
-	server, exists := model.ElasticMetalServerMapping[em.Type]
+	server, exists := s.Reader.ElasticMetalData[em.Type]
 	if !exists {
 		return nil, util.ErrNoMappingFound
 	}
@@ -81,7 +83,7 @@ func (s *ScwMapper) MapElasticMetalUsage(em model.ElasticMetal, cloudUsage model
 func (s *ScwMapper) MapInstanceUsage(instance model.Instance, cloudUsage model.CloudUsageAmount) ([]model.ServerUsage, error) {
 	log.Debugf("Calculating usage for instance type %v", instance.Type)
 
-	instanceBase, exists := model.InstanceServerMapping[instance.Type]
+	instanceBase, exists := s.Reader.InstancesData[instance.Type]
 	if !exists {
 		return nil, util.ErrNoMappingFound
 	}
@@ -121,7 +123,7 @@ func (s *ScwMapper) MapKubernetesUsage(cpType model.KubernetesControlPlaneType, 
 
 	// Iterate through pools
 	for _, pool := range pools {
-		poolInstance, exists := model.InstanceServerMapping[pool.Instance.Type]
+		poolInstance, exists := s.Reader.InstancesData[pool.Instance.Type]
 		if !exists {
 			return nil, util.ErrNoMappingFound
 		}
@@ -149,4 +151,15 @@ func (s *ScwMapper) MapStorageUsage(storage model.Storage, cloudUsage model.Clou
 	var usage []model.ServerUsage
 
 	return usage, nil
+}
+
+func NewScwMapper() (*ScwMapper, error) {
+	reader, err := data.NewDataReader()
+	if err != nil {
+		return nil, err
+	}
+
+	return &ScwMapper{
+		Reader: reader,
+	}, nil
 }

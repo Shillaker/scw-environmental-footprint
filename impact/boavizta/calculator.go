@@ -45,25 +45,22 @@ func mapServerUsageToBoaviztaModel(serverUsage model.ServerUsage) (BoaviztaServe
 		Family:    cpu.Name,
 		Units:     int32(cpu.Units),
 		CoreUnits: int32(cpu.CoreUnits),
-		Tdp:       int32(cpu.Tdp),
 	}
 
 	// RAM
 	for _, ram := range serverUsage.Server.Rams {
 		request.Configuration.Ram = append(request.Configuration.Ram, BoaviztaRam{
-			CapacityGib:  int32(ram.CapacityMib / 1024),
-			Units:        1,
-			Manufacturer: ram.Manufacturer,
+			CapacityGib: int32(ram.CapacityMib / 1024),
+			Units:       1,
 		})
 	}
 
 	// SSD
 	for _, ssd := range serverUsage.Server.Ssds {
 		request.Configuration.Disk = append(request.Configuration.Disk, BoaviztaDisk{
-			Type:         "ssd",
-			CapacityGib:  int32(ssd.CapacityMib / 1024),
-			Units:        int32(ssd.Units),
-			Manufacturer: ssd.Manufacturer,
+			Type:        "ssd",
+			CapacityGib: int32(ssd.CapacityMib / 1024),
+			Units:       int32(ssd.Units),
 		})
 	}
 

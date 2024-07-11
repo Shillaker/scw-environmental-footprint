@@ -55,7 +55,7 @@ func (d *DataWriter) WriteDediboxData(ctx context.Context) error {
 			return err
 		}
 
-		err = ioutil.WriteFile(DediboxFile, dediboxData, 0766)
+		err = ioutil.WriteFile(GetDediboxFile(), dediboxData, 0766)
 		if err != nil {
 			log.Error("dedibox write", log.WithError(err))
 			return err
@@ -78,7 +78,7 @@ func (d *DataWriter) WriteElasticMetalData(ctx context.Context) error {
 		return err
 	}
 
-	err = ioutil.WriteFile(EmFile, emData, 0766)
+	err = ioutil.WriteFile(GetElasticMetalFile(), emData, 0766)
 	if err != nil {
 		log.Error("em write", log.WithError(err))
 		return err
@@ -100,7 +100,7 @@ func (d *DataWriter) WriteAppleSiliconData(ctx context.Context) error {
 		return err
 	}
 
-	err = ioutil.WriteFile(AppleSiliconFile, asData, 0766)
+	err = ioutil.WriteFile(GetAppleSiliconFile(), asData, 0766)
 	if err != nil {
 		log.Error("as write", log.WithError(err))
 		return err
@@ -122,7 +122,7 @@ func (d *DataWriter) WriteInstancesData(ctx context.Context) error {
 		return err
 	}
 
-	err = ioutil.WriteFile(InstancesFile, instancesData, 0766)
+	err = ioutil.WriteFile(GetInstancesFile(), instancesData, 0766)
 	if err != nil {
 		log.Error("instance write", log.WithError(err))
 		return err
@@ -132,7 +132,7 @@ func (d *DataWriter) WriteInstancesData(ctx context.Context) error {
 }
 
 func NewDataWriter(ctx context.Context) (*DataWriter, error) {
-	err := os.MkdirAll(DataSourceDir, os.ModePerm)
+	err := os.MkdirAll(GetDataSoureDir(), os.ModePerm)
 	if err != nil {
 		log.Error("could not create output dir", log.WithError(err))
 		return nil, err

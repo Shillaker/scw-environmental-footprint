@@ -26,6 +26,8 @@ Create a `.envrc` file in the root of the project, and add:
 ```bash
 export CARBON_GATEWAY_BACKEND_HOST=localhost
 export CARBON_BOAVIZTA_HOST=localhost
+
+export CARBON_GLOBAL_PROJECT_ROOT=<path to this checkout>
 ```
 
 Then run `direnv allow`.

@@ -32,6 +32,8 @@ func InitConfig() error {
 
 	viper.SetDefault("dedibox.mode", "off")
 
+	viper.SetDefault("global.project_root", "/app")
+
 	initialised = true
 
 	return nil

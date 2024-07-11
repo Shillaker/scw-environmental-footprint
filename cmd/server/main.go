@@ -31,7 +31,12 @@ func main() {
 
 	s := grpc.NewServer()
 
-	pb.RegisterUsageImpactServer(s, server.NewUsageServer())
+	ser, err := server.NewUsageServer()
+	if err != nil {
+		log.Fatalf("failed to start server: %v", err)
+	}
+
+	pb.RegisterUsageImpactServer(s, ser)
 	reflection.Register(s)
 
 	log.Infof("server listening at %v", lis.Addr())
