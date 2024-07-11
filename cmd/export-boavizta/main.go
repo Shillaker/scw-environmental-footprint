@@ -108,7 +108,7 @@ func writeInstances() error {
 	return nil
 }
 
-func writeServers() error {
+func writeBaseServers() error {
 	serversFile, err := os.Create(serversOutPath)
 	if err != nil {
 		log.Errorf("failed to open servers file at %v: %v", serversOutPath, err)
@@ -120,7 +120,7 @@ func writeServers() error {
 	serversWriter.Write(serversHeaders)
 	defer serversWriter.Flush()
 
-	for _, server := range model.VirtualMachines {
+	for _, server := range model.BaseInstanceServers {
 		row := []string{
 			server.Name, // ID
 			"",          // Manufacturer
@@ -172,7 +172,7 @@ func main() {
 		log.WithError(err).Fatalf("Failed writing instances")
 	}
 
-	err = writeServers()
+	err = writeBaseServers()
 	if err != nil {
 		log.WithError(err).Fatalf("Failed writing servers")
 	}
