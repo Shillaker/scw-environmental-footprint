@@ -42,11 +42,11 @@ tasks:
 
   vm-install:
     cmds:
-      - cd ansible && ansible-playbook -i inventory/all.yml install.yml
+      - cd ansible && ansible-playbook -i inventory/all.yaml install.yml
 
   vm-deploy:
     cmds:
-      - cd ansible && ansible-playbook -i inventory/all.yml deploy.yml
+      - cd ansible && ansible-playbook -i inventory/all.yaml deploy.yml
 
   dev-nginx:
     cmds:
