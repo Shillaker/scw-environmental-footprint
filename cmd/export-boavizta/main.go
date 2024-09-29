@@ -8,6 +8,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/shillaker/scw-environmental-footprint/mapping"
 	"github.com/shillaker/scw-environmental-footprint/model"
 	"github.com/shillaker/scw-environmental-footprint/util"
 )
@@ -86,7 +87,8 @@ func writeInstances() error {
 	instancesWriter.Write(instancesHeaders)
 	defer instancesWriter.Flush()
 
-	for name, instance := range model.InstanceServerMapping {
+	mapper, err := mapping.NewScwMapper()
+	for name, instance := range mapper.Reader.InstancesData {
 		row := []string{
 			name,
 			fmt.Sprintf("%v", instance.VCpus),

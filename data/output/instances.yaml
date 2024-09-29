@@ -5,7 +5,7 @@ coparm1-2c-8g:
     ssdgib: 0
     gpus: 0
     server:
-        name: coparm1.base
+        name: scw_coparm1.base
         cpus:
             - model: Altra Max 128
               manufacturer: Ampere
@@ -40,7 +40,7 @@ coparm1-4c-16g:
     ssdgib: 0
     gpus: 0
     server:
-        name: coparm1.base
+        name: scw_coparm1.base
         cpus:
             - model: Altra Max 128
               manufacturer: Ampere
@@ -75,7 +75,7 @@ coparm1-8c-32g:
     ssdgib: 0
     gpus: 0
     server:
-        name: coparm1.base
+        name: scw_coparm1.base
         cpus:
             - model: Altra Max 128
               manufacturer: Ampere
@@ -110,7 +110,7 @@ coparm1-16c-64g:
     ssdgib: 0
     gpus: 0
     server:
-        name: coparm1.base
+        name: scw_coparm1.base
         cpus:
             - model: Altra Max 128
               manufacturer: Ampere
@@ -145,7 +145,7 @@ coparm1-32c-128g:
     ssdgib: 0
     gpus: 0
     server:
-        name: coparm1.base
+        name: scw_coparm1.base
         cpus:
             - model: Altra Max 128
               manufacturer: Ampere
@@ -180,7 +180,7 @@ dev1-l:
     ssdgib: 0
     gpus: 0
     server:
-        name: dev1.base
+        name: scw_dev1.base
         cpus:
             - model: EPYC 7281
               manufacturer: AMD
@@ -221,7 +221,7 @@ dev1-m:
     ssdgib: 0
     gpus: 0
     server:
-        name: dev1.base
+        name: scw_dev1.base
         cpus:
             - model: EPYC 7281
               manufacturer: AMD
@@ -262,7 +262,7 @@ dev1-s:
     ssdgib: 0
     gpus: 0
     server:
-        name: dev1.base
+        name: scw_dev1.base
         cpus:
             - model: EPYC 7281
               manufacturer: AMD
@@ -303,7 +303,7 @@ dev1-xl:
     ssdgib: 0
     gpus: 0
     server:
-        name: dev1.base
+        name: scw_dev1.base
         cpus:
             - model: EPYC 7281
               manufacturer: AMD
@@ -344,7 +344,7 @@ ent1-2xl:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -379,7 +379,7 @@ ent1-l:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -414,7 +414,7 @@ ent1-s:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -449,7 +449,7 @@ ent1-xl:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -484,7 +484,7 @@ ent1-xm:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -519,7 +519,7 @@ ent1-xs:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -554,7 +554,7 @@ ent1-xxs:
     ssdgib: 0
     gpus: 0
     server:
-        name: ent1.base
+        name: scw_ent1.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -589,7 +589,7 @@ gp1-l:
     ssdgib: 0
     gpus: 0
     server:
-        name: gp1.base
+        name: scw_gp1.base
         cpus:
             - model: EPYC 7401P
               manufacturer: AMD
@@ -630,7 +630,7 @@ gp1-m:
     ssdgib: 0
     gpus: 0
     server:
-        name: gp1.base
+        name: scw_gp1.base
         cpus:
             - model: EPYC 7401P
               manufacturer: AMD
@@ -671,7 +671,7 @@ gp1-s:
     ssdgib: 0
     gpus: 0
     server:
-        name: gp1.base
+        name: scw_gp1.base
         cpus:
             - model: EPYC 7401P
               manufacturer: AMD
@@ -712,7 +712,7 @@ gp1-xl:
     ssdgib: 0
     gpus: 0
     server:
-        name: gp1.base
+        name: scw_gp1.base
         cpus:
             - model: EPYC 7401P
               manufacturer: AMD
@@ -753,7 +753,7 @@ gp1-xs:
     ssdgib: 0
     gpus: 0
     server:
-        name: gp1.base
+        name: scw_gp1.base
         cpus:
             - model: EPYC 7401P
               manufacturer: AMD
@@ -794,7 +794,7 @@ play2-micro:
     ssdgib: 0
     gpus: 0
     server:
-        name: play2.base
+        name: scw_play2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -829,7 +829,7 @@ play2-nano:
     ssdgib: 0
     gpus: 0
     server:
-        name: play2.base
+        name: scw_play2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -864,7 +864,7 @@ play2-pico:
     ssdgib: 0
     gpus: 0
     server:
-        name: play2.base
+        name: scw_play2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -899,7 +899,7 @@ pop2-2c-8g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2.base
+        name: scw_pop2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -934,7 +934,7 @@ pop2-4c-16g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2.base
+        name: scw_pop2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -969,7 +969,7 @@ pop2-8c-32g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2.base
+        name: scw_pop2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1004,7 +1004,7 @@ pop2-16c-64g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2.base
+        name: scw_pop2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1039,7 +1039,7 @@ pop2-32c-128g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2.base
+        name: scw_pop2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1074,7 +1074,7 @@ pop2-64c-256g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2.base
+        name: scw_pop2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1109,7 +1109,7 @@ pop2-hc-2c-4g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hc.base
+        name: scw_pop2hc.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1144,7 +1144,7 @@ pop2-hc-4c-8g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hc.base
+        name: scw_pop2hc.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1179,7 +1179,7 @@ pop2-hc-8c-16g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hc.base
+        name: scw_pop2hc.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1214,7 +1214,7 @@ pop2-hc-16c-32g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hc.base
+        name: scw_pop2hc.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1249,7 +1249,7 @@ pop2-hc-32c-64g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hc.base
+        name: scw_pop2hc.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1284,7 +1284,7 @@ pop2-hc-64c-128g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hc.base
+        name: scw_pop2hc.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1319,7 +1319,7 @@ pop2-hm-2c-16g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hm.base
+        name: scw_pop2hm.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1354,7 +1354,7 @@ pop2-hm-4c-32g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hm.base
+        name: scw_pop2hm.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1389,7 +1389,7 @@ pop2-hm-8c-64g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hm.base
+        name: scw_pop2hm.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1424,7 +1424,7 @@ pop2-hm-16c-128g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hm.base
+        name: scw_pop2hm.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1459,7 +1459,7 @@ pop2-hm-32c-256g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hm.base
+        name: scw_pop2hm.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1494,7 +1494,7 @@ pop2-hm-64c-512g:
     ssdgib: 0
     gpus: 0
     server:
-        name: pop2hm.base
+        name: scw_pop2hm.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1529,7 +1529,7 @@ pro2-l:
     ssdgib: 0
     gpus: 0
     server:
-        name: pro2.base
+        name: scw_pro2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1564,7 +1564,7 @@ pro2-m:
     ssdgib: 0
     gpus: 0
     server:
-        name: pro2.base
+        name: scw_pro2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1599,7 +1599,7 @@ pro2-s:
     ssdgib: 0
     gpus: 0
     server:
-        name: pro2.base
+        name: scw_pro2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1634,7 +1634,7 @@ pro2-xs:
     ssdgib: 0
     gpus: 0
     server:
-        name: pro2.base
+        name: scw_pro2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1669,7 +1669,7 @@ pro2-xxs:
     ssdgib: 0
     gpus: 0
     server:
-        name: pro2.base
+        name: scw_pro2.base
         cpus:
             - model: EPYC 7543
               manufacturer: AMD
@@ -1704,7 +1704,7 @@ stardust1:
     ssdgib: 0
     gpus: 0
     server:
-        name: stardust1.base
+        name: scw_stardust1.base
         cpus:
             - model: EPYC 7281
               manufacturer: AMD

@@ -53,7 +53,7 @@ func (i *VirtualMachine) GetHostShare() float32 {
 
 // Base for the Play2 range (shared vCPUs)
 var BasePlay2Host = Server{
-	Name: "play2.base",
+	Name: "scw_play2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543Double,
 	},
@@ -83,7 +83,7 @@ var BasePlay2Host = Server{
 
 // Base for the PRO2 range (shared vCPUs)
 var BasePro2Host = Server{
-	Name: "pro2.base",
+	Name: "scw_pro2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543Double,
 	},
@@ -113,7 +113,7 @@ var BasePro2Host = Server{
 
 // Base for the DEV1 range (shared vCPUs)
 var BaseDev1Host = Server{
-	Name: "dev1.base",
+	Name: "scw_dev1.base",
 	Cpus: []Cpu{
 		AmdEpyc7281,
 	},
@@ -143,7 +143,7 @@ var BaseDev1Host = Server{
 
 // Base for the GP1 range (shared vCPUs)
 var BaseGp1Host = Server{
-	Name: "gp1.base",
+	Name: "scw_gp1.base",
 	Cpus: []Cpu{
 		AmdEpyc7401P,
 	},
@@ -173,7 +173,7 @@ var BaseGp1Host = Server{
 
 // Base for the POP2 range (dedicated vCPUs)
 var BasePop2Host = Server{
-	Name: "pop2.base",
+	Name: "scw_pop2.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
@@ -192,7 +192,7 @@ var BasePop2Host = Server{
 
 // Base for the POP2HM range (dedicated vCPUs)
 var BasePop2HmHost = Server{
-	Name: "pop2hm.base",
+	Name: "scw_pop2hm.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
@@ -211,7 +211,7 @@ var BasePop2HmHost = Server{
 
 // Base for the POP2HC range (dedicated vCPUs)
 var BasePop2HcHost = Server{
-	Name: "pop2hc.base",
+	Name: "scw_pop2hc.base",
 	Cpus: []Cpu{
 		AmdEpyc7543,
 	},
@@ -230,7 +230,7 @@ var BasePop2HcHost = Server{
 
 // Base for the STARDUST1 range (shared vCPUs)
 var BaseStardust1Host = Server{
-	Name: "stardust1.base",
+	Name: "scw_stardust1.base",
 	Cpus: []Cpu{
 		AmdEpyc7281,
 	},
@@ -260,7 +260,7 @@ var BaseStardust1Host = Server{
 
 // Base for the ENT1 range (dedicated vCPUs, or not?)
 var BaseEnt1Host = Server{
-	Name: "ent1.base",
+	Name: "scw_ent1.base",
 	Cpus: []Cpu{
 		AmdEpyc7543Double,
 	},
@@ -290,7 +290,7 @@ var BaseEnt1Host = Server{
 
 // Base for the COP ARM1 range (shared vCPUs)
 var BaseCopArm1Host = Server{
-	Name: "coparm1.base",
+	Name: "scw_coparm1.base",
 	Cpus: []Cpu{
 		AmpereAltraMaxM12832,
 	},

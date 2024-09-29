@@ -7,7 +7,7 @@ coparm1-2c-8g:
   gpus: 0
   server:
     product: ""
-    name: coparm1.base
+    name: scw_coparm1.base
     cpus:
     - name: Ampere Altra Max 128
       units: 1
@@ -38,7 +38,7 @@ coparm1-4c-16g:
   gpus: 0
   server:
     product: ""
-    name: coparm1.base
+    name: scw_coparm1.base
     cpus:
     - name: Ampere Altra Max 128
       units: 1
@@ -69,7 +69,7 @@ coparm1-8c-32g:
   gpus: 0
   server:
     product: ""
-    name: coparm1.base
+    name: scw_coparm1.base
     cpus:
     - name: Ampere Altra Max 128
       units: 1
@@ -100,7 +100,7 @@ coparm1-16c-64g:
   gpus: 0
   server:
     product: ""
-    name: coparm1.base
+    name: scw_coparm1.base
     cpus:
     - name: Ampere Altra Max 128
       units: 1
@@ -131,7 +131,7 @@ coparm1-32c-128g:
   gpus: 0
   server:
     product: ""
-    name: coparm1.base
+    name: scw_coparm1.base
     cpus:
     - name: Ampere Altra Max 128
       units: 1
@@ -162,7 +162,7 @@ dev1-l:
   gpus: 0
   server:
     product: ""
-    name: dev1.base
+    name: scw_dev1.base
     cpus:
     - name: AMD EPYC 7281
       units: 1
@@ -197,7 +197,7 @@ dev1-m:
   gpus: 0
   server:
     product: ""
-    name: dev1.base
+    name: scw_dev1.base
     cpus:
     - name: AMD EPYC 7281
       units: 1
@@ -232,7 +232,7 @@ dev1-s:
   gpus: 0
   server:
     product: ""
-    name: dev1.base
+    name: scw_dev1.base
     cpus:
     - name: AMD EPYC 7281
       units: 1
@@ -267,7 +267,7 @@ dev1-xl:
   gpus: 0
   server:
     product: ""
-    name: dev1.base
+    name: scw_dev1.base
     cpus:
     - name: AMD EPYC 7281
       units: 1
@@ -302,7 +302,7 @@ ent1-2xl:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -337,7 +337,7 @@ ent1-l:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -372,7 +372,7 @@ ent1-m:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -407,7 +407,7 @@ ent1-s:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -442,7 +442,7 @@ ent1-xl:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -477,7 +477,7 @@ ent1-xs:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -512,7 +512,7 @@ ent1-xxs:
   gpus: 0
   server:
     product: ""
-    name: ent1.base
+    name: scw_ent1.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -547,7 +547,7 @@ gp1-l:
   gpus: 0
   server:
     product: ""
-    name: gp1.base
+    name: scw_gp1.base
     cpus:
     - name: AMD EPYC 7401P
       units: 2
@@ -582,7 +582,7 @@ gp1-m:
   gpus: 0
   server:
     product: ""
-    name: gp1.base
+    name: scw_gp1.base
     cpus:
     - name: AMD EPYC 7401P
       units: 2
@@ -617,7 +617,7 @@ gp1-s:
   gpus: 0
   server:
     product: ""
-    name: gp1.base
+    name: scw_gp1.base
     cpus:
     - name: AMD EPYC 7401P
       units: 2
@@ -652,7 +652,7 @@ gp1-viz:
   gpus: 0
   server:
     product: ""
-    name: gp1.base
+    name: scw_gp1.base
     cpus:
     - name: AMD EPYC 7401P
       units: 2
@@ -687,7 +687,7 @@ gp1-xl:
   gpus: 0
   server:
     product: ""
-    name: gp1.base
+    name: scw_gp1.base
     cpus:
     - name: AMD EPYC 7401P
       units: 2
@@ -722,7 +722,7 @@ gp1-xs:
   gpus: 0
   server:
     product: ""
-    name: gp1.base
+    name: scw_gp1.base
     cpus:
     - name: AMD EPYC 7401P
       units: 2
@@ -757,7 +757,7 @@ play2-micro:
   gpus: 0
   server:
     product: ""
-    name: play2.base
+    name: scw_play2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -792,7 +792,7 @@ play2-nano:
   gpus: 0
   server:
     product: ""
-    name: play2.base
+    name: scw_play2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -827,7 +827,7 @@ play2-pico:
   gpus: 0
   server:
     product: ""
-    name: play2.base
+    name: scw_play2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -862,7 +862,7 @@ pop2-2c-8g:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -897,7 +897,7 @@ pop2-2c-8g-win:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -932,7 +932,7 @@ pop2-4c-16g:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -967,7 +967,7 @@ pop2-4c-16g-win:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1002,7 +1002,7 @@ pop2-8c-32g:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1037,7 +1037,7 @@ pop2-8c-32g-win:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1072,7 +1072,7 @@ pop2-16c-64g:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1107,7 +1107,7 @@ pop2-16c-64g-win:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1142,7 +1142,7 @@ pop2-32c-128g:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1177,7 +1177,7 @@ pop2-32c-128g-win:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1212,7 +1212,7 @@ pop2-64c-256g:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1247,7 +1247,7 @@ pop2-hc-2c-4g:
   gpus: 0
   server:
     product: ""
-    name: pop2hc.base
+    name: scw_pop2hc.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1282,7 +1282,7 @@ pop2-hc-4c-8g:
   gpus: 0
   server:
     product: ""
-    name: pop2hc.base
+    name: scw_pop2hc.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1317,7 +1317,7 @@ pop2-hc-8c-16g:
   gpus: 0
   server:
     product: ""
-    name: pop2hc.base
+    name: scw_pop2hc.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1352,7 +1352,7 @@ pop2-hc-16c-32g:
   gpus: 0
   server:
     product: ""
-    name: pop2hc.base
+    name: scw_pop2hc.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1387,7 +1387,7 @@ pop2-hc-32c-64g:
   gpus: 0
   server:
     product: ""
-    name: pop2hc.base
+    name: scw_pop2hc.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1422,7 +1422,7 @@ pop2-hc-64c-128g:
   gpus: 0
   server:
     product: ""
-    name: pop2hc.base
+    name: scw_pop2hc.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1457,7 +1457,7 @@ pop2-hm-2c-16g:
   gpus: 0
   server:
     product: ""
-    name: pop2hm.base
+    name: scw_pop2hm.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1492,7 +1492,7 @@ pop2-hm-4c-32g:
   gpus: 0
   server:
     product: ""
-    name: pop2hm.base
+    name: scw_pop2hm.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1527,7 +1527,7 @@ pop2-hm-8c-64g:
   gpus: 0
   server:
     product: ""
-    name: pop2hm.base
+    name: scw_pop2hm.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1562,7 +1562,7 @@ pop2-hm-16c-128g:
   gpus: 0
   server:
     product: ""
-    name: pop2hm.base
+    name: scw_pop2hm.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1597,7 +1597,7 @@ pop2-hm-32c-256g:
   gpus: 0
   server:
     product: ""
-    name: pop2hm.base
+    name: scw_pop2hm.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1632,7 +1632,7 @@ pop2-hm-64c-512g:
   gpus: 0
   server:
     product: ""
-    name: pop2hm.base
+    name: scw_pop2hm.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1667,7 +1667,7 @@ pop2-hn-3:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1702,7 +1702,7 @@ pop2-hn-5:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1737,7 +1737,7 @@ pop2-hn-10:
   gpus: 0
   server:
     product: ""
-    name: pop2.base
+    name: scw_pop2.base
     cpus:
     - name: AMD EPYC 7543
       units: 1
@@ -1772,7 +1772,7 @@ pro2-l:
   gpus: 0
   server:
     product: ""
-    name: pro2.base
+    name: scw_pro2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -1807,7 +1807,7 @@ pro2-m:
   gpus: 0
   server:
     product: ""
-    name: pro2.base
+    name: scw_pro2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -1842,7 +1842,7 @@ pro2-s:
   gpus: 0
   server:
     product: ""
-    name: pro2.base
+    name: scw_pro2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -1877,7 +1877,7 @@ pro2-xs:
   gpus: 0
   server:
     product: ""
-    name: pro2.base
+    name: scw_pro2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2
@@ -1912,7 +1912,7 @@ pro2-xxs:
   gpus: 0
   server:
     product: ""
-    name: pro2.base
+    name: scw_pro2.base
     cpus:
     - name: AMD EPYC 7543
       units: 2

@@ -1,4 +1,4 @@
-- name: play2.base
+- name: scw_play2.base
   cpus:
     - model: EPYC 7543
       manufacturer: AMD
@@ -26,7 +26,7 @@
     units: 1
     watts: 400
     weightkg: 2
-- name: pro2.base
+- name: scw_pro2.base
   cpus:
     - model: EPYC 7543
       manufacturer: AMD
@@ -54,7 +54,7 @@
     units: 1
     watts: 400
     weightkg: 2
-- name: dev1.base
+- name: scw_dev1.base
   cpus:
     - model: EPYC 7281
       manufacturer: AMD
@@ -88,7 +88,7 @@
     units: 1
     watts: 400
     weightkg: 2
-- name: ent1.base
+- name: scw_ent1.base
   cpus:
     - model: EPYC 7543
       manufacturer: AMD
@@ -116,7 +116,7 @@
     units: 0
     watts: 0
     weightkg: 0
-- name: coparm1.base
+- name: scw_coparm1.base
   cpus:
     - model: Altra Max 128
       manufacturer: Ampere
@@ -144,7 +144,7 @@
     units: 0
     watts: 0
     weightkg: 0
-- name: gp1.base
+- name: scw_gp1.base
   cpus:
     - model: EPYC 7401P
       manufacturer: AMD
@@ -178,7 +178,7 @@
     units: 1
     watts: 400
     weightkg: 2
-- name: pop2.base
+- name: scw_pop2.base
   cpus:
     - model: EPYC 7543
       manufacturer: AMD
@@ -206,7 +206,7 @@
     units: 1
     watts: 400
     weightkg: 2
-- name: pop2hm.base
+- name: scw_pop2hm.base
   cpus:
     - model: EPYC 7543
       manufacturer: AMD
@@ -234,7 +234,7 @@
     units: 1
     watts: 400
     weightkg: 2
-- name: pop2hc.base
+- name: scw_pop2hc.base
   cpus:
     - model: EPYC 7543
       manufacturer: AMD
@@ -262,7 +262,7 @@
     units: 0
     watts: 0
     weightkg: 0
-- name: stardust1.base
+- name: scw_stardust1.base
   cpus:
     - model: EPYC 7281
       manufacturer: AMD
