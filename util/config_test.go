@@ -16,13 +16,13 @@ func TestConfig(t *testing.T) {
 	assert.Equal(t, "localhost", viper.GetString("gateway.backend_host"))
 
 	// Override a value and check
-	err := os.Setenv("CARBON_BOAVIZTA_PORT", "1234")
+	err := os.Setenv("SCW_IMPACT_BOAVIZTA_PORT", "1234")
 	assert.NoError(t, err)
 	assert.Equal(t, "1234", viper.GetString("boavizta.port"))
 	assert.Equal(t, "localhost", viper.GetString("gateway.backend_host"))
 
 	// Override another value and check
-	err = os.Setenv("CARBON_GATEWAY_BACKEND_HOST", "foobar")
+	err = os.Setenv("SCW_IMPACT_GATEWAY_BACKEND_HOST", "foobar")
 	assert.NoError(t, err)
 	assert.Equal(t, "1234", viper.GetString("boavizta.port"))
 	assert.Equal(t, "foobar", viper.GetString("gateway.backend_host"))

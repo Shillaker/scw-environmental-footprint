@@ -14,8 +14,8 @@ func InitConfig() error {
 	}
 
 	// Have viper automatically override config if it finds the appropriate environment variable
-	// E.g. CARBON_GATEWAY.BACKEND_HOST will override the corresponding key in the config file
-	viper.SetEnvPrefix("CARBON")
+	// E.g. SCW_IMPACT_GATEWAY.BACKEND_HOST will override the corresponding key in the config file
+	viper.SetEnvPrefix("SCW_IMPACT")
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(`.`, `_`))
 
