@@ -88,3 +88,5 @@ Run this with:
 ```bash
 task vm-deploy
 ```
+
+Note that you will need a Python environment with Ansible installed (e.g. using the `requirements.txt` file in the base of this repo).

@@ -14,17 +14,17 @@
         images: true
 
     - name: Tear down existing services
-      community.docker.docker_compose:
+      community.docker.docker_compose_v2:
         project_src: /root/app
         state: absent
 
     - name: Build images
-      community.docker.docker_compose:
+      community.docker.docker_compose_v2:
         project_src: /root/app
-        build: true
+        build: always
         state: present
 
     - name: Start up services
-      community.docker.docker_compose:
+      community.docker.docker_compose_v2:
         project_src: /root/app
         state: present
