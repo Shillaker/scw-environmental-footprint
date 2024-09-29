@@ -9,6 +9,11 @@
         state: latest
         update_cache: true
 
+    - name: Upgrade everything
+      apt:
+        update_cache: true
+        upgrade: true
+
     - name: Install required system packages
       apt:
         pkg:
@@ -20,7 +25,6 @@
           - virtualenv
           - python3-setuptools
         state: latest
-        update_cache: true
 
     - name: Add Docker GPG apt Key
       apt_key:
@@ -29,23 +33,12 @@
 
     - name: Add Docker Repository
       apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        repo: deb https://download.docker.com/linux/ubuntu noble stable
         state: present
 
-    - name: Update apt and install docker-ce
+    - name: Install docker-ce and compose
       apt:
-        name: docker-ce
+        pkg:
+          - docker-ce
+          - docker-compose-plugin
         state: latest
-        update_cache: true
-
-    - name: Update pip
-      ansible.builtin.pip:
-        name: pip
-        state: latest
-
-    - name: Install Docker compose
-      ansible.builtin.pip:
-        name:
-          - docker==4.4.4 # Careful with version here, Ansible dc plugin is sensitive
-          - docker-compose
-

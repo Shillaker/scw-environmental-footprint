@@ -20,6 +20,3 @@ certbot/
 
 # Direnv
 .envrc
-
-# Ansible
-ansible/inventory/all.yaml

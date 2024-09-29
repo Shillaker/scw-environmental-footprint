@@ -81,9 +81,24 @@ task test-e2e
 
 ## Deploying
 
+To set up VMs and deploy, you need to install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+
+### Setting up a VM
+
+Create a new VM on your provider of choice, make sure you can SSH, then and add the hostname or DNS to a new file `./ansible/inventory/all.yaml` as follows:
+
+```
+[vms]
+some-hostname.foo.bar ansible_user=root
+```
+
+Then you can run `task vm-install` to set up the necessary tooling on that VM.
+
 The deployment will copy your local checkout to a VM, build containers, then start the application.
 
-Run this with:
+### Deploying to the VM
+
+Provided you have the inventory file set up as described above, you can run:
 
 ```bash
 task vm-deploy
