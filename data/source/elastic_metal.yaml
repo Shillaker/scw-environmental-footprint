@@ -15,9 +15,9 @@ EM-A115X-SSD:
     capacitymib: 32768
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymib: 1048576
     units: 1
-  - capacitymib: 1024000
+  - capacitymib: 1048576
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -241,11 +241,11 @@ EM-B220E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1024000
+    capacitymib: 1048576
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1024000
+    capacitymib: 1048576
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -329,11 +329,11 @@ EM-B320E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2048000
+    capacitymib: 2097152
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2048000
+    capacitymib: 2097152
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -361,11 +361,11 @@ EM-B420E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1024000
+    capacitymib: 1048576
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1024000
+    capacitymib: 1048576
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -393,11 +393,11 @@ EM-B520E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2048000
+    capacitymib: 2097152
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2048000
+    capacitymib: 2097152
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -425,11 +425,43 @@ EM-I210E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1966080
+    capacitymib: 1959936
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1966080
+    capacitymib: 1959936
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I215E-NVME:
+  product: EM
+  name: EM-I215E-NVME
+  cpus:
+  - name: amd epyc 7313p
+    units: 1
+    coreunits: 16
+    threads: 16
+    frequencyhz: 3000
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR4
+    capacitymib: 262144
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1959936
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1959936
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -455,9 +487,9 @@ EM-L101X-SATA:
     capacitymib: 98304
   ssds: []
   hdds:
-  - capacitymib: 6144000
+  - capacitymib: 6145024
     units: 1
-  - capacitymib: 6144000
+  - capacitymib: 6145024
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -483,13 +515,13 @@ EM-L105X-SATA:
     capacitymib: 98304
   ssds: []
   hdds:
-  - capacitymib: 6144000
+  - capacitymib: 6145024
     units: 1
-  - capacitymib: 6144000
+  - capacitymib: 6145024
     units: 1
-  - capacitymib: 6144000
+  - capacitymib: 6145024
     units: 1
-  - capacitymib: 6144000
+  - capacitymib: 6145024
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -523,6 +555,86 @@ EM-L110X-SATA:
     units: 1
   - capacitymib: 12288000
     units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L220E-NVME:
+  product: EM
+  name: EM-L220E-NVME
+  cpus:
+  - name: amd epyc 7232p
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 3100
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 65536
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L420E-NVME:
+  product: EM
+  name: EM-L420E-NVME
+  cpus:
+  - name: amd epyc 7272
+    units: 1
+    coreunits: 12
+    threads: 12
+    frequencyhz: 2900
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 131072
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  hdds: []
   vcpupercpu: 0
   motherboard:
     units: 1

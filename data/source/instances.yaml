@@ -1658,6 +1658,111 @@ pop2-hm-64c-512g:
       units: 1
       watts: 400
       weightkg: 2
+pop2-hn-3:
+  type: POP2-HN-3
+  vcpus: 2
+  ramgib: 4
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hn-5:
+  type: POP2-HN-5
+  vcpus: 4
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
+pop2-hn-10:
+  type: POP2-HN-10
+  vcpus: 4
+  ramgib: 8
+  hddgib: 20
+  ssdgib: 0
+  gpus: 0
+  server:
+    product: ""
+    name: pop2.base
+    cpus:
+    - name: AMD EPYC 7543
+      units: 1
+      coreunits: 32
+      threads: 64
+      frequencyhz: 2800
+    gpus: []
+    rams:
+    - units: 8
+      frequencyhz: 0
+      type: ""
+      capacitymib: 32768
+    ssds:
+    - units: 5
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 1048576
+    hdds: []
+    vcpupercpu: 64
+    motherboard:
+      units: 0
+    powersupply:
+      units: 1
+      watts: 400
+      weightkg: 2
 pro2-l:
   type: PRO2-L
   vcpus: 32
@@ -1827,41 +1932,6 @@ pro2-xxs:
       capacitymib: 491520
     hdds: []
     vcpupercpu: 128
-    motherboard:
-      units: 0
-    powersupply:
-      units: 2
-      watts: 800
-      weightkg: 2
-stardust1-s:
-  type: STARDUST1-S
-  vcpus: 1
-  ramgib: 1
-  hddgib: 20
-  ssdgib: 0
-  gpus: 0
-  server:
-    product: ""
-    name: stardust1.base
-    cpus:
-    - name: AMD EPYC 7281
-      units: 1
-      coreunits: 16
-      threads: 32
-      frequencyhz: 2100
-    gpus: []
-    rams:
-    - units: 8
-      frequencyhz: 2666000000
-      type: ddr4
-      capacitymib: 32768
-    ssds:
-    - units: 5
-      technology: mlc
-      casing: casing_m2
-      capacitymib: 1048576
-    hdds: []
-    vcpupercpu: 64
     motherboard:
       units: 0
     powersupply:

@@ -1,6 +1,7 @@
 version: '3'
 
 tasks:
+  # Development
   proto:
     cmds:
       - |
@@ -27,6 +28,29 @@ tasks:
     cmds:
       - go run cmd/gateway/main.go
 
+  dev-nginx:
+    cmds:
+      - NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up nginx -d
+
+  dev-up:
+    cmds:
+      - NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up -d --build
+
+  dev-site:
+    cmds:
+      - xdg-open site/index.html
+
+  # Testing
+  test:
+    cmds:
+      - go test -v $(go list ./... | grep -v /e2e)
+
+  test-e2e:
+    cmds:
+      - go clean -testcache
+      - go test -v $(go list ./e2e/...)
+
+  # Exports and source data
   export-boavizta:
     cmds:
       - go run cmd/export-boavizta/main.go
@@ -39,19 +63,12 @@ tasks:
     cmds:
       - go run cmd/source-data/main.go
 
+  # Services
   boavizta:
     cmds:
       - docker compose up -d boavizta
 
-  test:
-    cmds:
-      - go test -v $(go list ./... | grep -v /e2e)
-
-  test-e2e:
-    cmds:
-      - go clean -testcache
-      - go test -v $(go list ./e2e/...)
-
+  # Deployment
   vm-install:
     cmds:
       - cd ansible && ansible-playbook -i inventory/all.yml install.yml
@@ -59,15 +76,3 @@ tasks:
   vm-deploy:
     cmds:
       - cd ansible && ansible-playbook -i inventory/all.yml deploy.yml
-
-  dev-nginx:
-    cmds:
-      - NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up nginx -d
-
-  dev-up:
-    cmds:
-      - NGINX_CONF_DIR=./nginx/conf-dev/ docker compose up -d --build
-
-  dev-site:
-    cmds:
-      - xdg-open site/index.html

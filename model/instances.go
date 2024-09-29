@@ -2,6 +2,12 @@ package model
 
 import "fmt"
 
+// ----- Docs -----
+// Base server types: https://www.scaleway.com/en/docs/compute/instances/reference-content/instances-datasheet/#developement-and-general-purpose-instances
+const (
+	DefaultInstanceHddGib = 20
+)
+
 // An identifier for an instance type
 type Instance struct {
 	Type        string
@@ -217,8 +223,8 @@ var BasePop2HcHost = Server{
 			Casing:      SsdCasingM2,
 		},
 	},
-	Rams:       DefaultRams(16, 32*1024),
-	VCpuPerCpu: AmdEpyc7543.Threads,
+	Rams:        DefaultRams(16, 32*1024),
+	VCpuPerCpu:  AmdEpyc7543.Threads,
 	PowerSupply: DefaultPowerSupply(400),
 }
 

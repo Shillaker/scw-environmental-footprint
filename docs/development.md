@@ -67,7 +67,7 @@ task dev-nginx boavizta
 Then access the UI by opening the HTML file, e.g.
 
 ```bash
-xdg-open site/index.html
+task dev-site
 ```
 
 ### Tests
