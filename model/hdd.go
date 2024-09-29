@@ -1,14 +1,11 @@
 package model
 
 type Hdd struct {
-	Model        string
-	Manufacturer string
-
-	CapacityMib int32
-	Units       int32
+	CapacityMib uint32
+	Units       uint32
 }
 
-func DefaultHdds(units int32, capacityMiB int32) []Hdd {
+func DefaultHdds(units uint32, capacityMiB uint32) []Hdd {
 	return []Hdd{
 		{
 			CapacityMib: capacityMiB,

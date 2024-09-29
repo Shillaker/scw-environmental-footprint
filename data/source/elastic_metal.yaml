@@ -1,0 +1,670 @@
+EM-A115X-SSD:
+  product: EM
+  name: EM-A115X-SSD
+  cpus:
+  - name: intel xeon e3 1220
+    units: 1
+    coreunits: 4
+    threads: 4
+    frequencyhz: 3100
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 32768
+  ssds: []
+  hdds:
+  - capacitymib: 1048576
+    units: 1
+  - capacitymib: 1048576
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-A210R-HDD:
+  product: EM
+  name: EM-A210R-HDD
+  cpus:
+  - name: amd ryzen pro 3600
+    units: 1
+    coreunits: 6
+    threads: 6
+    frequencyhz: 3600
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR4
+    capacitymib: 16384
+  ssds: []
+  hdds:
+  - capacitymib: 1024000
+    units: 1
+  - capacitymib: 1024000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-A315X-SSD:
+  product: EM
+  name: EM-A315X-SSD
+  cpus:
+  - name: intel xeon e5 1410 v2
+    units: 1
+    coreunits: 4
+    threads: 4
+    frequencyhz: 2800
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 65536
+  ssds: []
+  hdds:
+  - capacitymib: 1024000
+    units: 1
+  - capacitymib: 1024000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-A410X-SSD:
+  product: EM
+  name: EM-A410X-SSD
+  cpus:
+  - name: intel xeon e5 1650
+    units: 1
+    coreunits: 6
+    threads: 6
+    frequencyhz: 3200
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 65536
+  ssds: []
+  hdds:
+  - capacitymib: 1024000
+    units: 1
+  - capacitymib: 1024000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B111X-SATA:
+  product: EM
+  name: EM-B111X-SATA
+  cpus:
+  - name: intel xeon e5 2620
+    units: 1
+    coreunits: 6
+    threads: 6
+    frequencyhz: 2000
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 196608
+  ssds: []
+  hdds:
+  - capacitymib: 8192000
+    units: 1
+  - capacitymib: 8192000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B112X-SSD:
+  product: EM
+  name: EM-B112X-SSD
+  cpus:
+  - name: intel xeon e5 2620
+    units: 1
+    coreunits: 6
+    threads: 6
+    frequencyhz: 2000
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 196608
+  ssds: []
+  hdds:
+  - capacitymib: 1024000
+    units: 1
+  - capacitymib: 1024000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B211X-SATA:
+  product: EM
+  name: EM-B211X-SATA
+  cpus:
+  - name: intel xeon e5 2670
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 2600
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 262144
+  ssds: []
+  hdds:
+  - capacitymib: 8192000
+    units: 1
+  - capacitymib: 8192000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B212X-SSD:
+  product: EM
+  name: EM-B212X-SSD
+  cpus:
+  - name: intel xeon e5 2670
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 2600
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 262144
+  ssds: []
+  hdds:
+  - capacitymib: 1024000
+    units: 1
+  - capacitymib: 1024000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B220E-NVME:
+  product: EM
+  name: EM-B220E-NVME
+  cpus:
+  - name: amd epyc 7232p
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 3100
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 65536
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1048576
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1048576
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B311X-SATA:
+  product: EM
+  name: EM-B311X-SATA
+  cpus:
+  - name: intel xeon e5 2670 v2
+    units: 1
+    coreunits: 10
+    threads: 10
+    frequencyhz: 2500
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 262144
+  ssds: []
+  hdds:
+  - capacitymib: 12288000
+    units: 1
+  - capacitymib: 12288000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B312X-SSD:
+  product: EM
+  name: EM-B312X-SSD
+  cpus:
+  - name: intel xeon e5 2670 v2
+    units: 1
+    coreunits: 10
+    threads: 10
+    frequencyhz: 2500
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 262144
+  ssds: []
+  hdds:
+  - capacitymib: 1024000
+    units: 1
+  - capacitymib: 1024000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B320E-NVME:
+  product: EM
+  name: EM-B320E-NVME
+  cpus:
+  - name: amd epyc 7232p
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 3100
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 131072
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B420E-NVME:
+  product: EM
+  name: EM-B420E-NVME
+  cpus:
+  - name: amd epyc 7272
+    units: 1
+    coreunits: 12
+    threads: 12
+    frequencyhz: 2900
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 131072
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1048576
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1048576
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-B520E-NVME:
+  product: EM
+  name: EM-B520E-NVME
+  cpus:
+  - name: amd epyc 7272
+    units: 1
+    coreunits: 12
+    threads: 12
+    frequencyhz: 2900
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 262144
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I210E-NVME:
+  product: EM
+  name: EM-I210E-NVME
+  cpus:
+  - name: amd epyc 7313p
+    units: 1
+    coreunits: 16
+    threads: 16
+    frequencyhz: 3000
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR4
+    capacitymib: 131072
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1959936
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1959936
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I215E-NVME:
+  product: EM
+  name: EM-I215E-NVME
+  cpus:
+  - name: amd epyc 7313p
+    units: 1
+    coreunits: 16
+    threads: 16
+    frequencyhz: 3000
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR4
+    capacitymib: 262144
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1959936
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 1959936
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L101X-SATA:
+  product: EM
+  name: EM-L101X-SATA
+  cpus:
+  - name: intel xeon e5 1410 v2
+    units: 1
+    coreunits: 4
+    threads: 4
+    frequencyhz: 2800
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 98304
+  ssds: []
+  hdds:
+  - capacitymib: 6145024
+    units: 1
+  - capacitymib: 6145024
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L105X-SATA:
+  product: EM
+  name: EM-L105X-SATA
+  cpus:
+  - name: intel xeon e5 1410 v2
+    units: 1
+    coreunits: 4
+    threads: 4
+    frequencyhz: 2800
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 98304
+  ssds: []
+  hdds:
+  - capacitymib: 6145024
+    units: 1
+  - capacitymib: 6145024
+    units: 1
+  - capacitymib: 6145024
+    units: 1
+  - capacitymib: 6145024
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L110X-SATA:
+  product: EM
+  name: EM-L110X-SATA
+  cpus:
+  - name: intel xeon e5 1410 v2
+    units: 1
+    coreunits: 4
+    threads: 4
+    frequencyhz: 2800
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 1600
+    type: DDR3
+    capacitymib: 98304
+  ssds: []
+  hdds:
+  - capacitymib: 12288000
+    units: 1
+  - capacitymib: 12288000
+    units: 1
+  - capacitymib: 12288000
+    units: 1
+  - capacitymib: 12288000
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L220E-NVME:
+  product: EM
+  name: EM-L220E-NVME
+  cpus:
+  - name: amd epyc 7232p
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 3100
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 65536
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 2097152
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-L420E-NVME:
+  product: EM
+  name: EM-L420E-NVME
+  cpus:
+  - name: amd epyc 7272
+    units: 1
+    coreunits: 12
+    threads: 12
+    frequencyhz: 2900
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 2400
+    type: DDR4
+    capacitymib: 131072
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymib: 4096000
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-RV1-C4M16S128-A:
+  product: EM
+  name: EM-RV1-C4M16S128-A
+  cpus:
+  - name: th1520
+    units: 1
+    coreunits: 4
+    threads: 4
+    frequencyhz: 1850
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3733
+    type: DDR4
+    capacitymib: 16384
+  ssds: []
+  hdds:
+  - capacitymib: 131072
+    units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2

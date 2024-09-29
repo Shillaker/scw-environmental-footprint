@@ -1,10 +1,10 @@
 package impact
 
 import (
-	"gitlab.infra.online.net/paas/carbon/impact/boavizta"
-	"gitlab.infra.online.net/paas/carbon/impact/resilio"
-	"gitlab.infra.online.net/paas/carbon/model"
-	"gitlab.infra.online.net/paas/carbon/util"
+	"github.com/shillaker/scw-environmental-footprint/impact/boavizta"
+	"github.com/shillaker/scw-environmental-footprint/impact/resilio"
+	"github.com/shillaker/scw-environmental-footprint/model"
+	"github.com/shillaker/scw-environmental-footprint/util"
 )
 
 type ImpactCalculator interface {

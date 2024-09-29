@@ -3,24 +3,32 @@ package server
 import (
 	"context"
 
-	"gitlab.infra.online.net/paas/carbon/api"
-	pb "gitlab.infra.online.net/paas/carbon/api/grpc/v1"
-	"gitlab.infra.online.net/paas/carbon/impact"
-	"gitlab.infra.online.net/paas/carbon/mapping"
-	"gitlab.infra.online.net/paas/carbon/model"
+	"github.com/shillaker/scw-environmental-footprint/api"
+	pb "github.com/shillaker/scw-environmental-footprint/api/grpc/v1"
+	"github.com/shillaker/scw-environmental-footprint/impact"
+	"github.com/shillaker/scw-environmental-footprint/mapping"
+	"github.com/shillaker/scw-environmental-footprint/model"
 )
 
 type UsageServer struct {
 	pb.UnimplementedUsageImpactServer
+
+	mapper *mapping.ScwMapper
 }
 
-func NewUsageServer() *UsageServer {
-	return &UsageServer{}
+func NewUsageServer() (*UsageServer, error) {
+	mapper, err := mapping.NewScwMapper()
+	if err != nil {
+		return nil, err
+	}
+
+	return &UsageServer{
+		mapper: mapper,
+	}, nil
 }
 
 func (s *UsageServer) ListInstances(context.Context, *pb.EmptyRequest) (*pb.ListInstancesResponse, error) {
-	mapper := mapping.ScwMapper{}
-	instances := mapper.ListInstances()
+	instances := s.mapper.ListInstances()
 
 	response := &pb.ListInstancesResponse{}
 	for _, instance := range instances {
@@ -31,8 +39,7 @@ func (s *UsageServer) ListInstances(context.Context, *pb.EmptyRequest) (*pb.List
 }
 
 func (s *UsageServer) ListElasticMetal(context.Context, *pb.EmptyRequest) (*pb.ListElasticMetalResponse, error) {
-	mapper := mapping.ScwMapper{}
-	ems := mapper.ListElasticMetal()
+	ems := s.mapper.ListElasticMetal()
 
 	response := &pb.ListElasticMetalResponse{}
 	for _, em := range ems {
@@ -43,8 +50,7 @@ func (s *UsageServer) ListElasticMetal(context.Context, *pb.EmptyRequest) (*pb.L
 }
 
 func (s *UsageServer) ListKubernetesControlPlanes(context.Context, *pb.EmptyRequest) (*pb.ListKubernetesControlPlanesResponse, error) {
-	mapper := mapping.ScwMapper{}
-	cps := mapper.ListKubernetesControlPlanes()
+	cps := s.mapper.ListKubernetesControlPlanes()
 
 	response := &pb.ListKubernetesControlPlanesResponse{}
 	for _, cp := range cps {
@@ -59,8 +65,7 @@ func (s *UsageServer) GetElasticMetalUsageImpact(ctx context.Context, request *p
 	usage := api.UsagePbToModel(request.Usage)
 	config := api.ImpactConfigPbToModel(request.Config)
 
-	mapper := mapping.ScwMapper{}
-	serverUsage, err := mapper.MapElasticMetalUsage(em, usage)
+	serverUsage, err := s.mapper.MapElasticMetalUsage(em, usage)
 
 	if err != nil {
 		return nil, err
@@ -74,8 +79,7 @@ func (s *UsageServer) GetInstanceUsageImpact(ctx context.Context, request *pb.In
 	usage := api.UsagePbToModel(request.Usage)
 	config := api.ImpactConfigPbToModel(request.Config)
 
-	mapper := mapping.ScwMapper{}
-	serverUsage, err := mapper.MapInstanceUsage(instance, usage)
+	serverUsage, err := s.mapper.MapInstanceUsage(instance, usage)
 
 	if err != nil {
 		return nil, err
@@ -96,8 +100,7 @@ func (s *UsageServer) GetKubernetesUsageImpact(ctx context.Context, request *pb.
 		pools[i] = api.KubernetesPoolPbToModel(poolPb)
 	}
 
-	mapper := mapping.ScwMapper{}
-	serverUsage, err := mapper.MapKubernetesUsage(cpType, pools, usage)
+	serverUsage, err := s.mapper.MapKubernetesUsage(cpType, pools, usage)
 
 	if err != nil {
 		return nil, err

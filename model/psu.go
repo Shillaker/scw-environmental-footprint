@@ -1,20 +1,23 @@
 package model
 
-func DefaultPowerSupply(powerWatts int32) PowerSupply {
+const (
+	DefaultPowerSupplyWeightKg = 2
+)
+
+func DefaultPowerSupply(powerWatts uint32) PowerSupply {
 	return PowerSupply{
-		Units: 1,
-		Watts: powerWatts,
+		Units:    1,
+		Watts:    powerWatts,
+		WeightKg: DefaultPowerSupplyWeightKg,
 	}
 }
 
 type PowerSupply struct {
-	Model        string
-	Manufacturer string
-	Units        int32
-
-	Watts int32
+	Units        uint32
+	Watts        uint32
+	WeightKg     uint32
 }
 
-func (p PowerSupply) YearlyConsumptionKwh() int32 {
+func (p PowerSupply) YearlyConsumptionKwh() uint32 {
 	return (24 * 365 * p.Watts) / 1000
 }

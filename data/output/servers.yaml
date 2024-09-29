@@ -1,0 +1,298 @@
+- name: scw_play2.base
+  cpus:
+    - model: EPYC 7543
+      manufacturer: AMD
+      units: 1
+      coreunits: 32
+      threads: 64
+      tdp: 225
+      frequencyhz: 2800
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 4
+      capacitymib: 16384
+  ssds: []
+  hdds: []
+  vcpupercpu: 128
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 1
+    watts: 400
+    weightkg: 2
+- name: scw_pro2.base
+  cpus:
+    - model: EPYC 7543
+      manufacturer: AMD
+      units: 1
+      coreunits: 32
+      threads: 64
+      tdp: 225
+      frequencyhz: 2800
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 4
+      capacitymib: 32768
+  ssds: []
+  hdds: []
+  vcpupercpu: 128
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 1
+    watts: 400
+    weightkg: 2
+- name: scw_dev1.base
+  cpus:
+    - model: EPYC 7281
+      manufacturer: AMD
+      units: 1
+      coreunits: 16
+      threads: 32
+      tdp: 155
+      frequencyhz: 2100
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 2
+      capacitymib: 16384
+  ssds:
+    - model: ""
+      manufacturer: micron
+      units: 1
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 20480
+  hdds: []
+  vcpupercpu: 64
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 1
+    watts: 400
+    weightkg: 2
+- name: scw_ent1.base
+  cpus:
+    - model: EPYC 7543
+      manufacturer: AMD
+      units: 3
+      coreunits: 32
+      threads: 64
+      tdp: 225
+      frequencyhz: 2800
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 12
+      capacitymib: 32768
+  ssds: []
+  hdds: []
+  vcpupercpu: 64
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 0
+    watts: 0
+    weightkg: 0
+- name: scw_coparm1.base
+  cpus:
+    - model: Altra Max 128
+      manufacturer: Ampere
+      units: 1
+      coreunits: 128
+      threads: 128
+      tdp: 250
+      frequencyhz: 3000
+      family: Altra
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 8
+      capacitymib: 16384
+  ssds: []
+  hdds: []
+  vcpupercpu: 256
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 0
+    watts: 0
+    weightkg: 0
+- name: scw_gp1.base
+  cpus:
+    - model: EPYC 7401P
+      manufacturer: AMD
+      units: 2
+      coreunits: 24
+      threads: 48
+      tdp: 155
+      frequencyhz: 2000
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 8
+      capacitymib: 32768
+  ssds:
+    - model: ""
+      manufacturer: micron
+      units: 1
+      technology: mlc
+      casing: casing_m2
+      capacitymib: 614400
+  hdds: []
+  vcpupercpu: 96
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 1
+    watts: 400
+    weightkg: 2
+- name: scw_pop2.base
+  cpus:
+    - model: EPYC 7543
+      manufacturer: AMD
+      units: 1
+      coreunits: 32
+      threads: 64
+      tdp: 225
+      frequencyhz: 2800
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 8
+      capacitymib: 32768
+  ssds: []
+  hdds: []
+  vcpupercpu: 64
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 1
+    watts: 400
+    weightkg: 2
+- name: scw_pop2hm.base
+  cpus:
+    - model: EPYC 7543
+      manufacturer: AMD
+      units: 1
+      coreunits: 32
+      threads: 64
+      tdp: 225
+      frequencyhz: 2800
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 16
+      capacitymib: 32768
+  ssds: []
+  hdds: []
+  vcpupercpu: 64
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 1
+    watts: 400
+    weightkg: 2
+- name: scw_pop2hc.base
+  cpus:
+    - model: EPYC 7543
+      manufacturer: AMD
+      units: 1
+      coreunits: 32
+      threads: 64
+      tdp: 225
+      frequencyhz: 2800
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 16
+      capacitymib: 32768
+  ssds: []
+  hdds: []
+  vcpupercpu: 64
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 0
+    watts: 0
+    weightkg: 0
+- name: scw_stardust1.base
+  cpus:
+    - model: EPYC 7281
+      manufacturer: AMD
+      units: 1
+      coreunits: 16
+      threads: 32
+      tdp: 155
+      frequencyhz: 2100
+      family: Epyc
+  gpus: []
+  rams:
+    - model: ""
+      manufacturer: samsung
+      units: 2
+      capacitymib: 8192
+  ssds:
+    - model: ""
+      manufacturer: micron
+      units: 1
+      technology: ""
+      casing: ""
+      capacitymib: 10240
+  hdds: []
+  vcpupercpu: 64
+  motherboard:
+    model: ""
+    manufacturer: ""
+  powersupply:
+    model: ""
+    manufacturer: ""
+    units: 0
+    watts: 0
+    weightkg: 0

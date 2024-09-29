@@ -1,15 +1,17 @@
-module gitlab.infra.online.net/paas/carbon
+module github.com/shillaker/scw-environmental-footprint
 
-go 1.18
+go 1.23
 
 require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.16.0
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.28
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.3
 	google.golang.org/genproto/googleapis/api v0.0.0-20230530153820-e85fd2cbaebc
 	google.golang.org/grpc v1.55.0
 	google.golang.org/protobuf v1.30.0
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (

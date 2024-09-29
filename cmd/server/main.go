@@ -7,9 +7,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
-	pb "gitlab.infra.online.net/paas/carbon/api/grpc/v1"
-	"gitlab.infra.online.net/paas/carbon/api/server"
-	"gitlab.infra.online.net/paas/carbon/util"
+	pb "github.com/shillaker/scw-environmental-footprint/api/grpc/v1"
+	"github.com/shillaker/scw-environmental-footprint/api/server"
+	"github.com/shillaker/scw-environmental-footprint/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -31,7 +31,12 @@ func main() {
 
 	s := grpc.NewServer()
 
-	pb.RegisterUsageImpactServer(s, server.NewUsageServer())
+	ser, err := server.NewUsageServer()
+	if err != nil {
+		log.Fatalf("failed to start server: %v", err)
+	}
+
+	pb.RegisterUsageImpactServer(s, ser)
 	reflection.Register(s)
 
 	log.Infof("server listening at %v", lis.Addr())

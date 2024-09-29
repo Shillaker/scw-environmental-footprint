@@ -1,9 +1,20 @@
 package model
 
-type Gpu struct {
-	Model        string
-	Manufacturer string
-	Units        int32
+const (
+	DefaultGpuName = "Nvidia H100"
+)
 
-	Name string
+func DefaultGpu(units uint32) Gpu {
+	return Gpu{
+		Name:  DefaultGpuName,
+		Units: units,
+	}
+}
+
+type Gpu struct {
+	Manufacturer string
+	Name         string
+	Units        uint32
+	MemoryMib    uint32
+	Cores        uint32
 }

@@ -5,7 +5,5 @@ func DefaultMotherboard(units int32) Motherboard {
 }
 
 type Motherboard struct {
-	Model        string
-	Manufacturer string
+	Units uint32
 }
-

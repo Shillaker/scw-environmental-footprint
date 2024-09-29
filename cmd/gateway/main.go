@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	pb "gitlab.infra.online.net/paas/carbon/api/grpc/v1"
-	"gitlab.infra.online.net/paas/carbon/util"
+	pb "github.com/shillaker/scw-environmental-footprint/api/grpc/v1"
+	"github.com/shillaker/scw-environmental-footprint/util"
 )
 
 func cors(h http.Handler) http.Handler {

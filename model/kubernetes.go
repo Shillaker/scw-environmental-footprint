@@ -8,7 +8,7 @@ type KubernetesControlPlaneType struct {
 }
 
 type KubernetesControlPlane struct {
-	Instance InstanceBaseServer
+	Instance VirtualMachine
 	Replicas int32
 }
 
@@ -32,7 +32,7 @@ func KubernetesControlPlaneToString(cp KubernetesControlPlane) string {
 
 var KubernetesControlPlaneMapping = map[string]KubernetesControlPlane{
 	KubernetesControlPlaneTypeMutualized: {
-		Instance: InstanceBaseServer{
+		Instance: VirtualMachine{
 			VCpus:  1,
 			RamGiB: 4,
 			Server: BasePlay2Host,
@@ -40,7 +40,7 @@ var KubernetesControlPlaneMapping = map[string]KubernetesControlPlane{
 		Replicas: 1,
 	},
 	KubernetesControlPlaneTypeDedicated4: {
-		Instance: InstanceBaseServer{
+		Instance: VirtualMachine{
 			VCpus:  2,
 			RamGiB: 4,
 			Server: BasePlay2Host,
@@ -48,7 +48,7 @@ var KubernetesControlPlaneMapping = map[string]KubernetesControlPlane{
 		Replicas: 2,
 	},
 	KubernetesControlPlaneTypeDedicated8: {
-		Instance: InstanceBaseServer{
+		Instance: VirtualMachine{
 			VCpus:  2,
 			RamGiB: 8,
 			Server: BasePlay2Host,
@@ -56,7 +56,7 @@ var KubernetesControlPlaneMapping = map[string]KubernetesControlPlane{
 		Replicas: 2,
 	},
 	KubernetesControlPlaneTypeDedicated16: {
-		Instance: InstanceBaseServer{
+		Instance: VirtualMachine{
 			VCpus:  4,
 			RamGiB: 16,
 			Server: BasePlay2Host,

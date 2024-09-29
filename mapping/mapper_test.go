@@ -3,12 +3,14 @@ package mapping
 import (
 	"testing"
 
+	"github.com/shillaker/scw-environmental-footprint/model"
 	"github.com/stretchr/testify/assert"
-	"gitlab.infra.online.net/paas/carbon/model"
 )
 
 func TestInstanceMapping(t *testing.T) {
-	mapper := ScwMapper{}
+	mapper, err := NewScwMapper()
+
+	assert.NoError(t, err)
 
 	instance := model.Instance{
 		Type: model.InstancePlay2Pico,
@@ -34,9 +36,8 @@ func TestInstanceMapping(t *testing.T) {
 			},
 			Rams: []model.Ram{
 				{
-					CapacityMib:  16 * 1024,
-					Manufacturer: model.ManufacturerSamsung,
-					Units:        4,
+					CapacityMib: 16 * 1024,
+					Units:       4,
 				},
 			},
 		},
