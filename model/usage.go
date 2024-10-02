@@ -1,7 +1,7 @@
 package model
 
 const (
-	DefaultLifespanYears  = 4
+	DefaultLifespanYears  = 6
 	DefaultLoadPercentage = 50
 	DefaultRegion         = RegionFrance
 

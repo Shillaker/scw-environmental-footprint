@@ -7,6 +7,7 @@ EM-A115X-SSD:
     coreunits: 4
     threads: 4
     frequencyhz: 3100
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -15,9 +16,9 @@ EM-A115X-SSD:
     capacitymib: 32768
   ssds: []
   hdds:
-  - capacitymib: 1048576
+  - capacitymb: 2007326
     units: 1
-  - capacitymib: 1048576
+  - capacitymb: 2007326
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -35,6 +36,7 @@ EM-A210R-HDD:
     coreunits: 6
     threads: 6
     frequencyhz: 3600
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -43,9 +45,9 @@ EM-A210R-HDD:
     capacitymib: 16384
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -63,6 +65,7 @@ EM-A315X-SSD:
     coreunits: 4
     threads: 4
     frequencyhz: 2800
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -71,9 +74,9 @@ EM-A315X-SSD:
     capacitymib: 65536
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -91,6 +94,7 @@ EM-A410X-SSD:
     coreunits: 6
     threads: 6
     frequencyhz: 3200
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -99,9 +103,9 @@ EM-A410X-SSD:
     capacitymib: 65536
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -119,6 +123,7 @@ EM-B111X-SATA:
     coreunits: 6
     threads: 6
     frequencyhz: 2000
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -127,9 +132,9 @@ EM-B111X-SATA:
     capacitymib: 196608
   ssds: []
   hdds:
-  - capacitymib: 8192000
+  - capacitymb: 2770894
     units: 1
-  - capacitymib: 8192000
+  - capacitymb: 2770894
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -147,6 +152,7 @@ EM-B112X-SSD:
     coreunits: 6
     threads: 6
     frequencyhz: 2000
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -155,9 +161,9 @@ EM-B112X-SSD:
     capacitymib: 196608
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -175,6 +181,7 @@ EM-B211X-SATA:
     coreunits: 8
     threads: 8
     frequencyhz: 2600
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -183,9 +190,9 @@ EM-B211X-SATA:
     capacitymib: 262144
   ssds: []
   hdds:
-  - capacitymib: 8192000
+  - capacitymb: 2770894
     units: 1
-  - capacitymib: 8192000
+  - capacitymb: 2770894
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -203,6 +210,7 @@ EM-B212X-SSD:
     coreunits: 8
     threads: 8
     frequencyhz: 2600
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -211,9 +219,9 @@ EM-B212X-SSD:
     capacitymib: 262144
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -231,6 +239,7 @@ EM-B220E-NVME:
     coreunits: 8
     threads: 8
     frequencyhz: 3100
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -241,11 +250,11 @@ EM-B220E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1048576
+    capacitymb: 2007326
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1048576
+    capacitymb: 2007326
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -263,6 +272,7 @@ EM-B311X-SATA:
     coreunits: 10
     threads: 10
     frequencyhz: 2500
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -271,9 +281,9 @@ EM-B311X-SATA:
     capacitymib: 262144
   ssds: []
   hdds:
-  - capacitymib: 12288000
+  - capacitymb: 4156342
     units: 1
-  - capacitymib: 12288000
+  - capacitymb: 4156342
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -291,6 +301,7 @@ EM-B312X-SSD:
     coreunits: 10
     threads: 10
     frequencyhz: 2500
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -299,9 +310,9 @@ EM-B312X-SSD:
     capacitymib: 262144
   ssds: []
   hdds:
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
-  - capacitymib: 1024000
+  - capacitymb: 3567587
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -319,6 +330,7 @@ EM-B320E-NVME:
     coreunits: 8
     threads: 8
     frequencyhz: 3100
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -329,11 +341,11 @@ EM-B320E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -351,6 +363,7 @@ EM-B420E-NVME:
     coreunits: 12
     threads: 12
     frequencyhz: 2900
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -361,11 +374,11 @@ EM-B420E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1048576
+    capacitymb: 2007326
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1048576
+    capacitymb: 2007326
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -383,6 +396,7 @@ EM-B520E-NVME:
     coreunits: 12
     threads: 12
     frequencyhz: 2900
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -393,11 +407,11 @@ EM-B520E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -415,6 +429,7 @@ EM-I210E-NVME:
     coreunits: 16
     threads: 16
     frequencyhz: 3000
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -425,11 +440,11 @@ EM-I210E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1959936
+    capacitymb: 3617914
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1959936
+    capacitymb: 3617914
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -447,6 +462,7 @@ EM-I215E-NVME:
     coreunits: 16
     threads: 16
     frequencyhz: 3000
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -457,11 +473,11 @@ EM-I215E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1959936
+    capacitymb: 3617914
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 1959936
+    capacitymb: 3617914
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -479,6 +495,7 @@ EM-L101X-SATA:
     coreunits: 4
     threads: 4
     frequencyhz: 2800
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -487,9 +504,9 @@ EM-L101X-SATA:
     capacitymib: 98304
   ssds: []
   hdds:
-  - capacitymib: 6145024
+  - capacitymb: 1105813
     units: 1
-  - capacitymib: 6145024
+  - capacitymb: 1105813
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -507,6 +524,7 @@ EM-L105X-SATA:
     coreunits: 4
     threads: 4
     frequencyhz: 2800
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -515,13 +533,13 @@ EM-L105X-SATA:
     capacitymib: 98304
   ssds: []
   hdds:
-  - capacitymib: 6145024
+  - capacitymb: 1105813
     units: 1
-  - capacitymib: 6145024
+  - capacitymb: 1105813
     units: 1
-  - capacitymib: 6145024
+  - capacitymb: 1105813
     units: 1
-  - capacitymib: 6145024
+  - capacitymb: 1105813
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -539,6 +557,7 @@ EM-L110X-SATA:
     coreunits: 4
     threads: 4
     frequencyhz: 2800
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -547,13 +566,13 @@ EM-L110X-SATA:
     capacitymib: 98304
   ssds: []
   hdds:
-  - capacitymib: 12288000
+  - capacitymb: 0
     units: 1
-  - capacitymib: 12288000
+  - capacitymb: 0
     units: 1
-  - capacitymib: 12288000
+  - capacitymb: 0
     units: 1
-  - capacitymib: 12288000
+  - capacitymb: 0
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -571,6 +590,7 @@ EM-L220E-NVME:
     coreunits: 8
     threads: 8
     frequencyhz: 3100
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -581,19 +601,19 @@ EM-L220E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 2097152
+    capacitymb: 4003815
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -611,6 +631,7 @@ EM-L420E-NVME:
     coreunits: 12
     threads: 12
     frequencyhz: 2900
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -621,19 +642,19 @@ EM-L420E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 4096000
+    capacitymb: 2172477
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 4096000
+    capacitymb: 2172477
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 4096000
+    capacitymb: 2172477
   - units: 1
     technology: ""
     casing: ""
-    capacitymib: 4096000
+    capacitymb: 2172477
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -651,6 +672,7 @@ EM-RV1-C4M16S128-A:
     coreunits: 4
     threads: 4
     frequencyhz: 1850
+    tdpwatts: 0
   gpus: []
   rams:
   - units: 1
@@ -659,7 +681,7 @@ EM-RV1-C4M16S128-A:
     capacitymib: 16384
   ssds: []
   hdds:
-  - capacitymib: 131072
+  - capacitymb: 3445948
     units: 1
   vcpupercpu: 0
   motherboard:

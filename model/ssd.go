@@ -12,28 +12,28 @@ const (
 
 func DefaultSsd(units uint32, capacityMiB uint32) Ssd {
 	return Ssd{
-		CapacityMib:  capacityMiB,
-		Units:        units,
-		Technology:   SsdTechnologyMlc,
-		Casing:       SsdCasingM2,
+		CapacityMB: capacityMiB,
+		Units:       units,
+		Technology:  SsdTechnologyMlc,
+		Casing:      SsdCasingM2,
 	}
 }
 
 func DefaultSsds(units uint32, capacityMiB uint32) []Ssd {
 	return []Ssd{
 		{
-			CapacityMib:  capacityMiB,
-			Units:        units,
-			Technology:   SsdTechnologyMlc,
-			Casing:       SsdCasingM2,
+			CapacityMB: capacityMiB,
+			Units:       units,
+			Technology:  SsdTechnologyMlc,
+			Casing:      SsdCasingM2,
 		},
 	}
 }
 
 type Ssd struct {
-	Units        uint32
-	Technology   string
-	Casing       string
+	Units      uint32
+	Technology string
+	Casing     string
 
-	CapacityMib uint32
+	CapacityMB uint32
 }

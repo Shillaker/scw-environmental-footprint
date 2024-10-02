@@ -80,7 +80,7 @@ func (s *SCWClient) ListInstanceVMs(ctx context.Context) (map[string]model.Virtu
 	for instanceName, serverType := range serverTypes {
 		instanceVm := model.VirtualMachine{
 			Type:   instanceName,
-			HddGiB: model.DefaultInstanceHddGib,
+			SsdGb:  model.MinimumInstanceBlockVolume,
 			VCpus:  serverType.Ncpus,
 			Gpus:   uint32(*serverType.Gpu),
 			RamGiB: uint32(serverType.RAM / 1024 / 1024 / 1024),
@@ -110,6 +110,12 @@ func (s *SCWClient) ListInstanceVMs(ctx context.Context) (map[string]model.Virtu
 			instanceVm.Server = model.BaseEnt1Host
 		} else if strings.HasPrefix(instanceName, "stardust1") {
 			instanceVm.Server = model.BaseStardust1Host
+		} else if strings.HasPrefix(instanceName, "h100") {
+			instanceVm.Server = model.BaseH100Host
+		} else if strings.HasPrefix(instanceName, "l4") {
+			instanceVm.Server = model.BaseL4Host
+		} else if strings.HasPrefix(instanceName, "gpu-3070") {
+			instanceVm.Server = model.BaseRenderSHost
 		} else {
 			log.Warnf("Skipping instance, no mapping for type %s", instanceName)
 			continue
@@ -143,6 +149,10 @@ func (s *SCWClient) ListElasticMetalOffers(ctx context.Context) (map[string]*bm.
 	return offers, nil
 }
 
+func gbToMb(gbIn scw.Size) uint32 {
+	return uint32(gbIn) / 1e3
+}
+
 func (s *SCWClient) ListElasticMetalServers(ctx context.Context) (map[string]model.Server, error) {
 	allOffers, err := s.ListElasticMetalOffers(ctx)
 
@@ -168,13 +178,13 @@ func (s *SCWClient) ListElasticMetalServers(ctx context.Context) (map[string]mod
 			diskType := strings.ToLower(disk.Type)
 			if diskType == "nvme" {
 				server.Ssds = append(server.Ssds, model.Ssd{
-					CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(disk.Capacity),
-					Units:       1,
+					CapacityMB: gbToMb(disk.Capacity),
+					Units:      1,
 				})
 			} else {
 				server.Hdds = append(server.Hdds, model.Hdd{
-					CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(disk.Capacity),
-					Units:       1,
+					CapacityMB: gbToMb(disk.Capacity),
+					Units:      1,
 				})
 			}
 		}
@@ -254,20 +264,19 @@ func (s *SCWClient) ListAppleSiliconServers(ctx context.Context) (map[string]mod
 
 		if strings.ToLower(serverType.Disk.Type) == "ssd" {
 			server.Ssds = append(server.Ssds, model.Ssd{
-				Units:       1,
-				CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(serverType.Disk.Capacity),
+				Units:      1,
+				CapacityMB: gbToMb(serverType.Disk.Capacity),
 			})
 		} else {
 			server.Hdds = append(server.Hdds, model.Hdd{
-				Units:       1,
-				CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(serverType.Disk.Capacity),
+				Units:      1,
+				CapacityMB: gbToMb(serverType.Disk.Capacity),
 			})
 		}
 
 		if serverType.Gpu.Count > 0 {
 			server.Gpus = append(server.Gpus, model.Gpu{
-				Name:  serverType.CPU.Name,          // GPU + CPU all part of same SoC with M Macs
-				Cores: uint32(serverType.Gpu.Count), // See MX wikis e.g. https://en.wikipedia.org/wiki/Apple_M2
+				Name:  serverType.CPU.Name, // GPU + CPU all part of same SoC with M Macs
 				Units: 1,
 			})
 		}
@@ -339,13 +348,13 @@ func (s *SCWClient) ListDediboxServers(ctx context.Context) (map[string]model.Se
 		for _, disk := range offer.ServerInfo.Disks {
 			if disk.Type == "sata" || disk.Type == "sas" {
 				server.Hdds = append(server.Hdds, model.Hdd{
-					CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(disk.Capacity),
-					Units:       1,
+					CapacityMB: gbToMb(disk.Capacity),
+					Units:      1,
 				})
 			} else {
 				server.Ssds = append(server.Ssds, model.Ssd{
-					CapacityMib: GibiBytesMultipliedByThousandsToMebibytes(disk.Capacity),
-					Units:       1,
+					CapacityMB: gbToMb(disk.Capacity),
+					Units:      1,
 				})
 			}
 		}

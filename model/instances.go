@@ -3,9 +3,10 @@ package model
 import "fmt"
 
 // ----- Docs -----
-// Base server types: https://www.scaleway.com/en/docs/compute/instances/reference-content/instances-datasheet/#developement-and-general-purpose-instances
+// Instance types: https://www.scaleway.com/en/docs/compute/instances/reference-content/instances-datasheet/#developement-and-general-purpose-instances
+// GPU instances: https://www.scaleway.com/en/docs/compute/gpu/reference-content/choosing-gpu-instance-type/
 const (
-	DefaultInstanceHddGib = 20
+	MinimumInstanceBlockVolume = 10
 )
 
 // An identifier for an instance type
@@ -19,8 +20,8 @@ type VirtualMachine struct {
 	Type   string
 	VCpus  uint32
 	RamGiB uint32
-	HddGiB uint32
-	SsdGiB uint32
+	HddGb  uint32
+	SsdGb  uint32
 	Gpus   uint32
 	Server Server
 }
@@ -28,10 +29,10 @@ type VirtualMachine struct {
 func DefaultInstanceSsd(capacityGiB uint32) []Ssd {
 	return []Ssd{
 		{
-			CapacityMib: capacityGiB * 1024,
-			Units:       1,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
+			CapacityMB: capacityGiB * 1000,
+			Units:      1,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
 		},
 	}
 }
@@ -51,6 +52,12 @@ func (i *VirtualMachine) GetHostShare() float32 {
 	return float32(i.VCpus) / float32(totalVCpus)
 }
 
+func giveServerNewName(other Server, newName string) Server {
+	new := other
+	new.Name = newName
+	return new
+}
+
 // Base for the Play2 range (shared vCPUs)
 var BasePlay2Host = Server{
 	Name: "scw_play2.base",
@@ -60,24 +67,23 @@ var BasePlay2Host = Server{
 	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
 	Rams: []Ram{
 		{
-			CapacityMib: 64 * 1024,
+			CapacityMib: 64 * 1024, // 64GiB
 			Units:       16,
 			Type:        "ddr4",
-			FrequencyHz: 3200 * 1000 * 1000,
+			FrequencyHz: 3200e6,
 		},
 	},
 	Ssds: []Ssd{
 		{
-			CapacityMib: 480 * 1024,
-			Units:       2,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
+			CapacityMB: 480e3, // 480GB
+			Units:      2,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
 		},
 	},
 	PowerSupply: PowerSupply{
-		Units:    2,
-		Watts:    800,
-		WeightKg: DefaultPowerSupplyWeightKg,
+		Units: 2,
+		Watts: 1400,
 	},
 }
 
@@ -90,24 +96,23 @@ var BasePro2Host = Server{
 	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
 	Rams: []Ram{
 		{
-			CapacityMib: 32 * 1024,
+			CapacityMib: 32 * 1024, // 32GiB
 			Units:       24,
 			Type:        "ddr4",
-			FrequencyHz: 3200 * 1000 * 1000,
+			FrequencyHz: 3200e6,
 		},
 	},
 	Ssds: []Ssd{
 		{
-			CapacityMib: 480 * 1024,
-			Units:       2,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
+			CapacityMB: 480e3, // 480GiB
+			Units:      2,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
 		},
 	},
 	PowerSupply: PowerSupply{
-		Units:    2,
-		Watts:    800,
-		WeightKg: DefaultPowerSupplyWeightKg,
+		Units: 2,
+		Watts: 1400,
 	},
 }
 
@@ -119,25 +124,24 @@ var BaseDev1Host = Server{
 	},
 	Rams: []Ram{
 		{
-			CapacityMib: 32 * 1024,
+			CapacityMib: 32 * 1024, // 32GiB
 			Units:       8,
 			Type:        "ddr4",
-			FrequencyHz: 2666 * 1000 * 1000,
+			FrequencyHz: 2666e6,
 		},
 	},
 	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
 	Ssds: []Ssd{
 		{
-			CapacityMib: 1024 * 1024,
-			Units:       5,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
+			CapacityMB: 1e6, // 1TB
+			Units:      5,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
 		},
 	},
 	PowerSupply: PowerSupply{
-		Units:    2,
-		Watts:    800,
-		WeightKg: DefaultPowerSupplyWeightKg,
+		Units: 2,
+		Watts: 500,
 	},
 }
 
@@ -151,110 +155,22 @@ var BaseGp1Host = Server{
 	Rams: []Ram{
 		{
 			Units:       12,
-			CapacityMib: 32 * 1024,
+			CapacityMib: 32 * 1024, // 32GiB
 			Type:        "ddr4",
-			FrequencyHz: 2666 * 1000 * 1000,
+			FrequencyHz: 2666e6,
 		},
 	},
 	Ssds: []Ssd{
 		{
-			CapacityMib: 1024 * 1024,
-			Units:       5,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
+			CapacityMB: 1e6, // 1TB
+			Units:      5,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
 		},
 	},
 	PowerSupply: PowerSupply{
-		Units:    2,
-		Watts:    800,
-		WeightKg: DefaultPowerSupplyWeightKg,
-	},
-}
-
-// Base for the POP2 range (dedicated vCPUs)
-var BasePop2Host = Server{
-	Name: "scw_pop2.base",
-	Cpus: []Cpu{
-		AmdEpyc7543,
-	},
-	Ssds: []Ssd{
-		{
-			CapacityMib: 1024 * 1024,
-			Units:       5,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
-		},
-	},
-	Rams:        DefaultRams(8, 32*1024),
-	VCpuPerCpu:  AmdEpyc7543.Threads,
-	PowerSupply: DefaultPowerSupply(400),
-}
-
-// Base for the POP2HM range (dedicated vCPUs)
-var BasePop2HmHost = Server{
-	Name: "scw_pop2hm.base",
-	Cpus: []Cpu{
-		AmdEpyc7543,
-	},
-	Ssds: []Ssd{
-		{
-			CapacityMib: 1024 * 1024,
-			Units:       5,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
-		},
-	},
-	Rams:        DefaultRams(16, 32*1024),
-	VCpuPerCpu:  AmdEpyc7543.Threads,
-	PowerSupply: DefaultPowerSupply(400),
-}
-
-// Base for the POP2HC range (dedicated vCPUs)
-var BasePop2HcHost = Server{
-	Name: "scw_pop2hc.base",
-	Cpus: []Cpu{
-		AmdEpyc7543,
-	},
-	Ssds: []Ssd{
-		{
-			CapacityMib: 1024 * 1024,
-			Units:       5,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
-		},
-	},
-	Rams:        DefaultRams(16, 32*1024),
-	VCpuPerCpu:  AmdEpyc7543.Threads,
-	PowerSupply: DefaultPowerSupply(400),
-}
-
-// Base for the STARDUST1 range (shared vCPUs)
-var BaseStardust1Host = Server{
-	Name: "scw_stardust1.base",
-	Cpus: []Cpu{
-		AmdEpyc7281,
-	},
-	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
-	Rams: []Ram{
-		{
-			Units:       8,
-			CapacityMib: 32 * 1024,
-			Type:        "ddr4",
-			FrequencyHz: 2666 * 1000 * 1000,
-		},
-	},
-	Ssds: []Ssd{
-		{
-			CapacityMib: 1024 * 1024,
-			Units:       5,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
-		},
-	},
-	PowerSupply: PowerSupply{
-		Units:    2,
-		Watts:    800,
-		WeightKg: DefaultPowerSupplyWeightKg,
+		Units: 2,
+		Watts: 500,
 	},
 }
 
@@ -268,23 +184,168 @@ var BaseEnt1Host = Server{
 	Rams: []Ram{
 		{
 			Units:       16,
-			CapacityMib: 32 * 1024,
+			CapacityMib: 32 * 1024, // 32GiB
 			Type:        "ddr4",
-			FrequencyHz: 3200 * 1000 * 1000,
+			FrequencyHz: 3200e6,
 		},
 	},
 	Ssds: []Ssd{
 		{
-			CapacityMib: 240 * 1024,
-			Units:       2,
-			Technology:  SsdTechnologyMlc,
-			Casing:      SsdCasingM2,
+			CapacityMB: 240e3, // 240GB
+			Units:      2,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
 		},
 	},
 	PowerSupply: PowerSupply{
-		Units:    2,
-		Watts:    800,
-		WeightKg: DefaultPowerSupplyWeightKg,
+		Units: 2,
+		Watts: 1400,
+	},
+}
+
+// Base for the POP2 range (dedicated vCPUs)
+var BasePop2Host = giveServerNewName(BaseEnt1Host, "scw_pop2.base")
+
+// Base for the POP2HM range (dedicated vCPUs)
+var BasePop2HmHost = giveServerNewName(BaseEnt1Host, "scw_pop2hm.base")
+
+// Base for the POP2HC range (dedicated vCPUs)
+var BasePop2HcHost = giveServerNewName(BaseEnt1Host, "scw_pop2hc.base")
+
+// Base for the STARDUST1 range (shared vCPUs)
+var BaseStardust1Host = Server{
+	Name: "scw_stardust1.base",
+	Cpus: []Cpu{
+		AmdEpyc7281,
+	},
+	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
+	Rams: []Ram{
+		{
+			Units:       8,
+			CapacityMib: 32 * 1024, // 32GiB
+			Type:        "ddr4",
+			FrequencyHz: 2666e6,
+		},
+	},
+	Ssds: []Ssd{
+		{
+			CapacityMB: 1e6, // 1TB
+			Units:      5,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
+		},
+	},
+	PowerSupply: PowerSupply{
+		Units: 2,
+		Watts: 800,
+	},
+}
+
+// Base for the H100 range
+var BaseH100Host = Server{
+	Name: "scw_h100.base",
+	Cpus: []Cpu{
+		AmdEpyc9334,
+	},
+	VCpuPerCpu: AmdEpyc9334.Threads,
+	Rams: []Ram{
+		{
+			Units:       12,
+			CapacityMib: 64 * 1024, // 64GiB
+			Type:        "ddr5",
+			FrequencyHz: 2400e6,
+		},
+	},
+	Gpus: []Gpu{
+		{
+			Units:     2,
+			Name:      "Nvidia H100",
+			MemoryMib: 80 * 1024, // 80 GiB
+		},
+	},
+	Ssds: []Ssd{
+		{
+			Units:      5,
+			CapacityMB: 7.68e6, // 7.68TB
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
+		},
+	},
+	PowerSupply: PowerSupply{
+		Units: 2,
+		Watts: 1200,
+	},
+}
+
+// Base for the L4 range
+var BaseL4Host = Server{
+	Name: "scw_l4.base",
+	Cpus: []Cpu{
+		AmdEpyc7413,
+	},
+	VCpuPerCpu: AmdEpyc7413.Threads,
+	Rams: []Ram{
+		{
+			Units:       16,
+			CapacityMib: 32 * 1024, // 32GiB
+			Type:        "ddr4",
+			FrequencyHz: 3200e6,
+		},
+	},
+	Gpus: []Gpu{
+		{
+			Units:     8,
+			Name:      "Nvidia L4",
+			MemoryMib: 24 * 1024, // 24GiB
+		},
+	},
+	Ssds: []Ssd{
+		{
+			Units:      2,
+			CapacityMB: 240e3, // 240GB
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
+		},
+	},
+	PowerSupply: PowerSupply{
+		Units: 4,
+		Watts: 2000,
+	},
+}
+
+// Base for the RenderS range
+var BaseRenderSHost = Server{
+	Name: "scw_renders.base",
+	Cpus: []Cpu{
+		IntelXeonGold6148,
+	},
+	VCpuPerCpu: IntelXeonGold6148.Threads,
+	Rams: []Ram{
+		{
+			Units:       12,
+			CapacityMib: 32 * 1024, // 32GiB
+			Type:        "ddr4",
+			FrequencyHz: 3200e6,
+		},
+	},
+	Gpus: []Gpu{
+		{
+			Units:     8,
+			Name:      "Nvidia Tesla P100",
+			MemoryMib: 24 * 1024, // 24GiB
+		},
+	},
+	Ssds: []Ssd{
+		{
+			Units:      2,
+			CapacityMB: 3.84e6, // 3.84TB
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
+		},
+	},
+	PowerSupply: PowerSupply{
+		Units: 4,
+		Watts: 1600,
 	},
 }
 
@@ -294,8 +355,27 @@ var BaseCopArm1Host = Server{
 	Cpus: []Cpu{
 		AmpereAltraMaxM12832,
 	},
-	Rams:       DefaultRams(8, 16*1024),
+	Rams: []Ram{
+		{
+			Units:       16,
+			CapacityMib: 64 * 1024, // 64GiB
+			Type:        "ddr4",
+			FrequencyHz: 2666e6,
+		},
+	},
 	VCpuPerCpu: 2 * AmpereAltraMaxM12832.Threads,
+	Ssds: []Ssd{
+		{
+			CapacityMB: 960e3, // 960GB
+			Units:      2,
+			Technology: SsdTechnologyMlc,
+			Casing:     SsdCasingM2,
+		},
+	},
+	PowerSupply: PowerSupply{
+		Units: 2,
+		Watts: 800,
+	},
 }
 
 // Convert an instance into a readable string representation
@@ -315,4 +395,7 @@ var BaseInstanceServers = []Server{
 	BasePop2HmHost,
 	BasePop2HcHost,
 	BaseStardust1Host,
+	BaseH100Host,
+	BaseL4Host,
+	BaseRenderSHost,
 }

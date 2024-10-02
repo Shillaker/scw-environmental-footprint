@@ -12,9 +12,7 @@ func DefaultGpu(units uint32) Gpu {
 }
 
 type Gpu struct {
-	Manufacturer string
 	Name         string
 	Units        uint32
 	MemoryMib    uint32
-	Cores        uint32
 }

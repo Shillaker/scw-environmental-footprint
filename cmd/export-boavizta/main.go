@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 
 	log "github.com/sirupsen/logrus"
 
@@ -88,13 +89,21 @@ func writeInstances() error {
 	defer instancesWriter.Flush()
 
 	mapper, err := mapping.NewScwMapper()
-	for name, instance := range mapper.Reader.InstancesData {
+	keys := make([]string, 0, len(mapper.Reader.InstancesData))
+
+	for k := range mapper.Reader.InstancesData {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, key := range keys {
+		instance := mapper.Reader.InstancesData[key]
 		row := []string{
-			name,
+			key,
 			fmt.Sprintf("%v", instance.VCpus),
 			fmt.Sprintf("%v", instance.RamGiB),
-			fmt.Sprintf("%v", instance.SsdGiB),
-			fmt.Sprintf("%v", instance.HddGiB),
+			fmt.Sprintf("%v", instance.SsdGb),
+			fmt.Sprintf("%v", instance.HddGb),
 			fmt.Sprintf("%v", instance.Gpus),
 			fmt.Sprintf("%v", instance.Server.Name),
 			"",
@@ -122,10 +131,14 @@ func writeBaseServers() error {
 	serversWriter.Write(serversHeaders)
 	defer serversWriter.Flush()
 
+	sort.Slice(model.BaseInstanceServers[:], func(i, j int) bool {
+		return model.BaseInstanceServers[i].Name < model.BaseInstanceServers[j].Name
+	})
+
 	for _, server := range model.BaseInstanceServers {
 		row := []string{
 			server.Name, // ID
-			"",          // Manufacturer
+			"Scaleway",  // Manufacturer
 			caseType,
 			fmt.Sprintf("%v", server.TotalCpuUnits()),         // CPU units
 			fmt.Sprintf("%v", server.CpuCores()),              // Cores per CPU

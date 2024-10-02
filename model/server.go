@@ -114,7 +114,7 @@ func (s *Server) TotalSsdUnits() uint32 {
 func (s *Server) TotalSsdCapacity() uint32 {
 	capacity := uint32(0)
 	for _, ssd := range s.Ssds {
-		capacity += ssd.CapacityMib
+		capacity += ssd.CapacityMB
 	}
 
 	return capacity
@@ -132,7 +132,7 @@ func (s *Server) TotalHddUnits() uint32 {
 func (s *Server) TotalHddCapacity() uint32 {
 	capacity := uint32(0)
 	for _, hdd := range s.Hdds {
-		capacity += hdd.CapacityMib
+		capacity += hdd.CapacityMB
 	}
 
 	return capacity
@@ -167,11 +167,11 @@ func ServerToString(server Server) string {
 	}
 
 	for _, s := range server.Ssds {
-		ssd += s.CapacityMib * s.Units
+		ssd += s.CapacityMB * s.Units
 	}
 
 	for _, h := range server.Hdds {
-		hdd += h.CapacityMib * h.Units
+		hdd += h.CapacityMB * h.Units
 	}
 
 	res := fmt.Sprintf("%v core %v, %v GiB RAM", cores, cpuName, ram/1024)
