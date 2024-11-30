@@ -2,7 +2,6 @@ package data
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 
 	log "github.com/sirupsen/logrus"
@@ -55,7 +54,7 @@ func (d *DataWriter) WriteDediboxData(ctx context.Context) error {
 			return err
 		}
 
-		err = ioutil.WriteFile(GetDediboxFile(), dediboxData, 0766)
+		err = os.WriteFile(GetDediboxFile(), dediboxData, 0766)
 		if err != nil {
 			log.Error("dedibox write", log.WithError(err))
 			return err
@@ -78,7 +77,7 @@ func (d *DataWriter) WriteElasticMetalData(ctx context.Context) error {
 		return err
 	}
 
-	err = ioutil.WriteFile(GetElasticMetalFile(), emData, 0766)
+	err = os.WriteFile(GetElasticMetalFile(), emData, 0766)
 	if err != nil {
 		log.Error("em write", log.WithError(err))
 		return err
@@ -100,7 +99,7 @@ func (d *DataWriter) WriteAppleSiliconData(ctx context.Context) error {
 		return err
 	}
 
-	err = ioutil.WriteFile(GetAppleSiliconFile(), asData, 0766)
+	err = os.WriteFile(GetAppleSiliconFile(), asData, 0766)
 	if err != nil {
 		log.Error("as write", log.WithError(err))
 		return err
@@ -122,7 +121,7 @@ func (d *DataWriter) WriteInstancesData(ctx context.Context) error {
 		return err
 	}
 
-	err = ioutil.WriteFile(GetInstancesFile(), instancesData, 0766)
+	err = os.WriteFile(GetInstancesFile(), instancesData, 0766)
 	if err != nil {
 		log.Error("instance write", log.WithError(err))
 		return err
@@ -132,7 +131,7 @@ func (d *DataWriter) WriteInstancesData(ctx context.Context) error {
 }
 
 func NewDataWriter(ctx context.Context) (*DataWriter, error) {
-	err := os.MkdirAll(GetDataSoureDir(), os.ModePerm)
+	err := os.MkdirAll(GetDataSourceDir(), os.ModePerm)
 	if err != nil {
 		log.Error("could not create output dir", log.WithError(err))
 		return nil, err

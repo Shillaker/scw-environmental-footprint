@@ -3,8 +3,9 @@ package boavizta
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/shillaker/scw-environmental-footprint/model"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestBoaviztaImpact(t *testing.T) {
@@ -39,22 +40,22 @@ func TestBoaviztaImpact(t *testing.T) {
 	}
 
 	// Set up expectations
-	adpManufacture := float32(0.032)
-	adpUse := float32(0.000131)
+	adpManufacture := float32(0.0247)
+	adpUse := float32(6.3e-06)
 	adpUnit := "kgSbeq"
 
-	gwpManufacture := float32(170)
-	gwpUse := float32(260)
+	gwpManufacture := float32(3668)
+	gwpUse := float32(12.7)
 	gwpUnit := "kgCO2eq"
 
-	peManufacture := float32(2300)
-	peUse := float32(30430)
+	peManufacture := float32(49380)
+	peUse := float32(1460)
 	peUnit := "MJ"
 
 	// Calculate the impact
 	impact, err := calculator.CalculateServerImpact(serverUsage)
-	assert.NoError(t, err)
-	assert.Equal(t, 3, len(impact.Impacts))
+	require.NoError(t, err)
+	require.Equal(t, 3, len(impact.Impacts))
 
 	// Iterate over all keys
 	for key, val := range impact.Impacts {

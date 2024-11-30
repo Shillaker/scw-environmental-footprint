@@ -2,8 +2,8 @@ package boavizta
 
 // Boavizta country codes: https://doc.api.boavizta.org/Explanations/usage/countries/
 const (
-	BoaviztaRegionFrance = "FRA"
-	BoaviztaRegionPoland = "POL"
+	BoaviztaRegionFrance      = "FRA"
+	BoaviztaRegionPoland      = "POL"
 	BoaviztaRegionNetherlands = "NLD"
 
 	// Allocation type is either LINEAR or TOTAL. LINEAR divides the manufacture impact over the usage time proportional to the lifespan
@@ -52,14 +52,10 @@ type BoaviztaTimeWorkload struct {
 	TimePercentage float32 `json:"time_percentage"`
 }
 
-// Here we explicitly don't send hours_electrical_consumption as this requires knowing the actual power consumption of the device
-// https://doc.api.boavizta.org/Explanations/usage/elec_conso
+// See https://doc.api.boavizta.org/Reference/format/usage/
 type BoaviztaServerUsage struct {
-	YearsUseTime               int32                  `json:"years_use_time"`
-	DaysUseTime                int32                  `json:"days_use_time"`
-	HoursUseTime               int32                  `json:"hours_use_time"`
-	UsageLocation              string                 `json:"usage_location"`
-	TimeWorkload               []BoaviztaTimeWorkload `json:"time_workload"`
+	UsageLocation string                 `json:"usage_location"`
+	TimeWorkload  []BoaviztaTimeWorkload `json:"time_workload"`
 }
 
 type BoaviztaServerRequest struct {
@@ -69,9 +65,16 @@ type BoaviztaServerRequest struct {
 }
 
 type BoaviztaImpact struct {
-	Manufacture float32 `json:"manufacture"`
-	Use         float32 `json:"use"`
-	Unit        string  `json:"unit"`
+	Embedded    BoaviztaImpactValue `json:"embedded"`
+	Use         BoaviztaImpactValue `json:"use"`
+	Description string              `json:"description"`
+	Unit        string              `json:"unit"`
+}
+
+type BoaviztaImpactValue struct {
+	Value float32 `json:"value"`
+	Min   float32 `json:"min"`
+	Max   float32 `json:"max"`
 }
 
 type BoaviztaImpacts struct {

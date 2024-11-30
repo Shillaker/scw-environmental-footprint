@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	log "github.com/sirupsen/logrus"
@@ -90,9 +90,6 @@ func mapServerUsageToBoaviztaModel(serverUsage model.ServerUsage) (BoaviztaServe
 		},
 	}
 
-	// Note need to round up here because request takes an integer
-	request.Usage.HoursUseTime = serverUsage.Usage.TimeHoursRoundedUp()
-
 	var err error
 	request.Usage.UsageLocation, err = mapRegionToBoaviztaRegion(serverUsage.Usage.Region)
 
@@ -104,19 +101,19 @@ func mapBoaviztaResponseToImpact(response BoaviztaServerResponse, hostShare floa
 	impact.Impacts = make(map[string]model.Impact, 3)
 
 	impact.Impacts["adp"] = model.Impact{
-		Manufacture: response.Impacts.AdpImpact.Manufacture / hostShare,
-		Use:         response.Impacts.AdpImpact.Use / hostShare,
+		Manufacture: response.Impacts.AdpImpact.Embedded.Value * hostShare,
+		Use:         response.Impacts.AdpImpact.Use.Value * hostShare,
 		Unit:        response.Impacts.AdpImpact.Unit,
 	}
 
 	impact.Impacts["gwp"] = model.Impact{
-		Manufacture: response.Impacts.GwpImpact.Manufacture / hostShare,
-		Use:         response.Impacts.GwpImpact.Use / hostShare,
+		Manufacture: response.Impacts.GwpImpact.Embedded.Value * hostShare,
+		Use:         response.Impacts.GwpImpact.Use.Value * hostShare,
 		Unit:        response.Impacts.GwpImpact.Unit,
 	}
 	impact.Impacts["pe"] = model.Impact{
-		Manufacture: response.Impacts.PeImpact.Manufacture / hostShare,
-		Use:         response.Impacts.PeImpact.Use / hostShare,
+		Manufacture: response.Impacts.PeImpact.Embedded.Value * hostShare,
+		Use:         response.Impacts.PeImpact.Use.Value * hostShare,
 		Unit:        response.Impacts.PeImpact.Unit,
 	}
 
@@ -127,11 +124,11 @@ func (b *BoaviztaImpactCalculator) getBoaviztaUrl() string {
 	return fmt.Sprintf("http://%v:%v", b.Host, b.Port)
 }
 
-func (b *BoaviztaImpactCalculator) getBoaviztaServerUrl() string {
+func (b *BoaviztaImpactCalculator) getBoaviztaServerUrl(durationHours int32) string {
 	bvUrl := b.getBoaviztaUrl()
 
 	// Note need for trailing slash here
-	return fmt.Sprintf("%v/v1/server/?verbose=true&allocation=%v", bvUrl, BoaviztaAllocationTypeLinear)
+	return fmt.Sprintf("%v/v1/server/?verbose=true&allocation=%v&duration=%d", bvUrl, BoaviztaAllocationTypeLinear, durationHours)
 }
 
 func (b *BoaviztaImpactCalculator) CalculateServerImpact(serverUsage []model.ServerUsage) (model.ImpactServerUsage, error) {
@@ -148,14 +145,11 @@ func (b *BoaviztaImpactCalculator) CalculateServerImpact(serverUsage []model.Ser
 			return empty, err
 		}
 
-		url := b.getBoaviztaServerUrl()
+		url := b.getBoaviztaServerUrl(s.Usage.TimeHoursRoundedUp())
 
 		log.Debugf("Making Boavizta request to %s", url)
 
-		impact := model.ImpactServerUsage{}
-
 		requestJson, err := json.Marshal(request)
-
 		if err != nil {
 			return empty, err
 		}
@@ -171,7 +165,7 @@ func (b *BoaviztaImpactCalculator) CalculateServerImpact(serverUsage []model.Ser
 		defer resp.Body.Close()
 
 		// Read the response
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return empty, err
 		}
@@ -183,9 +177,13 @@ func (b *BoaviztaImpactCalculator) CalculateServerImpact(serverUsage []model.Ser
 
 		// Map resonse to model
 		var response BoaviztaServerResponse
-		json.Unmarshal(body, &response)
+		err = json.Unmarshal(body, &response)
+		if err != nil {
+			log.Errorf("Error unmarshalling Boavizta response: %v", err)
+			return empty, err
+		}
 
-		impact = mapBoaviztaResponseToImpact(response, s.HostShare)
+		impact := mapBoaviztaResponseToImpact(response, s.HostShare)
 		impacts = append(impacts, impact)
 	}
 
@@ -199,7 +197,11 @@ func (b *BoaviztaImpactCalculator) CalculateServerImpact(serverUsage []model.Ser
 }
 
 func NewBoaviztaImpactCalculator() (*BoaviztaImpactCalculator, error) {
-	util.InitConfig()
+	err := util.InitConfig()
+	if err != nil {
+		return nil, err
+	}
+
 	calc := &BoaviztaImpactCalculator{
 		Host: viper.GetString("boavizta.host"),
 		Port: viper.GetString("boavizta.port"),

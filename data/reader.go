@@ -1,6 +1,8 @@
 package data
 
 import (
+	_ "embed"
+
 	"os"
 
 	log "github.com/sirupsen/logrus"
@@ -10,6 +12,18 @@ import (
 	"github.com/shillaker/scw-environmental-footprint/model"
 )
 
+//go:embed source/elastic_metal.yaml
+var elasticMetalData []byte
+
+//go:embed source/apple_silicon.yaml
+var appleSiliconData []byte
+
+//go:embed source/instances.yaml
+var instancesData []byte
+
+//go:embed source/dedibox.yaml
+var dediboxData []byte
+
 type DataReader struct {
 	ElasticMetalData map[string]model.Server
 	DediboxData      map[string]model.Server
@@ -18,11 +32,10 @@ type DataReader struct {
 }
 
 func (d *DataReader) ReadElasticMetalData() error {
-	data, err := d.ReadServersFromFile(GetElasticMetalFile())
+	err := yaml.Unmarshal(elasticMetalData, &d.ElasticMetalData)
 	if err != nil {
 		return err
 	}
-	d.ElasticMetalData = data
 
 	return nil
 }
@@ -30,33 +43,29 @@ func (d *DataReader) ReadElasticMetalData() error {
 func (d *DataReader) ReadDediboxData() error {
 	ddxMode := viper.GetString("dedibox.mode")
 	if ddxMode == "on" {
-
-		data, err := d.ReadServersFromFile(GetDediboxFile())
+		err := yaml.Unmarshal(dediboxData, &d.DediboxData)
 		if err != nil {
 			return err
 		}
-		d.DediboxData = data
 	}
 
 	return nil
 }
 
 func (d *DataReader) ReadAppleSiliconData() error {
-	data, err := d.ReadServersFromFile(GetAppleSiliconFile())
+	err := yaml.Unmarshal(appleSiliconData, &d.AppleSiliconData)
 	if err != nil {
 		return err
 	}
-	d.AppleSiliconData = data
 
 	return nil
 }
 
 func (d *DataReader) ReadInstancesData() error {
-	data, err := d.ReadVMsFromFile(GetInstancesFile())
+	err := yaml.Unmarshal(instancesData, &d.InstancesData)
 	if err != nil {
 		return err
 	}
-	d.InstancesData = data
 
 	return nil
 }

@@ -13,7 +13,7 @@ func TestServerModel(t *testing.T) {
 
 	// CPU and RAM
 	server.Cpus = []Cpu{
-		{CoreUnits: 10, Units: 1, Model: "foobar"},
+		{CoreUnits: 10, Units: 1, Name: "foobar"},
 		{CoreUnits: 5, Units: 2},
 	}
 

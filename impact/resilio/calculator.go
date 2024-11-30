@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	log "github.com/sirupsen/logrus"
@@ -162,7 +162,7 @@ func (b *ResilioImpactCalculator) CalculateServerImpact(serverUsage []model.Serv
 	defer resp.Body.Close()
 
 	// Read the response
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return empty, err
 	}
@@ -175,7 +175,10 @@ func (b *ResilioImpactCalculator) CalculateServerImpact(serverUsage []model.Serv
 
 	// Map response to model
 	var response ResilioServerResponse
-	json.Unmarshal(body, &response)
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		return empty, err
+	}
 
 	result := mapResilioResponseToImpact(response)
 
@@ -187,7 +190,11 @@ func (b *ResilioImpactCalculator) CalculateServerImpact(serverUsage []model.Serv
 }
 
 func NewResilioImpactCalculator() (*ResilioImpactCalculator, error) {
-	util.InitConfig()
+	err := util.InitConfig()
+	if err != nil {
+		return nil, err
+	}
+
 	calc := &ResilioImpactCalculator{
 		BaseUrl: viper.GetString("resilio.base_url"),
 		Token:   viper.GetString("resilio.token"),

@@ -7,46 +7,46 @@ import (
 
 func ImpactConfigPbToModel(pbConfig *pb.ImpactConfig) model.ImpactConfig {
 	return model.ImpactConfig{
-		Backend: pbConfig.Backend,
+		Backend: pbConfig.GetBackend(),
 	}
 }
 
 func UsagePbToModel(usage *pb.CloudUsage) model.CloudUsageAmount {
 	return model.CloudUsageAmount{
-		TimeSeconds:    usage.TimeSeconds,
-		Count:          usage.Count,
-		LoadPercentage: usage.LoadPercentage,
-		MemoryMiB:      usage.MemoryMiB,
-		MilliVCPU:      usage.MilliVCPU,
-		Region:         usage.Region,
+		TimeSeconds:    usage.GetTimeSeconds(),
+		Count:          usage.GetCount(),
+		LoadPercentage: usage.GetLoadPercentage(),
+		MemoryMiB:      usage.GetMemoryMiB(),
+		MilliVCPU:      usage.GetMilliVCPU(),
+		Region:         usage.GetRegion(),
 	}
 }
 
 func InstancePbToModel(instance *pb.Instance) model.Instance {
 	return model.Instance{
-		Type:        instance.Type,
-		Description: instance.Description,
+		Type:        instance.GetType(),
+		Description: instance.GetDescription(),
 	}
 }
 
 func ElasticMetalPbToModel(em *pb.ElasticMetal) model.ElasticMetal {
 	return model.ElasticMetal{
-		Type:        em.Type,
-		Description: em.Description,
+		Type:        em.GetType(),
+		Description: em.GetDescription(),
 	}
 }
 
 func KubernetesControlPlanePbToModel(cp *pb.KubernetesControlPlane) model.KubernetesControlPlaneType {
 	return model.KubernetesControlPlaneType{
-		Type:        cp.Type,
-		Description: cp.Description,
+		Type:        cp.GetType(),
+		Description: cp.GetDescription(),
 	}
 }
 
 func KubernetesPoolPbToModel(cp *pb.KubernetesPool) model.KubernetesPool {
 	return model.KubernetesPool{
-		Instance: InstancePbToModel(cp.Instance),
-		Count:    cp.Count,
+		Instance: InstancePbToModel(cp.GetInstance()),
+		Count:    cp.GetCount(),
 	}
 }
 
@@ -73,7 +73,7 @@ func KubernetesControlPlaneTypeToPb(cp model.KubernetesControlPlaneType) *pb.Kub
 
 func StoragePbToModel(storage *pb.Storage) model.Storage {
 	return model.Storage{
-		Type: storage.Type,
+		Type: storage.GetType(),
 	}
 }
 

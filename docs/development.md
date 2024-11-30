@@ -2,8 +2,10 @@
 
 ## Requirements
 
-- Install everything you need for a Go [gRPC](https://grpc.io/docs/languages/go/quickstart/) project
-- Install [`grpc-gateway`](https://github.com/grpc-ecosystem/grpc-gateway)
+- Everything you need for a Go [gRPC](https://grpc.io/docs/languages/go/quickstart/) project
+- [`grpc-gateway`](https://github.com/grpc-ecosystem/grpc-gateway)
+- [Taskfile](https://taskfile.dev/#/installation)
+- [direnv](https://direnv.net/)
 
 ## Running locally in Docker
 
@@ -21,16 +23,11 @@ Logging is managed with Logrus, and the level can be set with the `SCW_IMPACT_LO
 
 ### Use local builds
 
-This is easiest using [direnv](https://direnv.net/). Create a `.envrc` file in the root of the project, and add:
-
 ```bash
-export SCW_IMPACT_GATEWAY_BACKEND_HOST=localhost
-export SCW_IMPACT_BOAVIZTA_HOST=localhost
-
-export SCW_IMPACT_GLOBAL_PROJECT_ROOT=<path to this checkout>
+task env-dev
 ```
 
-Then run `direnv allow`.
+Will generate a `.envrc` file in the root of the project.
 
 ### Boavizta backend
 
@@ -76,6 +73,8 @@ Run the tests and integration tests:
 
 ```bash
 task test
+
+# Requires local services to be running
 task test-e2e
 ```
 

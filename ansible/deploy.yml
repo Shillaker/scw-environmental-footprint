@@ -8,15 +8,18 @@
         src: "{{ playbook_dir}}/../"
         dest: /root/app
 
-    - name: Prune Docker cache
-      community.docker.docker_prune:
-        containers: true
-        images: true
-
     - name: Tear down existing services
       community.docker.docker_compose_v2:
         project_src: /root/app
         state: absent
+
+    - name: Prune Docker cache
+      community.docker.docker_prune:
+        containers: true
+        images: true
+        networks: true
+        volumes: true
+        builder_cache: true
 
     - name: Build images
       community.docker.docker_compose_v2:
@@ -28,3 +31,11 @@
       community.docker.docker_compose_v2:
         project_src: /root/app
         state: present
+
+    - name: Prune Docker cache
+      community.docker.docker_prune:
+        containers: true
+        images: true
+        networks: true
+        volumes: true
+        builder_cache: true
