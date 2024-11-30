@@ -41,10 +41,10 @@ func (i *VirtualMachine) GetHostShare() float32 {
 	totalVCpus := uint32(0)
 
 	for _, cpu := range i.Server.Cpus {
-		if i.Server.VCpuPerCpu == 0 {
+		if i.Server.VCpuPerCpuUnit == 0 {
 			totalVCpus += cpu.Threads // Assume dedicated if we don't know otherwise
 		} else {
-			totalVCpus += cpu.Units * i.Server.VCpuPerCpu
+			totalVCpus += cpu.Units * i.Server.VCpuPerCpuUnit
 		}
 	}
 
@@ -57,7 +57,7 @@ var BasePlay2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543Double,
 	},
-	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
+	VCpuPerCpuUnit: 2 * AmdEpyc7543.Threads,
 	Rams: []Ram{
 		{
 			CapacityMib: 64 * 1024,
@@ -87,7 +87,8 @@ var BasePro2Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543Double,
 	},
-	VCpuPerCpu: 2 * AmdEpyc7543.Threads,
+	Gpus:           []Gpu{},
+	VCpuPerCpuUnit: 2 * AmdEpyc7543.Threads,
 	Rams: []Ram{
 		{
 			CapacityMib: 32 * 1024,
@@ -104,6 +105,7 @@ var BasePro2Host = Server{
 			Casing:      SsdCasingM2,
 		},
 	},
+	Hdds: []Hdd{},
 	PowerSupply: PowerSupply{
 		Units:    2,
 		Watts:    800,
@@ -125,7 +127,7 @@ var BaseDev1Host = Server{
 			FrequencyHz: 2666 * 1000 * 1000,
 		},
 	},
-	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
+	VCpuPerCpuUnit: 2 * AmdEpyc7281.Threads,
 	Ssds: []Ssd{
 		{
 			CapacityMib: 1024 * 1024,
@@ -147,7 +149,7 @@ var BaseGp1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7401P,
 	},
-	VCpuPerCpu: 2 * AmdEpyc7401P.Threads,
+	VCpuPerCpuUnit: 2 * AmdEpyc7401P.Threads,
 	Rams: []Ram{
 		{
 			Units:       12,
@@ -185,9 +187,9 @@ var BasePop2Host = Server{
 			Casing:      SsdCasingM2,
 		},
 	},
-	Rams:        DefaultRams(8, 32*1024),
-	VCpuPerCpu:  AmdEpyc7543.Threads,
-	PowerSupply: DefaultPowerSupply(400),
+	Rams:           DefaultRams(8, 32*1024),
+	VCpuPerCpuUnit: AmdEpyc7543.Threads,
+	PowerSupply:    DefaultPowerSupply(400),
 }
 
 // Base for the POP2HM range (dedicated vCPUs)
@@ -204,9 +206,9 @@ var BasePop2HmHost = Server{
 			Casing:      SsdCasingM2,
 		},
 	},
-	Rams:        DefaultRams(16, 32*1024),
-	VCpuPerCpu:  AmdEpyc7543.Threads,
-	PowerSupply: DefaultPowerSupply(400),
+	Rams:           DefaultRams(16, 32*1024),
+	VCpuPerCpuUnit: AmdEpyc7543.Threads,
+	PowerSupply:    DefaultPowerSupply(400),
 }
 
 // Base for the POP2HC range (dedicated vCPUs)
@@ -223,9 +225,9 @@ var BasePop2HcHost = Server{
 			Casing:      SsdCasingM2,
 		},
 	},
-	Rams:        DefaultRams(16, 32*1024),
-	VCpuPerCpu:  AmdEpyc7543.Threads,
-	PowerSupply: DefaultPowerSupply(400),
+	Rams:           DefaultRams(16, 32*1024),
+	VCpuPerCpuUnit: AmdEpyc7543.Threads,
+	PowerSupply:    DefaultPowerSupply(400),
 }
 
 // Base for the STARDUST1 range (shared vCPUs)
@@ -234,7 +236,7 @@ var BaseStardust1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7281,
 	},
-	VCpuPerCpu: 2 * AmdEpyc7281.Threads,
+	VCpuPerCpuUnit: 2 * AmdEpyc7281.Threads,
 	Rams: []Ram{
 		{
 			Units:       8,
@@ -264,7 +266,7 @@ var BaseEnt1Host = Server{
 	Cpus: []Cpu{
 		AmdEpyc7543Double,
 	},
-	VCpuPerCpu: 2 * AmdEpyc7543Triple.Threads,
+	VCpuPerCpuUnit: 2 * AmdEpyc7543Triple.Threads,
 	Rams: []Ram{
 		{
 			Units:       16,
@@ -294,8 +296,8 @@ var BaseCopArm1Host = Server{
 	Cpus: []Cpu{
 		AmpereAltraMaxM12832,
 	},
-	Rams:       DefaultRams(8, 16*1024),
-	VCpuPerCpu: 2 * AmpereAltraMaxM12832.Threads,
+	Rams:           DefaultRams(8, 16*1024),
+	VCpuPerCpuUnit: 2 * AmpereAltraMaxM12832.Threads,
 }
 
 // Convert an instance into a readable string representation

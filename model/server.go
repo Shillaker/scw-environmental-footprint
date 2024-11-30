@@ -18,7 +18,7 @@ type Server struct {
 	Ssds []Ssd
 	Hdds []Hdd
 
-	VCpuPerCpu uint32
+	VCpuPerCpuUnit uint32
 
 	Motherboard Motherboard
 	PowerSupply PowerSupply
@@ -140,10 +140,10 @@ func (s *Server) TotalHddCapacity() uint32 {
 
 func DefaultServer(vCpus uint32, ramGiB uint32) Server {
 	return Server{
-		Cpus:        []Cpu{DefaultCpu(1, vCpus)},
-		Rams:        []Ram{DefaultRam(1, ramGiB*1024)},
-		VCpuPerCpu:  vCpus * 2,
-		PowerSupply: DefaultPowerSupply(500),
+		Cpus:           []Cpu{DefaultCpu(1, vCpus)},
+		Rams:           []Ram{DefaultRam(1, ramGiB*1024)},
+		VCpuPerCpuUnit: vCpus * 2,
+		PowerSupply:    DefaultPowerSupply(500),
 	}
 }
 

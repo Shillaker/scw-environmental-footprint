@@ -1,0 +1,30 @@
+---
+
+name: Test
+
+on: [push]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23.0
+      - name: Install direnv
+        run: sudo apt-get install direnv
+      - name: Install Taskfile
+        run: go install github.com/go-task/task/v3/cmd/task@latest
+      - name: Set up env
+        run: task env-dev
+      - name: Start Boavizta
+        run: direnv exec . task boavizta
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.60
+      - name: Run tests
+        run: direnv exec . task test

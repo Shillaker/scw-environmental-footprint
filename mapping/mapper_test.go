@@ -5,15 +5,15 @@ import (
 
 	"github.com/shillaker/scw-environmental-footprint/model"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestInstanceMapping(t *testing.T) {
 	mapper, err := NewScwMapper()
-
-	assert.NoError(t, err)
+	require.NoError(t, err)
 
 	instance := model.Instance{
-		Type: model.InstancePlay2Pico,
+		Type: "pro2-l",
 	}
 
 	timeDays := 60
@@ -30,25 +30,14 @@ func TestInstanceMapping(t *testing.T) {
 	expectedUsage.LoadPercentage = 35
 
 	expectedServerUsage := model.ServerUsage{
-		Server: model.Server{
-			Cpus: []model.Cpu{
-				model.AmdEpyc7543,
-			},
-			Rams: []model.Ram{
-				{
-					CapacityMib: 16 * 1024,
-					Units:       4,
-				},
-			},
-		},
+		Server:    model.BasePro2Host,
 		Usage:     expectedUsage,
-		HostShare: 32,
+		HostShare: 0.125,
 	}
 
 	expectedServerUsages := []model.ServerUsage{expectedServerUsage, expectedServerUsage}
 
 	serverUsages, err := mapper.MapInstanceUsage(instance, usage)
-
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	assert.EqualValues(t, expectedServerUsages, serverUsages)
 }

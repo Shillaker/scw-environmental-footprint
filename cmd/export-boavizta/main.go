@@ -84,10 +84,18 @@ func writeInstances() error {
 
 	// Create the servers file with headings
 	instancesWriter := csv.NewWriter(instancesFile)
-	instancesWriter.Write(instancesHeaders)
+	err = instancesWriter.Write(instancesHeaders)
+	if err != nil {
+		return fmt.Errorf("failed to write instances headers: %v", err)
+	}
+
 	defer instancesWriter.Flush()
 
 	mapper, err := mapping.NewScwMapper()
+	if err != nil {
+		return fmt.Errorf("failed to create mapper: %v", err)
+	}
+
 	for name, instance := range mapper.Reader.InstancesData {
 		row := []string{
 			name,
@@ -113,14 +121,16 @@ func writeInstances() error {
 func writeBaseServers() error {
 	serversFile, err := os.Create(serversOutPath)
 	if err != nil {
-		log.Errorf("failed to open servers file at %v: %v", serversOutPath, err)
-		return err
+		return fmt.Errorf("failed to open servers file at %v: %v", serversOutPath, err)
 	}
 	defer serversFile.Close()
 
 	serversWriter := csv.NewWriter(serversFile)
-	serversWriter.Write(serversHeaders)
+	err = serversWriter.Write(serversHeaders)
 	defer serversWriter.Flush()
+	if err != nil {
+		return fmt.Errorf("failed to write servers headers: %v", err)
+	}
 
 	for _, server := range model.BaseInstanceServers {
 		row := []string{
@@ -131,7 +141,7 @@ func writeBaseServers() error {
 			fmt.Sprintf("%v", server.CpuCores()),              // Cores per CPU
 			"",                                                // CPU die size per core
 			server.CpuName(),                                  // CPU name
-			fmt.Sprintf("%v", server.VCpuPerCpu),              // Number of vCPUs per CPU
+			fmt.Sprintf("%v", server.VCpuPerCpuUnit),              // Number of vCPUs per CPU
 			fmt.Sprintf("%v", server.TotalRamUnits()),         // RAM units
 			fmt.Sprintf("%v", server.TotalRamCapacity()/1024), // RAM capacity (GiB)
 			fmt.Sprintf("%v", server.TotalSsdUnits()),         // SSD units
@@ -167,7 +177,10 @@ func main() {
 		log.Fatalf("failed to init config: %v", err)
 	}
 
-	os.Mkdir(outDir, os.FileMode(0775))
+	err = os.Mkdir(outDir, os.FileMode(0775))
+	if err != nil {
+		log.Fatalf("failed to make output dir: %v", err)
+	}
 
 	err = writeInstances()
 	if err != nil {

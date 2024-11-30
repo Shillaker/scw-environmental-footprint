@@ -22,7 +22,7 @@ coparm1-2c-8g:
       capacitymib: 16384
     ssds: []
     hdds: []
-    vcpupercpu: 256
+    vcpupercpuunit: 256
     motherboard:
       units: 0
     powersupply:
@@ -53,7 +53,7 @@ coparm1-4c-16g:
       capacitymib: 16384
     ssds: []
     hdds: []
-    vcpupercpu: 256
+    vcpupercpuunit: 256
     motherboard:
       units: 0
     powersupply:
@@ -84,7 +84,7 @@ coparm1-8c-32g:
       capacitymib: 16384
     ssds: []
     hdds: []
-    vcpupercpu: 256
+    vcpupercpuunit: 256
     motherboard:
       units: 0
     powersupply:
@@ -115,7 +115,7 @@ coparm1-16c-64g:
       capacitymib: 16384
     ssds: []
     hdds: []
-    vcpupercpu: 256
+    vcpupercpuunit: 256
     motherboard:
       units: 0
     powersupply:
@@ -146,7 +146,7 @@ coparm1-32c-128g:
       capacitymib: 16384
     ssds: []
     hdds: []
-    vcpupercpu: 256
+    vcpupercpuunit: 256
     motherboard:
       units: 0
     powersupply:
@@ -181,7 +181,7 @@ dev1-l:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -216,7 +216,7 @@ dev1-m:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -251,7 +251,7 @@ dev1-s:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -286,7 +286,7 @@ dev1-xl:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -321,7 +321,7 @@ ent1-2xl:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -356,7 +356,7 @@ ent1-l:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -391,7 +391,7 @@ ent1-m:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -426,7 +426,7 @@ ent1-s:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -461,7 +461,7 @@ ent1-xl:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -496,7 +496,7 @@ ent1-xs:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -531,7 +531,7 @@ ent1-xxs:
       casing: casing_m2
       capacitymib: 245760
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -566,7 +566,7 @@ gp1-l:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 96
+    vcpupercpuunit: 96
     motherboard:
       units: 0
     powersupply:
@@ -601,7 +601,7 @@ gp1-m:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 96
+    vcpupercpuunit: 96
     motherboard:
       units: 0
     powersupply:
@@ -636,7 +636,7 @@ gp1-s:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 96
+    vcpupercpuunit: 96
     motherboard:
       units: 0
     powersupply:
@@ -671,7 +671,7 @@ gp1-viz:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 96
+    vcpupercpuunit: 96
     motherboard:
       units: 0
     powersupply:
@@ -706,7 +706,7 @@ gp1-xl:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 96
+    vcpupercpuunit: 96
     motherboard:
       units: 0
     powersupply:
@@ -741,7 +741,7 @@ gp1-xs:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 96
+    vcpupercpuunit: 96
     motherboard:
       units: 0
     powersupply:
@@ -776,7 +776,7 @@ play2-micro:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -811,7 +811,7 @@ play2-nano:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -846,7 +846,7 @@ play2-pico:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -881,7 +881,7 @@ pop2-2c-8g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -916,7 +916,7 @@ pop2-2c-8g-win:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -951,7 +951,7 @@ pop2-4c-16g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -986,7 +986,7 @@ pop2-4c-16g-win:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1021,7 +1021,7 @@ pop2-8c-32g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1056,7 +1056,7 @@ pop2-8c-32g-win:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1091,7 +1091,7 @@ pop2-16c-64g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1126,7 +1126,7 @@ pop2-16c-64g-win:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1161,7 +1161,7 @@ pop2-32c-128g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1196,7 +1196,7 @@ pop2-32c-128g-win:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1231,7 +1231,7 @@ pop2-64c-256g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1266,7 +1266,7 @@ pop2-hc-2c-4g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1301,7 +1301,7 @@ pop2-hc-4c-8g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1336,7 +1336,7 @@ pop2-hc-8c-16g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1371,7 +1371,7 @@ pop2-hc-16c-32g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1406,7 +1406,7 @@ pop2-hc-32c-64g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1441,7 +1441,7 @@ pop2-hc-64c-128g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1476,7 +1476,7 @@ pop2-hm-2c-16g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1511,7 +1511,7 @@ pop2-hm-4c-32g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1546,7 +1546,7 @@ pop2-hm-8c-64g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1581,7 +1581,7 @@ pop2-hm-16c-128g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1616,7 +1616,7 @@ pop2-hm-32c-256g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1651,7 +1651,7 @@ pop2-hm-64c-512g:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1686,7 +1686,7 @@ pop2-hn-3:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1721,7 +1721,7 @@ pop2-hn-5:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1756,7 +1756,7 @@ pop2-hn-10:
       casing: casing_m2
       capacitymib: 1048576
     hdds: []
-    vcpupercpu: 64
+    vcpupercpuunit: 64
     motherboard:
       units: 0
     powersupply:
@@ -1791,7 +1791,7 @@ pro2-l:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -1826,7 +1826,7 @@ pro2-m:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -1861,7 +1861,7 @@ pro2-s:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -1896,7 +1896,7 @@ pro2-xs:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:
@@ -1931,7 +1931,7 @@ pro2-xxs:
       casing: casing_m2
       capacitymib: 491520
     hdds: []
-    vcpupercpu: 128
+    vcpupercpuunit: 128
     motherboard:
       units: 0
     powersupply:

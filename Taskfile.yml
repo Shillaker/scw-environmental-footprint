@@ -1,6 +1,12 @@
 version: '3'
 
 tasks:
+  # Environment
+  env-dev:
+    cmds:
+      - cp configs/dev.envrc .envrc
+      - direnv allow
+
   # Development
   proto:
     cmds:
@@ -42,13 +48,22 @@ tasks:
 
   # Testing
   test:
+    deps: [boavizta]
     cmds:
       - go test -v $(go list ./... | grep -v /e2e)
 
   test-e2e:
     cmds:
       - go clean -testcache
-      - go test -v $(go list ./e2e/...)
+      - go test ./e2e/...
+
+  lint:
+    cmds:
+      - golangci-lint run
+
+  lint-fix:
+    cmds:
+      - golangci-lint run --fix
 
   # Exports and source data
   export-boavizta:

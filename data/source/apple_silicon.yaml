@@ -24,7 +24,7 @@ M2-L:
     casing: ""
     capacitymib: 524288
   hdds: []
-  vcpupercpu: 0
+  vcpupercpuunit: 0
   motherboard:
     units: 1
   powersupply:
@@ -57,7 +57,7 @@ M2-M:
     casing: ""
     capacitymib: 262144
   hdds: []
-  vcpupercpu: 0
+  vcpupercpuunit: 0
   motherboard:
     units: 1
   powersupply:
