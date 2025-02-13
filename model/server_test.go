@@ -13,7 +13,7 @@ func TestServerModel(t *testing.T) {
 
 	// CPU and RAM
 	server.Cpus = []Cpu{
-		{CoreUnits: 10, Units: 1, Model: "foobar"},
+		{CoreUnits: 10, Units: 1, Name: "foobar"},
 		{CoreUnits: 5, Units: 2},
 	}
 
@@ -25,8 +25,8 @@ func TestServerModel(t *testing.T) {
 
 	// SSD
 	server.Ssds = []Ssd{
-		{CapacityMib: 512 * 1024, Units: 2},
-		{CapacityMib: 256 * 1024, Units: 1},
+		{CapacityMB: 512 * 1024, Units: 2},
+		{CapacityMB: 256 * 1024, Units: 1},
 	}
 	assert.Equal(t, "20 core foobar, 80 GiB RAM, 1280 GiB SSD", ServerToString(server))
 }

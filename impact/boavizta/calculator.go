@@ -59,7 +59,7 @@ func mapServerUsageToBoaviztaModel(serverUsage model.ServerUsage) (BoaviztaServe
 	for _, ssd := range serverUsage.Server.Ssds {
 		request.Configuration.Disk = append(request.Configuration.Disk, BoaviztaDisk{
 			Type:        "ssd",
-			CapacityGib: int32(ssd.CapacityMib / 1024),
+			CapacityGib: int32(ssd.CapacityMB / 1000),
 			Units:       int32(ssd.Units),
 		})
 	}
@@ -68,7 +68,7 @@ func mapServerUsageToBoaviztaModel(serverUsage model.ServerUsage) (BoaviztaServe
 	for _, hdd := range serverUsage.Server.Hdds {
 		request.Configuration.Disk = append(request.Configuration.Disk, BoaviztaDisk{
 			Type:        "hdd",
-			CapacityGib: int32(hdd.CapacityMib / 1024),
+			CapacityGib: int32(hdd.CapacityMB / 1000),
 			Units:       int32(hdd.Units),
 		})
 	}

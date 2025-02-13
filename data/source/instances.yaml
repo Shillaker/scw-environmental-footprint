@@ -682,42 +682,6 @@ gp1-s:
       units: 2
       watts: 500
       weightkg: 0
-gp1-viz:
-  type: GP1-VIZ
-  vcpus: 8
-  ramgib: 32
-  hddgb: 0
-  ssdgb: 10
-  gpus: 0
-  server:
-    product: ""
-    name: scw_gp1.base
-    cpus:
-    - name: AMD EPYC 7401P
-      units: 2
-      coreunits: 24
-      threads: 48
-      frequencyhz: 2000000000
-      tdpwatts: 0
-    gpus: []
-    rams:
-    - units: 12
-      frequencyhz: 2666000000
-      type: ddr4
-      capacitymib: 32768
-    ssds:
-    - units: 5
-      technology: mlc
-      casing: casing_m2
-      capacitymb: 1000000
-    hdds: []
-    vcpupercpu: 96
-    motherboard:
-      units: 0
-    powersupply:
-      units: 2
-      watts: 500
-      weightkg: 0
 gp1-xl:
   type: GP1-XL
   vcpus: 48

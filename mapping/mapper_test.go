@@ -13,7 +13,7 @@ func TestInstanceMapping(t *testing.T) {
 	assert.NoError(t, err)
 
 	instance := model.Instance{
-		Type: model.InstancePlay2Pico,
+		Type: "PLAY2-PICO",
 	}
 
 	timeDays := 60

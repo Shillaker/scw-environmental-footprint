@@ -74,9 +74,9 @@ EM-A315X-SSD:
     capacitymib: 65536
   ssds: []
   hdds:
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -103,10 +103,43 @@ EM-A410X-SSD:
     capacitymib: 65536
   ssds: []
   hdds:
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-A610R-NVME:
+  product: EM
+  name: EM-A610R-NVME
+  cpus:
+  - name: amd ryzen pro 3600
+    units: 1
+    coreunits: 6
+    threads: 6
+    frequencyhz: 3600
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR4
+    capacitymib: 32768
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2007326
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2007326
+  hdds: []
   vcpupercpu: 0
   motherboard:
     units: 1
@@ -161,9 +194,9 @@ EM-B112X-SSD:
     capacitymib: 196608
   ssds: []
   hdds:
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -219,9 +252,9 @@ EM-B212X-SSD:
     capacitymib: 262144
   ssds: []
   hdds:
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -310,9 +343,9 @@ EM-B312X-SSD:
     capacitymib: 262144
   ssds: []
   hdds:
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
-  - capacitymb: 3567587
+  - capacitymb: 2007326
     units: 1
   vcpupercpu: 0
   motherboard:
@@ -420,6 +453,39 @@ EM-B520E-NVME:
     units: 1
     watts: 800
     weightkg: 2
+EM-I120E-NVME:
+  product: EM
+  name: EM-I120E-NVME
+  cpus:
+  - name: amd epyc 8024p
+    units: 1
+    coreunits: 8
+    threads: 8
+    frequencyhz: 2400
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR5
+    capacitymib: 65536
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2222292
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2222292
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
 EM-I210E-NVME:
   product: EM
   name: EM-I210E-NVME
@@ -440,11 +506,11 @@ EM-I210E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymb: 3617914
+    capacitymb: 533028
   - units: 1
     technology: ""
     casing: ""
-    capacitymb: 3617914
+    capacitymb: 533028
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -473,11 +539,176 @@ EM-I215E-NVME:
   - units: 1
     technology: ""
     casing: ""
-    capacitymb: 3617914
+    capacitymb: 533028
   - units: 1
     technology: ""
     casing: ""
-    capacitymb: 3617914
+    capacitymb: 533028
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I220E-NVME:
+  product: EM
+  name: EM-I220E-NVME
+  cpus:
+  - name: amd epyc 8124p
+    units: 1
+    coreunits: 16
+    threads: 16
+    frequencyhz: 2450
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR5
+    capacitymib: 131072
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2222292
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2222292
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I320E-NVME:
+  product: EM
+  name: EM-I320E-NVME
+  cpus:
+  - name: amd epyc 8224p
+    units: 1
+    coreunits: 24
+    threads: 24
+    frequencyhz: 2550
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR5
+    capacitymib: 196608
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 149618
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 149618
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I420E-NVME:
+  product: EM
+  name: EM-I420E-NVME
+  cpus:
+  - name: amd epyc 8324p
+    units: 1
+    coreunits: 32
+    threads: 32
+    frequencyhz: 2650
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR5
+    capacitymib: 262144
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 149618
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 149618
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I520E-NVME:
+  product: EM
+  name: EM-I520E-NVME
+  cpus:
+  - name: amd epyc 8434p
+    units: 1
+    coreunits: 48
+    threads: 48
+    frequencyhz: 2500
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR5
+    capacitymib: 393216
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 299237
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 299237
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-I620E-NVME:
+  product: EM
+  name: EM-I620E-NVME
+  cpus:
+  - name: amd epyc 8534p
+    units: 1
+    coreunits: 64
+    threads: 64
+    frequencyhz: 2300
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 3200
+    type: DDR5
+    capacitymib: 589824
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 299237
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 299237
   hdds: []
   vcpupercpu: 0
   motherboard:
@@ -683,6 +914,72 @@ EM-RV1-C4M16S128-A:
   hdds:
   - capacitymb: 3445948
     units: 1
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-T220E-L40S:
+  product: EM
+  name: EM-T220E-L40S
+  cpus:
+  - name: amd epyc 9334
+    units: 1
+    coreunits: 32
+    threads: 32
+    frequencyhz: 2700
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 4800
+    type: DDR5
+    capacitymib: 262144
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 1055219
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 1055219
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
+EM-T620E-H100:
+  product: EM
+  name: EM-T620E-H100
+  cpus:
+  - name: amd epyc 9334
+    units: 1
+    coreunits: 32
+    threads: 32
+    frequencyhz: 2700
+    tdpwatts: 0
+  gpus: []
+  rams:
+  - units: 1
+    frequencyhz: 4800
+    type: DDR5
+    capacitymib: 524288
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2099601
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2099601
+  hdds: []
   vcpupercpu: 0
   motherboard:
     units: 1

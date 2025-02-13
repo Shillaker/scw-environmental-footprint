@@ -79,7 +79,7 @@ func mapServerUsageToResilioModel(serverUsage model.ServerUsage) (ResilioRackSer
 
 	for _, ssd := range serverUsage.Server.Ssds {
 		request.Ssds = append(request.Ssds, ResilioSsd{
-			SizeGb:     ssd.CapacityMib / 1024,
+			SizeGb:     ssd.CapacityMB / 1000,
 			Technology: ssd.Technology,
 			Casing:     ssd.Casing,
 		})

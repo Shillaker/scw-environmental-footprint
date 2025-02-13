@@ -62,3 +62,35 @@ M2-M:
     units: 1
     watts: 800
     weightkg: 2
+M4-S:
+  product: AS
+  name: M4-S
+  cpus:
+  - name: apple m4
+    units: 1
+    coreunits: 10
+    threads: 0
+    frequencyhz: 105032704
+    tdpwatts: 0
+  gpus:
+  - name: Apple M4
+    units: 1
+    memorymib: 0
+  rams:
+  - units: 1
+    frequencyhz: 0
+    type: ""
+    capacitymib: 16384
+  ssds:
+  - units: 1
+    technology: ""
+    casing: ""
+    capacitymb: 2596929
+  hdds: []
+  vcpupercpu: 0
+  motherboard:
+    units: 1
+  powersupply:
+    units: 1
+    watts: 800
+    weightkg: 2
